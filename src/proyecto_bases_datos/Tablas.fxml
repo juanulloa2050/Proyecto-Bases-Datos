@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="572.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.TablasController">
+   <children>
+      <ChoiceBox fx:id="desp_tablas" layoutX="23.0" layoutY="253.0" prefHeight="26.0" prefWidth="205.0" />
+      <TableView fx:id="tablas" layoutX="23.0" layoutY="97.0" prefHeight="132.0" prefWidth="291.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="btn_buscar" layoutX="336.0" layoutY="253.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="206.0" text="Buscar" />
+      <Button fx:id="btn_modificar" layoutX="345.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modificar" />
+      <Button fx:id="btn_crear" layoutX="345.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Crear" />
+      <Button fx:id="btn_borar" layoutX="345.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Borrar tabla" />
+      <Button fx:id="btn_volver" layoutX="194.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="183.0" text="Volver" />
+      <Button fx:id="btn_modificar1" layoutX="453.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modificar" />
+      <Button fx:id="btn_crear1" layoutX="453.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Crear" />
+      <Button fx:id="btn_borar1" layoutX="453.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Borrar tabla" />
+   </children>
+</AnchorPane>
