@@ -19,7 +19,7 @@
       <Button fx:id="btn_modificar" layoutX="345.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modificar" />
       <Button fx:id="btn_crear" layoutX="345.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Crear" />
       <Button fx:id="btn_borar" layoutX="345.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Borrar tabla" />
-      <Button fx:id="btn_volver" layoutX="194.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="183.0" text="Volver" />
+      <Button fx:id="btn_volver" layoutX="194.0" layoutY="304.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="183.0" text="Volver" />
       <Button fx:id="btn_modificar1" layoutX="453.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Modificar" />
       <Button fx:id="btn_crear1" layoutX="453.0" layoutY="150.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Crear" />
       <Button fx:id="btn_borar1" layoutX="453.0" layoutY="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="90.0" text="Borrar tabla" />
