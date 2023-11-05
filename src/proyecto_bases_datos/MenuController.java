@@ -2,10 +2,16 @@ package proyecto_bases_datos;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Vector;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import proyecto_bases_datos.managment.JDBC;
+
+import java.util.ArrayList;
+
 
 import java.sql.*;
 
@@ -31,6 +37,9 @@ public class MenuController implements Initializable {
         // TODO
     }    
 
+    /**
+     * 
+     */
     public void choicebox_action() {
         try {
             // Obtén la conexión desde la instancia de JDBC
@@ -40,12 +49,14 @@ public class MenuController implements Initializable {
             ResultSet rs = metaData.getCatalogs();
 
             // Limpia la ChoiceBox
-            desp_bases.getItems().clear();
+            //desp_bases.getItems().clear();
 
             // Agrega cada base de datos a la ChoiceBox
+            ArrayList<String> sd=new ArrayList<>();
             while (rs.next()) {
-                desp_bases.getItems().add(rs.getString("TABLE_CAT"));
+                sd.add(rs.getString("TABLE_CAT"));
             }
+            desp_bases.getItems().addAll(sd);
 
             // Cierra el ResultSet
             rs.close();

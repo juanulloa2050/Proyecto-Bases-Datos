@@ -1,4 +1,4 @@
-package proyecto_bases_datos;
+package proyecto_bases_datos.managment;
 import java.sql.*;
 
 public class JDBC {

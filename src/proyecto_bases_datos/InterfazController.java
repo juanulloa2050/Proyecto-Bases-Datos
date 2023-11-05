@@ -15,6 +15,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 public class InterfazController implements Initializable {
     JDBC connection = JDBC.getInstance();
