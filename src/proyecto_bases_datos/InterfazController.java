@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -27,17 +28,18 @@ public class InterfazController implements Initializable {
     @FXML
     private TextField txt_puerto;
     @FXML
-    private TextField txt_maquina;
-    @FXML
     private PasswordField txt_clave;
     @FXML
     private Button btn_acceder;
+    @FXML
+    private ChoiceBox<?> desp_maquina;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
+    @FXML
     public void acceder_action() throws IOException {
         String usuario = txt_usr.getText();
         String puerto = txt_puerto.getText();
