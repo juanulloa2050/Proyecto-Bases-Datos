@@ -4,19 +4,12 @@
  */
 package proyecto_bases_datos;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -45,43 +38,5 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void click_acceder(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
-            Scene MostrarScene = new Scene(MostrarParent);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(MostrarScene);
-            window.setTitle("Menu");
-            window.show();
-    }
-
-    @FXML
-    private void click_eliminar(ActionEvent event) {
-    }
-
-    @FXML
-    private void click_crear(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
-            Scene MostrarScene = new Scene(MostrarParent);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(MostrarScene);
-            window.setTitle("Menu");
-            window.show();
-    }
-
-    @FXML
-    private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
-            Scene MostrarScene = new Scene(MostrarParent);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            window.setScene(MostrarScene);
-            window.setTitle("Menu");
-            window.show();
-    }
-
-    @FXML
-    private void click_exit(ActionEvent event) {
-    }
     
 }

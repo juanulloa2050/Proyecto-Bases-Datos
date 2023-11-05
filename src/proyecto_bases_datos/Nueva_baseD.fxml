@@ -5,14 +5,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="211.0" prefWidth="344.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Nueva_baseDController">
+
+<AnchorPane id="AnchorPane" prefHeight="211.0" prefWidth="344.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Nueva_baseDController">
    <children>
       <TextField fx:id="txt_nombre_baseD" alignment="CENTER" layoutX="98.0" layoutY="66.0" promptText="Nombre base de datos">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>
       </TextField>
-      <Button fx:id="btn_crear" layoutX="195.0" layoutY="139.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="25.0" prefWidth="105.0" text="Crear" />
-      <Button fx:id="btn_volver" layoutX="46.0" layoutY="139.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="105.0" text="Volver" />
+      <Button fx:id="btn_crear" layoutX="195.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Crear" />
+      <Button fx:id="btn_volver" layoutX="46.0" layoutY="139.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Volver" />
    </children>
 </AnchorPane>
