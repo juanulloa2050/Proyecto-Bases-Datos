@@ -6,6 +6,9 @@ package proyecto_bases_datos;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -19,7 +22,7 @@ import javafx.scene.layout.AnchorPane;
  * @author juanu
  */
 public class InterfazController implements Initializable {
-
+    JDBC connection = new JDBC();
     @FXML
     private AnchorPane T;
     @FXML
@@ -40,5 +43,19 @@ public class InterfazController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    public void acceder_action() {
+        String usuario = txt_usr.getText();
+        String puerto = txt_puerto.getText();
+        String maquina = txt_maquina.getText();
+        String clave = txt_clave.getText();
+        if (usuario.isEmpty() || puerto.isEmpty() || maquina.isEmpty() || clave.isEmpty()) {
+            // Mostrar un mensaje de error
+            JOptionPane.showMessageDialog(null,"Por favor, rellene todos los campos.");
+        } else {
+            // Aquí puedes continuar con tu lógica de negocio
+            String url = "jdbc:mysql://localhost:"+puerto;
+            connection.conectarBase(url, usuario, clave);
+        }
+        JOptionPane.showMessageDialog(null, "Hola");
+    }
 }

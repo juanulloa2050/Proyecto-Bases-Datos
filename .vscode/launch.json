@@ -3,6 +3,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Proyecto_bases_datos",
+            "request": "launch",
+            "mainClass": "proyecto_bases_datos.Proyecto_bases_datos",
+            "vmArgs": "--module-path \"src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
+            "projectName": "Proyecto-Bases-Datos_3e5cca77"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "vmArgs": "--module-path \"src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib\" --add-modules javafx.controls,javafx.fxml",
