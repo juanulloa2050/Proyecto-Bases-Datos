@@ -1,0 +1,13 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.base.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.controls.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.fxml.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.graphics.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.media.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.swing.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx.web.jar",
+        "src/proyecto_bases_datos/Dependencies/javafx-sdk-21.0.1/lib/javafx-swt.jar"
+    ]
+}
