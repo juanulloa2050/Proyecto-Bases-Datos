@@ -16,7 +16,7 @@ public class Proyecto_bases_datos extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("Tablas.fxml")); //Arma la ventana con el XML
         Scene scene = new Scene(root);
         ventana.setScene(scene);
-        ventana.setTitle("inicio");
+        ventana.setTitle("Menu Principal");
         ventana.setResizable(false);  // No se puede cambiar el tamaño de la ventana
         //ventana.setOnCloseRequest(event -> {event.consume();});
         ventana.show();   //Muestra la ventana}

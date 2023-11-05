@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package proyecto_bases_datos;
 
 import java.net.URL;
@@ -11,15 +7,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 
-/**
- * FXML Controller class
- *
- * @author juanu
- */
+import java.sql.*;
+
 public class MenuController implements Initializable {
+    JDBC conexion = JDBC.getInstance();
+    Connection conn = null;
 
     @FXML
-    private ChoiceBox<?> desp_bases;
+    private ChoiceBox<String> desp_bases;
     @FXML
     private Button btn_acceder;
     @FXML
@@ -31,12 +26,31 @@ public class MenuController implements Initializable {
     @FXML
     private Button btn_exit;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
+    public void choicebox_action() {
+        try {
+            // Obtén la conexión desde la instancia de JDBC
+            conn = conexion.getConexion();
+
+            DatabaseMetaData metaData = conn.getMetaData();
+            ResultSet rs = metaData.getCatalogs();
+
+            // Limpia la ChoiceBox
+            desp_bases.getItems().clear();
+
+            // Agrega cada base de datos a la ChoiceBox
+            while (rs.next()) {
+                desp_bases.getItems().add(rs.getString("TABLE_CAT"));
+            }
+
+            // Cierra el ResultSet
+            rs.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
