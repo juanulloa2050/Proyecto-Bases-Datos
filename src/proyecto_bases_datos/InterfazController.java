@@ -4,17 +4,25 @@
  */
 package proyecto_bases_datos;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 
 import javax.swing.JOptionPane;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -43,7 +51,10 @@ public class InterfazController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    public void acceder_action() {
+    
+
+    @FXML
+    private void click_acceder(ActionEvent event) throws IOException {
         String usuario = txt_usr.getText();
         String puerto = txt_puerto.getText();
         String maquina = txt_maquina.getText();
@@ -55,7 +66,14 @@ public class InterfazController implements Initializable {
             // Aquí puedes continuar con tu lógica de negocio
             String url = "jdbc:mysql://localhost:"+puerto;
             connection.conectarBase(url, usuario, clave);
+            //toca poner un if para saber si si tiene acceso o no al sistema, si si entonces se muestra lo de abajo
+            
+            Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            Scene MostrarScene = new Scene(MostrarParent);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(MostrarScene);
+            window.setTitle("Menu");
+            window.show();
         }
-        JOptionPane.showMessageDialog(null, "Hola");
     }
 }

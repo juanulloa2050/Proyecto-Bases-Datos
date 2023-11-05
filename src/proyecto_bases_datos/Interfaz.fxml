@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.InterfazController">
+<AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.InterfazController">
    <children>
       <TextField fx:id="txt_usr" alignment="CENTER" layoutX="93.0" layoutY="85.0" promptText="USUARIO">
          <font>
@@ -19,6 +19,6 @@
             <Font name="System Italic" size="12.0" />
          </font></TextField>
       <PasswordField fx:id="txt_clave" alignment="CENTER" layoutX="93.0" layoutY="233.0" promptText="CLAVE" />
-      <Button fx:id="btn_acceder" layoutX="104.0" layoutY="296.0" mnemonicParsing="false" onAction="#acceder_action" prefHeight="25.0" prefWidth="127.0" text="Acceder" />
+      <Button fx:id="btn_acceder" layoutX="104.0" layoutY="296.0" mnemonicParsing="false" onAction="#click_acceder" prefHeight="25.0" prefWidth="127.0" text="Acceder" />
    </children>
 </AnchorPane>
