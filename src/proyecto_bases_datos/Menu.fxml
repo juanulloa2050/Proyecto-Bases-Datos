@@ -4,10 +4,9 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.MenuController">
    <children>
-      <ChoiceBox fx:id="desp_bases" layoutX="90.0" layoutY="76.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="desp_bases" layoutX="90.0" layoutY="76.0" onMouseClicked="#choicebox_action" prefWidth="150.0" />
       <Button fx:id="btn_acceder" layoutX="90.0" layoutY="168.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="ACCEDER" />
       <Button fx:id="btn_eliminar" layoutX="90.0" layoutY="207.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="ELIMINAR" />
       <Button fx:id="btn_crear" layoutX="90.0" layoutY="246.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="150.0" text="CREAR" />
