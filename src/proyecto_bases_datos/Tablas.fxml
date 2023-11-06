@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.TablasController">
    <children>
@@ -16,6 +17,7 @@
       <Button fx:id="btn_modificar_registro" layoutX="461.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_modificar_registro" prefHeight="25.0" prefWidth="117.0" text="Modificar registro" />
       <Button fx:id="btn_borar1" layoutX="461.0" layoutY="233.0" mnemonicParsing="false" onAction="#click_borrar_registro" prefHeight="25.0" prefWidth="117.0" text="Borrar registro" />
       <Button fx:id="btn_crear1" layoutX="461.0" layoutY="269.0" mnemonicParsing="false" onAction="#click_nuevo_dato" prefHeight="25.0" prefWidth="117.0" text="Insertar Datos" />
-      <ChoiceBox layoutX="211.0" layoutY="200.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="box_SeleccionTabla" layoutX="211.0" layoutY="212.0" prefWidth="150.0" />
+      <Text layoutX="194.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la tabla que desea usar:" />
    </children>
 </AnchorPane>

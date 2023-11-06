@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TabPane;
 
 /**
@@ -37,6 +38,8 @@ public class TablasController implements Initializable {
     private Button btn_borar1;
     @FXML
     private Button btn_crear1;
+    @FXML
+    private ChoiceBox<?> box_SeleccionTabla;
 
     /**
      * Initializes the controller class.
