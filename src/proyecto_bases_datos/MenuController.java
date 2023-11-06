@@ -9,15 +9,16 @@ import javax.swing.JOptionPane;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
 import java.util.ArrayList;
-
-
+import java.util.Optional;
 import java.sql.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -96,12 +97,20 @@ public class MenuController implements Initializable {
         window.show();
     }
 
-    @FXML
-    private void click_eliminar(ActionEvent event) {
+@FXML
+private void click_eliminar(ActionEvent event) {
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmación");
+    alert.setHeaderText("Estás a punto de eliminar una base de datos");
+    alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
         String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
         conection.Statment(DROPDATABASE);
         desp_bases.getItems().clear();        
-    }
+    } 
+}
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
