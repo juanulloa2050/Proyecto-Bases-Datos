@@ -50,7 +50,7 @@ public class Nueva_baseDController implements Initializable {
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
         String query="create database "+txt_nombre_baseD.getText();
-        Nueva_baseDController.getConection().Statment(query);
+        conection.Statment(query);
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -5,11 +5,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
-
 import com.mysql.cj.jdbc.exceptions.SQLError;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -69,6 +66,7 @@ public class InterfazController implements Initializable {
             root =loader.load();
             MenuController menuDataBases= loader.getController();
             menuDataBases.setConnection(connection);
+            
             //CAmbio de frame
             root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Stage stage = (Stage) btn_acceder.getScene().getWindow();
