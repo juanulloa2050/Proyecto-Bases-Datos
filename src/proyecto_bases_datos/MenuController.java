@@ -77,6 +77,8 @@ public class MenuController implements Initializable {
 
     @FXML
     private void click_acceder(ActionEvent event) throws IOException {
+        //Cambiar la base de datos seleccionada
+        conection.setBaseDatos(desp_bases.getSelectionModel().getSelectedItem());
         //Envio de datos
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Tablas.fxml"));
         Parent root =loader.load();
