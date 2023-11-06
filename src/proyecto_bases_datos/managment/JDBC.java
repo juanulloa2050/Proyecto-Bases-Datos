@@ -1,6 +1,8 @@
 package proyecto_bases_datos.managment;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class JDBC {
     // definir las variables url, usuario y contrasena que vienen desde la clase
@@ -72,6 +74,33 @@ public class JDBC {
         }
         return null;
     }
+
+    public ArrayList<Map<String, String>> describeTable(String query) {
+    ArrayList<Map<String, String>> result = new ArrayList<>();
+
+    try {
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            Map<String, String> row = new HashMap<>();
+            row.put("Field", rs.getString("Field"));
+            row.put("Type", rs.getString("Type"));
+            row.put("Null", rs.getString("Null"));
+            row.put("Key", rs.getString("Key"));
+            row.put("Default", rs.getString("Default"));
+            row.put("Extra", rs.getString("Extra"));
+            result.add(row);
+        }
+
+        rs.close();
+        stmt.close();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return result;
+}
 
     public String getBaseDatos() {
         return baseDatos;
