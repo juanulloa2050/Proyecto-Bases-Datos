@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class Nueva_baseDController implements Initializable {
-
+    public static JDBC conection;
     @FXML
     private TextField txt_nombre_baseD;
     @FXML
@@ -38,10 +39,18 @@ public class Nueva_baseDController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    } 
+    public void setConnection(JDBC connection) {
+        conection=connection;
+    }
+    public static JDBC getConection(){
+        return conection;
+    }   
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
+        String query="create database "+txt_nombre_baseD.getText();
+        Nueva_baseDController.getConection().Statment(query);
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

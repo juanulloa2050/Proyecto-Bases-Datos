@@ -87,11 +87,17 @@ public class MenuController implements Initializable {
     @FXML
     private void click_eliminar(ActionEvent event) {
         String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
-        MenuController.getConection().Statment(DROPDATABASE);        
+        MenuController.getConection().Statment(DROPDATABASE);
+        desp_bases.getItems().clear();        
     }
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
+        //Envia el objeto a la otra clase
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Nueva_baseD.fxml"));
+        Parent root =loader.load();
+        Nueva_baseDController newDataBase= loader.getController();
+        newDataBase.setConnection(MenuController.getConection());
         //Cambio de pesataña
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);

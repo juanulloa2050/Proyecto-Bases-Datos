@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -21,7 +22,7 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class TablasController implements Initializable {
-
+    public static JDBC conection;
     @FXML
     private ChoiceBox<?> desp_tablas;
     @FXML
@@ -50,6 +51,12 @@ public class TablasController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    public void setConnection(JDBC connection) {
+        conection=connection;
+    }
+    public static JDBC getConection(){
+        return conection;
+    }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
