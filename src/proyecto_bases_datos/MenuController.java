@@ -62,8 +62,10 @@ public class MenuController implements Initializable {
     public void choicebox_action() {  
         // Limpia la ChoiceBox   
         desp_bases.getItems().clear(); 
-        // Agrega cada base de datos a la BOx
-        try{
+        // Agrega cada base de datos a la BO
+        desp_bases.getItems().addAll(conection.getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
+        /*
+         *try{
             desp_bases.getItems().addAll(conection.getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -71,8 +73,8 @@ public class MenuController implements Initializable {
             alert.setHeaderText(null);
             alert.setContentText("Revise la coneccion con la base de datos");
             alert.showAndWait();
-        }
-        
+        } 
+         */
     }
 
     @FXML
