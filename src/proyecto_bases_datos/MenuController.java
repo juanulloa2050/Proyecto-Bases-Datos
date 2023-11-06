@@ -101,7 +101,7 @@ public class MenuController implements Initializable {
 private void click_eliminar(ActionEvent event) {
     Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
-    alert.setHeaderText("Estás a punto de eliminar una base de datos");
+    alert.setHeaderText("Estás a punto de eliminar "+desp_bases.getValue());
     alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
 
     Optional<ButtonType> result = alert.showAndWait();
