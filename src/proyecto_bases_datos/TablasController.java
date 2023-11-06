@@ -76,9 +76,20 @@ public class TablasController implements Initializable {
 
     @FXML
     private void click_modificar(ActionEvent event) throws IOException {
+        //Pasar informacion controller
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Modificar_tabla.fxml"));
+        Parent root =loader.load();
+        Modificar_tablaController modtablasController= loader.getController();
+        modtablasController.setConnection(conection);
+        //TODO Añadir settablaselected.!!!!
+        modtablasController.setTableSelected("dsadas");        
+
+        //Change the slide
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Modificar_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos()
+        );
         window.setScene(MostrarScene);
         window.show();
     }
