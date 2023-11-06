@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="438.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Eliminar_registroController">
+<AnchorPane id="AnchorPane" prefHeight="399.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Eliminar_registroController">
    <children>
       <Label fx:id="txt_nombre_tabla" alignment="CENTER" layoutX="118.0" layoutY="39.0" prefHeight="45.0" prefWidth="202.0" text="Nombre tabla">
          <font>
@@ -24,7 +23,7 @@
          </font>
       </Label>
       <TextField fx:id="txt_condicion" layoutX="88.0" layoutY="247.0" prefHeight="25.0" prefWidth="263.0" />
-      <Button fx:id="btn_borrar" layoutX="82.0" layoutY="298.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="263.0" text="Borrar Registro" />
-      <Button fx:id="btn_volver" layoutX="151.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="volver" />
+      <Button fx:id="btn_borrar" layoutX="82.0" layoutY="298.0" mnemonicParsing="false" onAction="#click_borrar" prefHeight="25.0" prefWidth="263.0" text="Borrar Registro" />
+      <Button fx:id="btn_volver" layoutX="151.0" layoutY="342.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="124.0" text="volver" />
    </children>
 </AnchorPane>
