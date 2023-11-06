@@ -7,10 +7,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Modificar_tablaController">
+<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Modificar_tablaController">
    <children>
-      <ChoiceBox fx:id="desp_campos_modificables" layoutX="82.0" layoutY="65.0" prefHeight="25.0" prefWidth="224.0" />
-      <Label fx:id="lbl_nombretabla" layoutX="42.0" layoutY="26.0" prefHeight="25.0" prefWidth="81.0" text="Nombre tabla">
+      <ChoiceBox fx:id="desp_campos_modificables" layoutX="82.0" layoutY="65.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="224.0" />
+      <Label fx:id="lbl_nombretabla" layoutX="42.0" layoutY="26.0" prefHeight="25.0" prefWidth="190.0" text="Nombre tabla">
          <font>
             <Font name="System Italic" size="12.0" />
          </font>

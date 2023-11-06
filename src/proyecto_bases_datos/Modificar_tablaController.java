@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -33,9 +33,10 @@ public class Modificar_tablaController implements Initializable {
     static JDBC conection;
     static String tableSelected;
     @FXML
-    private ChoiceBox<?> desp_campos_modificables;
+    private ChoiceBox<String> desp_campos_modificables;
     @FXML
-    private Label lbl_nombretabla; //Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea modificar?
+    private Label lbl_nombretabla; // Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea
+                                   // modificar?
     @FXML
     private ChoiceBox<?> desp_tipo_dato;
     @FXML
@@ -57,21 +58,51 @@ public class Modificar_tablaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cambioLBL();
     }
+
     public void setConnection(JDBC connection) {
-        conection=connection;
+        conection = connection;
     }
-    
-    public void setTableSelected(String tableSelectedd ){
-        tableSelected=tableSelectedd;
+
+    @FXML
+    public void choicebox_action() {
+        // Limpia la ChoiceBox
+        desp_campos_modificables.getItems().clear();
+        // Crea el querie para la tabla anteriormente seleccionada
+        String DESCRIBE_TABLE = "DESCRIBE " + tableSelected;
+        // Ingresa a el choicebox los valores de FIELD de la tabla
+        try {
+            desp_campos_modificables.getItems()
+                    .addAll(TablasController.getConection().getDatafromOneField(DESCRIBE_TABLE, "FIELD"));
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Conection");
+            alert.setHeaderText(null);
+            alert.setContentText("Revise la coneccion con la base de datos");
+            alert.showAndWait();
+        }
     }
-    public static JDBC getConection(){
+
+    public void setTableSelected(String tableSelectedd) {
+        tableSelected = tableSelectedd;
+    }
+    public void cambioLBL() {
+        lbl_nombretabla.setText("Estas modificando = "+tableSelected);
+    }
+
+    public static JDBC getConection() {
         return conection;
-    }    
+    }
 
     @FXML
     private void click_modificar(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, tableSelected);
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information Dialog");
+        alert.setHeaderText(null);
+        alert.setContentText(tableSelected);
+
+        alert.showAndWait();
     }
 
     @FXML
@@ -99,5 +130,5 @@ public class Modificar_tablaController implements Initializable {
         window.setScene(MostrarScene);
         window.show();
     }
-    
+
 }

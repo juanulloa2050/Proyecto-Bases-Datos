@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,7 +15,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -49,13 +53,20 @@ public class Nueva_baseDController implements Initializable {
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
+         Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmación");
+    alert.setHeaderText("Estás a punto de crear una nueva base de datos");
+    alert.setContentText("¿Estás seguro de que quieres continuar?");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
         String query="create database "+txt_nombre_baseD.getText();
         conection.Statment(query);
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.show();
+        window.show();}
     }
 
     @FXML

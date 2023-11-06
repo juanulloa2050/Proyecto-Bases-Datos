@@ -3,14 +3,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.MenuController">
    <children>
-      <ChoiceBox fx:id="desp_bases" layoutX="90.0" layoutY="76.0" onMouseClicked="#choicebox_action" prefWidth="150.0" />
-      <Button fx:id="btn_acceder" layoutX="90.0" layoutY="168.0" mnemonicParsing="false" onAction="#click_acceder" prefHeight="25.0" prefWidth="150.0" text="ACCEDER" />
-      <Button fx:id="btn_eliminar" layoutX="90.0" layoutY="207.0" mnemonicParsing="false" onAction="#click_eliminar" prefHeight="25.0" prefWidth="150.0" text="ELIMINAR" />
-      <Button fx:id="btn_crear" layoutX="90.0" layoutY="246.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="25.0" prefWidth="150.0" text="CREAR" />
+      <ChoiceBox fx:id="desp_bases" layoutX="57.0" layoutY="62.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="216.0" />
+      <Button fx:id="btn_acceder" layoutX="61.0" layoutY="101.0" mnemonicParsing="false" onAction="#click_acceder" prefHeight="40.0" prefWidth="208.0" text="ACCEDER" />
+      <Button fx:id="btn_eliminar" layoutX="61.0" layoutY="150.0" mnemonicParsing="false" onAction="#click_eliminar" prefHeight="40.0" prefWidth="208.0" text="ELIMINAR BASE" />
+      <Button fx:id="btn_crear" layoutX="76.0" layoutY="229.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="40.0" prefWidth="178.0" text="CREAR UNA BASE DE DATOS" />
       <Button fx:id="btn_volver" layoutX="185.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="65.0" prefWidth="111.0" text="VOLVER" />
       <Button fx:id="btn_exit" layoutX="35.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_exit" prefHeight="65.0" prefWidth="111.0" text="EXIT" />
+      <Text layoutX="37.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manejo de Bases de Datos">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
