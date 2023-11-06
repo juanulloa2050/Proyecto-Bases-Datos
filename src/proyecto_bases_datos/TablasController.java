@@ -7,10 +7,13 @@ package proyecto_bases_datos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,8 +26,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 
 /**
  * FXML Controller class
@@ -67,11 +73,37 @@ public class TablasController implements Initializable {
  public static void setDataBaseSelected(String DataBaseSelected) {
         dataBaseSelected = DataBaseSelected;
     }
-    public void usarInformacion() {
-    try {        for (String tabla : TablasController.getConection().getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
-        Tab newTab = new Tab(tabla);
-        TabPane_Tablas.getTabs().add(newTab);
-    }
+public void usarInformacion() {
+    try {
+        for (String tabla : TablasController.getConection().getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
+            Tab newTab = new Tab(tabla);
+
+            // Crear un TableView para mostrar la información de la tabla
+            TableView<Map<String, String>> tableView = new TableView<>();
+
+            // Obtener la estructura de la tabla usando el comando DESCRIBE
+            String DESCRIBE_TABLE = "DESCRIBE " + tabla;
+            ArrayList<Map<String, String>> estructuraTabla = TablasController.getConection().describeTable(DESCRIBE_TABLE);
+
+            // Añadir una columna al TableView para cada campo de la tabla
+            String[] campos = {"Field", "Type", "Key", "Default", "Extra"};
+            for (String campo : campos) {
+                TableColumn<Map<String, String>, String> column = new TableColumn<>(campo);
+                column.setCellValueFactory(new MapValueFactory(campo));
+                tableView.getColumns().add(column);
+            }
+
+            // Añadir los datos de la tabla al TableView
+            ObservableList<Map<String, String>> data = FXCollections.observableArrayList();
+            data.addAll(estructuraTabla);
+            tableView.setItems(data);
+
+            // Añadir el TableView al Tab
+            newTab.setContent(tableView);
+
+            // Añadir el Tab al TabPane
+            TabPane_Tablas.getTabs().add(newTab);
+        }
     } catch (NullPointerException e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Conection");
@@ -79,9 +111,8 @@ public class TablasController implements Initializable {
         alert.setContentText("Revise la coneccion con la base de datos");
         alert.showAndWait();
     }
-
-    
 }
+
 
     @FXML
     public void choicebox_action() {

@@ -84,7 +84,7 @@ public class MenuController implements Initializable {
         Parent root =loader.load();
         TablasController tablasController= loader.getController();
         tablasController.setConnection(conection);
-        tablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
+        TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
         //Cambio de slide.
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
