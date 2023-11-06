@@ -35,11 +35,11 @@ public class TablasController implements Initializable {
     @FXML
     private Button btn_modificar_registro;
     @FXML
-    private Button btn_borar1;
-    @FXML
-    private Button btn_crear1;
-    @FXML
     private ChoiceBox<?> box_SeleccionTabla;
+    @FXML
+    private Button btn_borar_registro;
+    @FXML
+    private Button btn_crear_datos;
 
     /**
      * Initializes the controller class.
@@ -75,6 +75,10 @@ public class TablasController implements Initializable {
 
     @FXML
     private void click_nuevo_dato(ActionEvent event) {
+    }
+
+    @FXML
+    private void click_buscar(ActionEvent event) {
     }
     
 }
