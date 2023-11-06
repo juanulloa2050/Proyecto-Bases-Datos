@@ -3,8 +3,12 @@ package proyecto_bases_datos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
@@ -59,7 +63,16 @@ public class MenuController implements Initializable {
         // Limpia la ChoiceBox   
         desp_bases.getItems().clear(); 
         // Agrega cada base de datos a la BOx
-        desp_bases.getItems().addAll(MenuController.getConection().getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
+        try{
+            desp_bases.getItems().addAll(MenuController.getConection().getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Conection");
+            alert.setHeaderText(null);
+            alert.setContentText("Revise la coneccion con la base de datos");
+            alert.showAndWait();
+        }
+        
     }
 
     @FXML
@@ -73,6 +86,9 @@ public class MenuController implements Initializable {
 
     @FXML
     private void click_eliminar(ActionEvent event) {
+        JOptionPane.showMessageDialog(null, desp_bases.getSelectionModel().getSelectedItem());
+        String DROPDATABASE="Drop database"+ desp_bases.getSelectionModel().getSelectedItem();
+        
     }
 
     @FXML

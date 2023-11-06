@@ -3,9 +3,12 @@ package proyecto_bases_datos;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+
+import com.mysql.cj.jdbc.exceptions.SQLError;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
