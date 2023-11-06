@@ -64,7 +64,7 @@ public class MenuController implements Initializable {
         desp_bases.getItems().clear(); 
         // Agrega cada base de datos a la BOx
         try{
-            desp_bases.getItems().addAll(MenuController.getConection().getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
+            desp_bases.getItems().addAll(conection.getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Conection");
@@ -77,6 +77,13 @@ public class MenuController implements Initializable {
 
     @FXML
     private void click_acceder(ActionEvent event) throws IOException {
+        //Envio de datos
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Tablas.fxml"));
+        Parent root =loader.load();
+        TablasController tablasController= loader.getController();
+        tablasController.setConnection(conection);
+        tablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
+        //Cambio de slide.
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -87,7 +94,7 @@ public class MenuController implements Initializable {
     @FXML
     private void click_eliminar(ActionEvent event) {
         String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
-        MenuController.getConection().Statment(DROPDATABASE);
+        conection.Statment(DROPDATABASE);
         desp_bases.getItems().clear();        
     }
 
@@ -97,7 +104,7 @@ public class MenuController implements Initializable {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Nueva_baseD.fxml"));
         Parent root =loader.load();
         Nueva_baseDController newDataBase= loader.getController();
-        newDataBase.setConnection(MenuController.getConection());
+        newDataBase.setConnection(conection);
         //Cambio de pesataña
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
