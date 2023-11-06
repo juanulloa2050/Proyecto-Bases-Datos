@@ -7,6 +7,9 @@ package proyecto_bases_datos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -26,11 +30,12 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class Modificar_tablaController implements Initializable {
-
+    static JDBC conection;
+    static String tableSelected;
     @FXML
     private ChoiceBox<?> desp_campos_modificables;
     @FXML
-    private Label lbl_nombretabla;
+    private Label lbl_nombretabla; //Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea modificar?
     @FXML
     private ChoiceBox<?> desp_tipo_dato;
     @FXML
@@ -52,10 +57,21 @@ public class Modificar_tablaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    public void setConnection(JDBC connection) {
+        conection=connection;
+    }
+    
+    public void setTableSelected(String tableSelectedd ){
+        tableSelected=tableSelectedd;
+    }
+    public static JDBC getConection(){
+        return conection;
     }    
 
     @FXML
     private void click_modificar(ActionEvent event) {
+        JOptionPane.showMessageDialog(null, tableSelected);
     }
 
     @FXML
