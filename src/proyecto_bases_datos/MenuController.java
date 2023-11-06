@@ -90,6 +90,7 @@ public class MenuController implements Initializable {
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
+        window.setTitle("Menu Tablas, esta en la base de datos: "+conection.getBaseDatos());
         window.show();
     }
 
