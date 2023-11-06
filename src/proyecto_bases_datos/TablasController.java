@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -22,7 +23,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -168,6 +171,20 @@ public void usarInformacion() {
 
     @FXML
     private void click_borrar(ActionEvent event) {
+        String nombreCompleto = TabPane_Tablas.getSelectionModel().getSelectedItem().getText();
+    String[] partes = nombreCompleto.split("\\.");
+    String nombreTabla = partes[partes.length - 1];
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle("Confirmación");
+    alert.setHeaderText("Estás a punto de eliminar "+ nombreTabla);
+    alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    if (result.get() == ButtonType.OK){
+        String DROPTABLE="Drop table "+nombreTabla;
+        conection.Statment("Use "+dataBaseSelected);
+        conection.Statment(DROPTABLE);     
+    } 
     }
 
     @FXML
