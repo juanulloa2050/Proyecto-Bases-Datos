@@ -68,17 +68,18 @@ public class TablasController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    public static void setDataBaseSelected(String DataBaseSelected) {
+        dataBaseSelected = DataBaseSelected;
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         usarInformacion();
     }
- public static void setDataBaseSelected(String DataBaseSelected) {
-        dataBaseSelected = DataBaseSelected;
-    }
+ 
 public void usarInformacion() {
     try {
-        for (String tabla : TablasController.getConection().getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
+        for (String tabla : conection.getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
             Tab newTab = new Tab(tabla);
 
             // Crear un TableView para mostrar la información de la tabla
@@ -86,7 +87,7 @@ public void usarInformacion() {
 
             // Obtener la estructura de la tabla usando el comando DESCRIBE
             String DESCRIBE_TABLE = "DESCRIBE " + tabla;
-            ArrayList<Map<String, String>> estructuraTabla = TablasController.getConection().describeTable(DESCRIBE_TABLE);
+            ArrayList<Map<String, String>> estructuraTabla = conection.describeTable(DESCRIBE_TABLE);
 
             // Añadir una columna al TableView para cada campo de la tabla
             String[] campos = {"Field", "Type", "Key", "Default", "Extra"};
@@ -108,10 +109,11 @@ public void usarInformacion() {
             TabPane_Tablas.getTabs().add(newTab);
         }
     } catch (NullPointerException e) {
+        e.printStackTrace();
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Conection");
         alert.setHeaderText(null);
-        alert.setContentText("Revise la coneccion con la base de datos");
+        alert.setContentText("Revise la coneccion con la base de datos Map");
         alert.showAndWait();
     }
 }
