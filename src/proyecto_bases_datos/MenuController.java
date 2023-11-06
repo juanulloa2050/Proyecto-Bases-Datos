@@ -86,13 +86,13 @@ public class MenuController implements Initializable {
 
     @FXML
     private void click_eliminar(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, desp_bases.getSelectionModel().getSelectedItem());
-        String DROPDATABASE="Drop database"+ desp_bases.getSelectionModel().getSelectedItem();
-        
+        String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
+        MenuController.getConection().Statment(DROPDATABASE);        
     }
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
+        //Cambio de pesataña
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
