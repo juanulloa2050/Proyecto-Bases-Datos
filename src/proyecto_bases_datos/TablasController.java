@@ -185,7 +185,9 @@ public void usarInformacion() {
     if (result.get() == ButtonType.OK){
         String DROPTABLE="Drop table "+nombreTabla;
         conection.Statment("Use "+dataBaseSelected);
-        conection.Statment(DROPTABLE);     
+        conection.Statment(DROPTABLE);   
+        //Actualiza la tabla
+        TabPane_Tablas.getTabs().remove(TabPane_Tablas.getSelectionModel().getSelectedItem());  
     } 
     }
 
