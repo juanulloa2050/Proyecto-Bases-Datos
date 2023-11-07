@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -96,14 +98,28 @@ public class Modificar_tablaController implements Initializable {
     }
 
     @FXML
-    private void click_modificar(ActionEvent event) {
-        Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText(tableSelected);
+private void click_modificar(ActionEvent event) {
+    String nombreColumna = desp_campos_modificables.getValue();
+    String nuevoNombre = txt_nuevo_nombre.getText();
 
+    if (nombreColumna != null && nuevoNombre != null) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText("Estás a punto de modificar la columna " + nombreColumna);
+        alert.setContentText("¿Estás seguro de que quieres cambiar el tipo de dato a " + nuevoNombre + "? Esta acción es irreversible.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            String renameColumn = "ALTER TABLE " + tableSelected + " change " + nombreColumna + " " + nuevoNombre+ " text";
+            conection.Statment(renameColumn);
+        }
+    } else {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Advertencia");
+        alert.setHeaderText(null);
+        alert.setContentText("Por favor, selecciona una columna y un tipo de dato.");
         alert.showAndWait();
     }
+}
 
     @FXML
     private void click_campo(ActionEvent event) {

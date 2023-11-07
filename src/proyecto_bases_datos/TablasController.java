@@ -79,6 +79,7 @@ public class TablasController implements Initializable {
  
 public void usarInformacion() {
     try {
+
         for (String tabla : conection.getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
             Tab newTab = new Tab(tabla);
 
@@ -151,6 +152,7 @@ public void usarInformacion() {
         //Pasar informacion controller
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Modificar_tabla.fxml"));
         Parent root =loader.load();
+        TablasController.getConection();
         Modificar_tablaController modtablasController= loader.getController();
         modtablasController.setConnection(conection);
         //TODO Añadir settablaselected.!!!!
