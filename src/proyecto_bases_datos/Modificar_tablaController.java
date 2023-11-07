@@ -40,7 +40,7 @@ public class Modificar_tablaController implements Initializable {
     private Label lbl_nombretabla; // Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea
                                    // modificar?
     @FXML
-    private ChoiceBox<?> desp_tipo_dato;
+    private ChoiceBox<String> desp_tipo_dato;
     @FXML
     private TextField txt_nuevo_nombre;
     @FXML
@@ -61,12 +61,19 @@ public class Modificar_tablaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         cambioLBL();
+        llenarTiposDatos();
     }
 
     public void setConnection(JDBC connection) {
         conection = connection;
     }
-
+    private void llenarTiposDatos() {
+        desp_tipo_dato.getItems().addAll(
+            "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
+            "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
+            "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
+            "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
+        );}
     @FXML
     public void choicebox_action() {
         // Limpia la ChoiceBox
@@ -98,9 +105,10 @@ public class Modificar_tablaController implements Initializable {
     }
 
     @FXML
-private void click_modificar(ActionEvent event) {
+private void click_modificar(ActionEvent event) throws IOException {
     String nombreColumna = desp_campos_modificables.getValue();
     String nuevoNombre = txt_nuevo_nombre.getText();
+    String nuevoTipoDato = desp_tipo_dato.getValue().toString();
 
     if (nombreColumna != null && nuevoNombre != null) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -109,8 +117,9 @@ private void click_modificar(ActionEvent event) {
         alert.setContentText("¿Estás seguro de que quieres cambiar el tipo de dato a " + nuevoNombre + "? Esta acción es irreversible.");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-            String renameColumn = "ALTER TABLE " + tableSelected + " change " + nombreColumna + " " + nuevoNombre+ " text";
+            String renameColumn = "ALTER TABLE " + tableSelected + " change " + nombreColumna + " " + nuevoNombre+ " " +nuevoTipoDato;
             conection.Statment(renameColumn);
+            click_volver(event);
         }
     } else {
         Alert alert = new Alert(AlertType.WARNING);
