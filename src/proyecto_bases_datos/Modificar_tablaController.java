@@ -110,7 +110,7 @@ private void click_modificar(ActionEvent event) throws IOException {
     String nuevoNombre = txt_nuevo_nombre.getText();
     String nuevoTipoDato = desp_tipo_dato.getValue().toString();
 
-    if (nombreColumna != null && nuevoNombre != null) {
+    if (nombreColumna != null || nuevoNombre != null || nuevoTipoDato != null) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmación");
         alert.setHeaderText("Estás a punto de modificar la columna " + nombreColumna);
@@ -131,8 +131,30 @@ private void click_modificar(ActionEvent event) throws IOException {
 }
 
     @FXML
-    private void click_campo(ActionEvent event) {
+    private void click_campo(ActionEvent event) throws IOException {
+    String nuevoNombre = txt_nuevo_nombre.getText();
+    String nuevoTipoDato = desp_tipo_dato.getValue().toString();
+
+    if (nuevoTipoDato != null || nuevoNombre != null) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText("Estás a punto de agregar la columna " + nuevoNombre);
+        alert.setContentText("¿Estás seguro de que agregar  la columna " + nuevoNombre + "? Esta acción es irreversible.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            String addColumn = "ALTER TABLE " + tableSelected + " add " + nuevoNombre+ " "+ nuevoTipoDato;
+            conection.Statment(addColumn);
+            click_volver(event);
+        }
+    } else {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.setTitle("Advertencia");
+        alert.setHeaderText(null);
+        alert.setContentText("Por favor, pon un nombre y un tipo de dato.");
+        alert.showAndWait();
     }
+}
+    
 
     @FXML
     private void click_atributo(ActionEvent event) {
