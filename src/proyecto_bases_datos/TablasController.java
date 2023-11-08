@@ -213,6 +213,7 @@ public void usarInformacion() {
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
+        window.setTitle("Borrar registro");
         window.show();
 
     }
@@ -222,7 +223,14 @@ public void usarInformacion() {
     }
 
     @FXML
-    private void click_buscar(ActionEvent event) {
+    private void click_buscar(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Búsquedas");
+        window.show();
+        
     }
 
 }

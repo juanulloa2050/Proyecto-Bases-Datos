@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="336.0" prefWidth="372.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.BusquedasController">
+   <children>
+      <Button fx:id="btn_una_tabla" layoutX="96.0" layoutY="146.0" mnemonicParsing="false" onAction="#click_una_tabla" prefHeight="44.0" prefWidth="180.0" style="-fx-background-color: #B0E0E6;" text="Búsqueda una tabla">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_dos_tablas" layoutX="96.0" layoutY="215.0" mnemonicParsing="false" onAction="#click_dos_tablas" prefHeight="44.0" prefWidth="180.0" style="-fx-background-color: #B0E0E6;" text="Búsqueda cruzada dos tablas">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_volver" layoutX="29.0" layoutY="297.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #FFFACD;" text="Volver">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font>
+      </Button>
+      <Label contentDisplay="CENTER" layoutX="52.0" layoutY="34.0" prefHeight="59.0" prefWidth="268.0" text="Por favor seleccione una de las ">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+      <Label contentDisplay="CENTER" layoutX="52.0" layoutY="64.0" prefHeight="59.0" prefWidth="268.0" text="siguientes opciones:">
+         <font>
+            <Font name="Times New Roman" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
