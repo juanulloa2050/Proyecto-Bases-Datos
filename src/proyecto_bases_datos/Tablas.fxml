@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="354.0" prefWidth="593.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.TablasController">
    <children>
       <TabPane fx:id="TabPane_Tablas" layoutY="1.0" prefHeight="175.0" prefWidth="593.0" tabClosingPolicy="UNAVAILABLE" />
       <Button fx:id="btn_buscar" layoutX="169.0" layoutY="282.0" mnemonicParsing="false" onAction="#click_buscar" prefHeight="26.0" prefWidth="233.0" text="Buscar" />
-      <Button fx:id="btn_modificar" layoutX="14.0" layoutY="269.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="25.0" prefWidth="97.0" text="Modificar tabla" />
-      <Button fx:id="btn_crear" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="25.0" prefWidth="97.0" text=" Crear tabla" />
-      <Button fx:id="btn_borrar" layoutX="14.0" layoutY="233.0" mnemonicParsing="false" onAction="#click_borrar" prefHeight="25.0" prefWidth="97.0" text="Borrar tabla" />
+      <Button fx:id="btn_modificar" layoutX="120.0" layoutY="233.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="25.0" prefWidth="97.0" text="Modificar tabla" />
+      <Button fx:id="btn_crear" layoutX="29.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="25.0" prefWidth="97.0" text=" Crear tabla" />
+      <Button fx:id="btn_borrar" layoutX="199.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_borrar" prefHeight="25.0" prefWidth="97.0" text="Borrar tabla" />
       <Button fx:id="btn_volver" layoutX="194.0" layoutY="316.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="183.0" text="Volver" />
-      <Button fx:id="btn_modificar_registro" layoutX="461.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_modificar_registro" prefHeight="25.0" prefWidth="117.0" text="Modificar registro" />
-      <Button fx:id="btn_borar_registro" layoutX="461.0" layoutY="233.0" mnemonicParsing="false" onAction="#click_borrar_registro" prefHeight="25.0" prefWidth="117.0" text="Borrar registro" />
-      <Button fx:id="btn_crear_datos" layoutX="461.0" layoutY="269.0" mnemonicParsing="false" onAction="#click_nuevo_dato" prefHeight="25.0" prefWidth="117.0" text="Insertar Datos" />
-      <ChoiceBox fx:id="box_SeleccionTabla" layoutX="211.0" layoutY="212.0" onMouseClicked="#choicebox_action" prefWidth="150.0" />
-      <Text layoutX="194.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la tabla que desea usar:" />
+      <Button fx:id="btn_modificar_registro" layoutX="318.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_modificar_registro" prefHeight="25.0" prefWidth="117.0" text="Modificar registro" />
+      <Button fx:id="btn_borar_registro" layoutX="468.0" layoutY="200.0" mnemonicParsing="false" onAction="#click_borrar_registro" prefHeight="25.0" prefWidth="117.0" text="Borrar registro" />
+      <Button fx:id="btn_crear_datos" layoutX="396.0" layoutY="233.0" mnemonicParsing="false" onAction="#click_nuevo_dato" prefHeight="25.0" prefWidth="117.0" text="Insertar Datos" />
    </children>
 </AnchorPane>
