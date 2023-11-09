@@ -162,8 +162,7 @@ public void usarInformacion() {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Modificar_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos()
-        );
+        window.setTitle("Modificar tabla " + conection.getBaseDatos() + ":");
         window.setScene(MostrarScene);
         window.show();
 
@@ -199,6 +198,7 @@ public void usarInformacion() {
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
+        window.setTitle("Menu");
         window.show();
 
     }
@@ -228,7 +228,7 @@ public void usarInformacion() {
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Búsquedas");
+        window.setTitle("Búscar");
         window.show();
         
     }

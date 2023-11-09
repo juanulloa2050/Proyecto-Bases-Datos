@@ -122,6 +122,7 @@ private void click_eliminar(ActionEvent event) {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Nueva base de datos");
         window.setScene(MostrarScene);
         window.show();
     }
@@ -131,6 +132,7 @@ private void click_eliminar(ActionEvent event) {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Acceso");
         window.setScene(MostrarScene);
         window.show();
     }
