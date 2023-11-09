@@ -50,7 +50,7 @@ public class InterfazController implements Initializable {
     public void acceder_action() throws IOException {
         String usuario = "root";//txt_usr.getText();
         String puerto = "3306";//txt_puerto.getText();
-        String clave = "12345";//txt_clave.getText();
+        String clave = "Amarillo21";//txt_clave.getText();
 
         if (usuario.isEmpty() || puerto.isEmpty() || clave.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -71,6 +71,7 @@ public class InterfazController implements Initializable {
             root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
             Stage stage = (Stage) btn_acceder.getScene().getWindow();
             stage.setScene(new Scene(root)); 
+            stage.setTitle("Menu");
             stage.setUserData(connection);
         }
     }
