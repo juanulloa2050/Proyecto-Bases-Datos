@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Modificar_tablaController">
+<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Modificar_tablaController">
    <children>
       <ChoiceBox fx:id="desp_campos_modificables" layoutX="81.0" layoutY="97.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" />
       <Label fx:id="lbl_nombretabla" layoutX="42.0" layoutY="26.0" prefHeight="28.0" prefWidth="273.0" text="Nombre tabla">
@@ -33,7 +33,7 @@
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font></Button>
-      <Button fx:id="btn_añadir_key" layoutX="150.0" layoutY="234.0" mnemonicParsing="false" onAction="#click_key" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #B0E0E6;" text="Marcar como Key">
+      <Button fx:id="btn_añadir_key" layoutX="156.0" layoutY="241.0" mnemonicParsing="false" onAction="#click_key" prefHeight="25.0" prefWidth="138.0" style="-fx-background-color: #B0E0E6;" text="Marcar como Key">
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font></Button>
@@ -51,5 +51,6 @@
             <Font name="Times New Roman Italic" size="18.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="desp_campos_key" layoutX="72.0" layoutY="241.0" onMouseClicked="#choiceboxkey_action" prefHeight="25.0" prefWidth="72.0" style="-fx-background-color: #B0E0E6;" />
    </children>
 </AnchorPane>

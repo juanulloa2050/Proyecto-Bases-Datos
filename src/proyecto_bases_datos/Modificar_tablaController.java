@@ -38,6 +38,8 @@ public class Modificar_tablaController implements Initializable {
     @FXML
     private ChoiceBox<String> desp_campos_modificables;
     @FXML
+    private ChoiceBox<String> desp_campos_key;
+    @FXML
     private Label lbl_nombretabla; // Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea
                                    // modificar?
     @FXML
@@ -92,6 +94,14 @@ public class Modificar_tablaController implements Initializable {
             alert.setContentText("Revise la coneccion con la base de datos");
             alert.showAndWait();
         }
+    }
+    @FXML
+    public void choiceboxkey_action() {
+        // Limpia la ChoiceBox
+        desp_campos_key.getItems().clear();
+        //Añade los valores de key para una base de datos
+        desp_campos_key.getItems().addAll("Primary Key", "Foreign Key", "Unique Key", "Candidate Key","Alternate Key","Composite key");
+        
     }
 
     public void setTableSelected(String tableSelectedd) {
