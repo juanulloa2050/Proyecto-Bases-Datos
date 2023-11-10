@@ -6,17 +6,32 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.MenuController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="330.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.MenuController">
    <children>
-      <ChoiceBox fx:id="desp_bases" layoutX="57.0" layoutY="62.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="216.0" />
-      <Button fx:id="btn_acceder" layoutX="61.0" layoutY="101.0" mnemonicParsing="false" onAction="#click_acceder" prefHeight="40.0" prefWidth="208.0" text="ACCEDER" />
-      <Button fx:id="btn_eliminar" layoutX="61.0" layoutY="150.0" mnemonicParsing="false" onAction="#click_eliminar" prefHeight="40.0" prefWidth="208.0" text="ELIMINAR BASE" />
-      <Button fx:id="btn_crear" layoutX="76.0" layoutY="229.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="40.0" prefWidth="178.0" text="CREAR UNA BASE DE DATOS" />
-      <Button fx:id="btn_volver" layoutX="185.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="65.0" prefWidth="111.0" text="VOLVER" />
-      <Button fx:id="btn_exit" layoutX="35.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_exit" prefHeight="65.0" prefWidth="111.0" text="EXIT" />
-      <Text layoutX="37.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manejo de Bases de Datos">
+      <ChoiceBox fx:id="desp_bases" layoutX="57.0" layoutY="61.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="216.0" style="-fx-background-color: #B0E0E6;" />
+      <Button fx:id="btn_acceder" layoutX="61.0" layoutY="101.0" mnemonicParsing="false" onAction="#click_acceder" prefHeight="40.0" prefWidth="208.0" style="-fx-background-color: #B0E0E6;" text="ACCEDER">
          <font>
-            <Font size="22.0" />
+            <Font name="Times New Roman" size="12.0" />
+         </font></Button>
+      <Button fx:id="btn_eliminar" layoutX="61.0" layoutY="150.0" mnemonicParsing="false" onAction="#click_eliminar" prefHeight="40.0" prefWidth="208.0" style="-fx-background-color: #B0E0E6;" text="ELIMINAR BASE">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></Button>
+      <Button fx:id="btn_crear" layoutX="68.0" layoutY="229.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="40.0" prefWidth="194.0" style="-fx-background-color: #B0E0E6;" text="CREAR UNA BASE DE DATOS">
+         <font>
+            <Font name="Times New Roman" size="12.0" />
+         </font></Button>
+      <Button fx:id="btn_volver" layoutX="185.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="65.0" prefWidth="111.0" style="-fx-background-color: #FFFACD;" text="VOLVER">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btn_exit" layoutX="35.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_exit" prefHeight="65.0" prefWidth="111.0" style="-fx-background-color: #FFFACD;" text="EXIT">
+         <font>
+            <Font name="Times New Roman Bold" size="12.0" />
+         </font></Button>
+      <Text layoutX="38.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manejo de Bases de Datos">
+         <font>
+            <Font name="Times New Roman Bold Italic" size="24.0" />
          </font>
       </Text>
    </children>

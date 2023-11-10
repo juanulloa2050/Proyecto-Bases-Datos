@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import static proyecto_bases_datos.MenuController.conection;
 import proyecto_bases_datos.managment.JDBC;
 
 /**
@@ -65,6 +66,7 @@ public class Nueva_baseDController implements Initializable {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Menu");
         window.setScene(MostrarScene);
         window.show();}
     }
@@ -74,6 +76,7 @@ public class Nueva_baseDController implements Initializable {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Menu");
         window.setScene(MostrarScene);
         window.show();
     }

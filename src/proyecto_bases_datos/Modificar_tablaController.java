@@ -24,6 +24,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import static proyecto_bases_datos.TablasController.conection;
 import proyecto_bases_datos.managment.JDBC;
 
 /**
@@ -177,6 +178,7 @@ private void click_modificar(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Añadir_key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Añadir Key");
         window.setScene(MostrarScene);
         window.show();
     }
@@ -186,6 +188,7 @@ private void click_modificar(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos());
         window.setScene(MostrarScene);
         window.show();
     }
