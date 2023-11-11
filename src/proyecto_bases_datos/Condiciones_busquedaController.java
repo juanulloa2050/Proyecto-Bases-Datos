@@ -23,16 +23,22 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Busqueda_una_tablaController implements Initializable {
+public class Condiciones_busquedaController implements Initializable {
 
+    @FXML
+    private ChoiceBox<?> dep_atributo1;
+    @FXML
+    private ChoiceBox<?> desp_operador1;
+    @FXML
+    private ChoiceBox<?> desp_atributo2;
+    @FXML
+    private ChoiceBox<?> desp_operador2;
     @FXML
     private Button btn_continuar;
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<?> desp_tabla2;
-    @FXML
-    private ChoiceBox<?> desp_tabla1;
+    private Button btn_mas1;
 
     /**
      * Initializes the controller class.
@@ -44,22 +50,26 @@ public class Busqueda_una_tablaController implements Initializable {
 
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Condiciones Busqueda");
+        window.setTitle("Resultado Busqueda");
         window.show();
     }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busqueda_una_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Busquedas");
+        window.setTitle("Busqueda dos tabla");
         window.show();
+    }
+
+    @FXML
+    private void click_mas1(ActionEvent event) {
     }
     
 }

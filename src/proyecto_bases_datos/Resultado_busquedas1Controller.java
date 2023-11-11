@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 /**
@@ -23,16 +22,16 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Busqueda_una_tablaController implements Initializable {
+public class Resultado_busquedas1Controller implements Initializable {
 
-    @FXML
-    private Button btn_continuar;
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<?> desp_tabla2;
+    private Button btn_crear_vista;
     @FXML
-    private ChoiceBox<?> desp_tabla1;
+    private Button btn_borrar;
+    @FXML
+    private Button btn_modificar;
 
     /**
      * Initializes the controller class.
@@ -43,7 +42,7 @@ public class Busqueda_una_tablaController implements Initializable {
     }    
 
     @FXML
-    private void click_continuar(ActionEvent event) throws IOException {
+    private void click_volver(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -53,12 +52,26 @@ public class Busqueda_una_tablaController implements Initializable {
     }
 
     @FXML
-    private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+    private void click_crear_vista(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Crear_vista.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Busquedas");
+        window.setTitle("Crear Vista");
+        window.show();
+    }
+
+    @FXML
+    private void click_borrar(ActionEvent event) {
+    }
+
+    @FXML
+    private void click_modificar(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Modificar_registro.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Modificar registro");
         window.show();
     }
     

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="378.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.KeyController">
+   <children>
+      <Button fx:id="btn_volver" layoutX="163.0" layoutY="155.0" mnemonicParsing="false" onAction="#click_volver" style="-fx-background-color: #FFFACD;" text="Volver" />
+      <Label layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="134.0" text="Nombre de la llave:">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <ChoiceBox fx:id="desp_key" layoutX="114.0" layoutY="112.0" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
+      <TextField fx:id="txt_nombre" layoutX="188.0" layoutY="47.0" />
+   </children>
+</AnchorPane>

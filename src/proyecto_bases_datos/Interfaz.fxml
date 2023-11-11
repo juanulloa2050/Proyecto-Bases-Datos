@@ -9,23 +9,23 @@
 
 <AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.InterfazController">
    <children>
-      <TextField fx:id="txt_usr" alignment="CENTER" layoutX="93.0" layoutY="85.0" promptText="USUARIO">
+      <TextField fx:id="txt_usr" alignment="CENTER" layoutX="88.0" layoutY="84.0" promptText="USUARIO">
          <font>
-            <Font name="Times New Roman" size="12.0" />
+            <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txt_puerto" alignment="CENTER" layoutX="93.0" layoutY="133.0" promptText="PUERTO">
+      <TextField fx:id="txt_puerto" alignment="CENTER" layoutX="89.0" layoutY="132.0" promptText="PUERTO">
          <font>
-            <Font name="Times New Roman" size="12.0" />
+            <Font name="Times New Roman Bold" size="12.0" />
          </font></TextField>
-      <PasswordField fx:id="txt_clave" alignment="CENTER" layoutX="93.0" layoutY="233.0" promptText="CLAVE">
+      <PasswordField fx:id="txt_clave" alignment="CENTER" layoutX="88.0" layoutY="231.0" promptText="CLAVE">
          <font>
-            <Font name="Times New Roman" size="12.0" />
+            <Font name="Times New Roman Bold" size="12.0" />
          </font></PasswordField>
       <Button fx:id="btn_acceder" layoutX="104.0" layoutY="296.0" mnemonicParsing="false" onAction="#acceder_action" prefHeight="25.0" prefWidth="127.0" style="-fx-background-color: #B0E0E6;" text="Acceder">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font></Button>
-      <ChoiceBox fx:id="desp_maquina" layoutX="92.0" layoutY="182.0" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_maquina" layoutX="89.0" layoutY="181.0" prefHeight="25.0" prefWidth="158.0" style="-fx-background-color: #B0E0E6;" />
    </children>
 </AnchorPane>

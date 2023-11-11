@@ -169,7 +169,13 @@ public void usarInformacion() {
     }
 
     @FXML
-    private void click_crear(ActionEvent event) {
+    private void click_crear(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Crear_tabla.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Crear Tabla");
+        window.show();
     }
 
     @FXML
@@ -219,7 +225,13 @@ public void usarInformacion() {
     }
 
     @FXML
-    private void click_nuevo_dato(ActionEvent event) {
+    private void click_nuevo_dato(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Insertar_registro.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Insertar Registro");
+        window.show();
     }
 
     @FXML

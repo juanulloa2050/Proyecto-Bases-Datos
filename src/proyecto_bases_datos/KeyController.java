@@ -18,30 +18,14 @@ import javafx.scene.control.TextField;
  *
  * @author juanu
  */
-public class Condiciones_busqeuda_cruzadaController implements Initializable {
+public class KeyController implements Initializable {
 
-    @FXML
-    private ChoiceBox<?> desp_atributo_relacion;
-    @FXML
-    private ChoiceBox<?> desp_operador_relacion;
-    @FXML
-    private TextField txt_valor_relacion;
-    @FXML
-    private ChoiceBox<?> dep_atributo1;
-    @FXML
-    private ChoiceBox<?> desp_operador1;
-    @FXML
-    private ChoiceBox<?> desp_atributo2;
-    @FXML
-    private ChoiceBox<?> desp_operador2;
-    @FXML
-    private Button btn_continuar;
     @FXML
     private Button btn_volver;
     @FXML
-    private Button btn_mas1;
+    private ChoiceBox<?> desp_key;
     @FXML
-    private Button btn_mas2;
+    private TextField txt_nombre;
 
     /**
      * Initializes the controller class.
@@ -53,18 +37,6 @@ public class Condiciones_busqeuda_cruzadaController implements Initializable {
 
     @FXML
     private void click_volver(ActionEvent event) {
-    }
-
-    @FXML
-    private void click_mas1(ActionEvent event) {
-    }
-
-    @FXML
-    private void click_mas2(ActionEvent event) {
-    }
-
-    @FXML
-    private void click_continuar(ActionEvent event) {
     }
     
 }

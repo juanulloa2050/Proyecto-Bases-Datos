@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 /**
@@ -23,16 +22,12 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Busqueda_una_tablaController implements Initializable {
+public class Crear_vistaController implements Initializable {
 
-    @FXML
-    private Button btn_continuar;
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<?> desp_tabla2;
-    @FXML
-    private ChoiceBox<?> desp_tabla1;
+    private Button btn_crear;
 
     /**
      * Initializes the controller class.
@@ -43,22 +38,22 @@ public class Busqueda_una_tablaController implements Initializable {
     }    
 
     @FXML
-    private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
+    private void click_volver(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Condiciones Busqueda");
+        window.setTitle("Resultado Busqueda");
         window.show();
     }
 
     @FXML
-    private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+    private void click_crear(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Busquedas");
+        window.setTitle("Resultado Busqueda");
         window.show();
     }
     

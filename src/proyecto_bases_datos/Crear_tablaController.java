@@ -15,7 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -23,16 +23,16 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Busqueda_una_tablaController implements Initializable {
+public class Crear_tablaController implements Initializable {
 
     @FXML
-    private Button btn_continuar;
+    private Button btn_añadir;
+    @FXML
+    private TextField txt_nombre;
+    @FXML
+    private Button btn_crear;
     @FXML
     private Button btn_volver;
-    @FXML
-    private ChoiceBox<?> desp_tabla2;
-    @FXML
-    private ChoiceBox<?> desp_tabla1;
 
     /**
      * Initializes the controller class.
@@ -43,22 +43,20 @@ public class Busqueda_una_tablaController implements Initializable {
     }    
 
     @FXML
-    private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Condiciones Busqueda");
-        window.show();
+    private void click_añadir(ActionEvent event) {
+    }
+
+    @FXML
+    private void click_crear(ActionEvent event) {
     }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Busquedas");
+        window.setTitle("Tablas");
         window.show();
     }
     

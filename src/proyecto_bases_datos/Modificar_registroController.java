@@ -15,7 +15,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 
 /**
@@ -23,16 +22,14 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Busqueda_una_tablaController implements Initializable {
+public class Modificar_registroController implements Initializable {
 
     @FXML
-    private Button btn_continuar;
+    private Button btn_añadir;
+    @FXML
+    private Button btn_buscar;
     @FXML
     private Button btn_volver;
-    @FXML
-    private ChoiceBox<?> desp_tabla2;
-    @FXML
-    private ChoiceBox<?> desp_tabla1;
 
     /**
      * Initializes the controller class.
@@ -43,22 +40,20 @@ public class Busqueda_una_tablaController implements Initializable {
     }    
 
     @FXML
-    private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Condiciones Busqueda");
-        window.show();
+    private void click_añadir(ActionEvent event) {
+    }
+
+    @FXML
+    private void click_buscar(ActionEvent event) {
     }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Busquedas");
+        window.setTitle("Resultado Busqueda");
         window.show();
     }
     

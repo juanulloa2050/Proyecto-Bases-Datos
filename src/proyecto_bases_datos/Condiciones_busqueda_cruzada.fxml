@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Condiciones_busqeuda_cruzadaController">
+<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Condiciones_busqueda_cruzadaController">
    <children>
       <ChoiceBox fx:id="desp_atributo_relacion" layoutX="139.0" layoutY="256.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <ChoiceBox fx:id="desp_operador_relacion" layoutX="266.0" layoutY="256.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
