@@ -62,12 +62,31 @@ public class Busqueda_una_tablaController implements Initializable {
 
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Condiciones Busqueda");
-        window.show();
+        try{
+            if (desp_tabla.getSelectionModel().getSelectedItem() == null) {
+                throw new NullPointerException("");
+            } 
+            //envio de datos al siguiente controller
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Condiciones_busqueda.fxml"));
+            Parent root = loader.load();
+            Condiciones_busquedaController condBusquedaCon=loader.getController();
+            condBusquedaCon.setConnection(conection);
+            condBusquedaCon.setTablaSelected(desp_tabla.getSelectionModel().getSelectedItem());
+            //Cambiar de slide
+            Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
+            Scene MostrarScene = new Scene(MostrarParent);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(MostrarScene);
+            window.setTitle("Tabla: "+desp_tabla.getSelectionModel().getSelectedItem());
+            window.show();
+        } catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Conection");
+            alert.setHeaderText(null);
+            alert.setContentText("No seleccionó ninguna tabla, vuelva a intentarlo");
+            alert.showAndWait();
+        }
+        
     }
 
     @FXML

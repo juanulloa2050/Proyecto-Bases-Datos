@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -24,7 +25,8 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class Condiciones_busquedaController implements Initializable {
-
+    public static JDBC conection;
+    static String tablaSelected;
     @FXML
     private ChoiceBox<?> dep_atributo1;
     @FXML
@@ -71,5 +73,15 @@ public class Condiciones_busquedaController implements Initializable {
     @FXML
     private void click_mas1(ActionEvent event) {
     }
+    public void setConnection(JDBC connection) {
+        conection = connection;
+    }
+    public static JDBC getConection() {
+        return conection;
+    }
+    public void setTablaSelected(String tablaSelecteds) {
+        tablaSelected=tablaSelecteds;
+    }
+
     
 }

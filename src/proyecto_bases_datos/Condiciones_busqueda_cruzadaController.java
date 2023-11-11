@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -25,7 +26,9 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class Condiciones_busqueda_cruzadaController implements Initializable {
-
+    public static JDBC conection;
+    static String tablaSelected1;
+    static String tablaSelected2;
     @FXML
     private ChoiceBox<?> desp_atributo_relacion;
     @FXML
@@ -83,6 +86,17 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         window.setScene(MostrarScene);
         window.setTitle("Resultado Busqueda");
         window.show();
+    }
+    public void setConnection(JDBC connection) {
+        conection = connection;
+    }
+
+    public static JDBC getConection() {
+        return conection;
+    }
+    public void setTablaSelected(String tablaSelecteds1,String tablaSelecteds2 ) {
+        tablaSelected1=tablaSelecteds1;
+        tablaSelected2=tablaSelecteds2;
     }
     
 }
