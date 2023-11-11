@@ -237,7 +237,17 @@ public void usarInformacion() {
 //Inicio de busquedas
     @FXML
     private void click_buscar(ActionEvent event) throws IOException {
-        
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Busqueda_una_tabla.fxml"));
+        Parent root= loader.load();
+        //Envio coneccion al frame de una tabla para la busqueda
+        Busqueda_una_tablaController busquedaUnaTabla= loader.getController();
+        busquedaUnaTabla.setConnection(conection);
+        //Envio coneccion al frame de dos tablas para la busqueda
+        loader=new FXMLLoader(getClass().getResource("Busqueda_dos_tablas.fxml"));
+        root=loader.load();
+        Busquedas_dos_tablasController busquedaDosTablas=loader.getController();
+        busquedaDosTablas.setConnection(conection);
+        //cambio de frame
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

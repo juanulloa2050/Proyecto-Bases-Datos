@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import proyecto_bases_datos.managment.JDBC;
 
 /**
  * FXML Controller class
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
  * @author juanu
  */
 public class Busqueda_una_tablaController implements Initializable {
-
+    public static JDBC conection;
     @FXML
     private Button btn_continuar;
     @FXML
@@ -61,5 +62,11 @@ public class Busqueda_una_tablaController implements Initializable {
         window.setTitle("Busquedas");
         window.show();
     }
-    
+    public void setConnection(JDBC connection) {
+        conection = connection;
+    }
+
+    public static JDBC getConection() {
+        return conection;
+    }
 }
