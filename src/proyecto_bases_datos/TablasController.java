@@ -40,6 +40,7 @@ import javafx.scene.control.cell.MapValueFactory;
  *
  * @author juanu
  */
+//Este es la base donde estan todo lo de las tablas y donde inicia las busquedas.
 public class TablasController implements Initializable {
     public static JDBC conection;
     static String dataBaseSelected;
@@ -76,7 +77,7 @@ public class TablasController implements Initializable {
         // TODO
         usarInformacion();
     }
- 
+//crea las tablas y las describe
 public void usarInformacion() {
     try {
 
@@ -233,9 +234,10 @@ public void usarInformacion() {
         window.setTitle("Insertar Registro");
         window.show();
     }
-
+//Inicio de busquedas
     @FXML
     private void click_buscar(ActionEvent event) throws IOException {
+        
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

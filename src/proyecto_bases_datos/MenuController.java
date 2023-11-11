@@ -26,7 +26,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
+//Este es el menu de las bases de datos
 public class MenuController implements Initializable {
     public static JDBC conection;
     @FXML
@@ -96,6 +96,7 @@ public class MenuController implements Initializable {
         window.show();
     }
 
+    
 @FXML
 private void click_eliminar(ActionEvent event) {
     Alert alert = new Alert(AlertType.CONFIRMATION);

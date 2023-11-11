@@ -23,6 +23,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
+
+/** Este crea la interfaz donde se le ingresa lo del root y eso */
 public class InterfazController implements Initializable {
     JDBC connection;
     
@@ -50,7 +52,7 @@ public class InterfazController implements Initializable {
     public void acceder_action() throws IOException {
         String usuario = "root";//txt_usr.getText();
         String puerto = "3306";//txt_puerto.getText();
-        String clave = "Amarillo21";//txt_clave.getText();
+        String clave = "12345";//txt_clave.getText();
 
         if (usuario.isEmpty() || puerto.isEmpty() || clave.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
