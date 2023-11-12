@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="378.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.KeyController">
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="378.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.KeyController">
    <children>
-      <Button fx:id="btn_volver" layoutX="163.0" layoutY="155.0" mnemonicParsing="false" onAction="#click_volver" style="-fx-background-color: #FFFACD;" text="Volver" />
-      <Label layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="134.0" text="Nombre de la llave:">
+      <Button fx:id="btn_volver" layoutX="216.0" layoutY="158.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #FFFACD;" text="Volver" />
+      <Label layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="134.0" text="Nombre del atributo:">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_key" layoutX="114.0" layoutY="112.0" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_tipo_dato" layoutX="188.0" layoutY="89.0" onMouseClicked="#llenarTiposDatos" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
       <TextField fx:id="txt_nombre" layoutX="188.0" layoutY="47.0" />
+      <Label layoutX="61.0" layoutY="89.0" prefHeight="25.0" prefWidth="86.0" text="Tipo de dato:">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Label>
+      <CheckBox layoutX="188.0" layoutY="122.0" mnemonicParsing="false" text="Primary Key" />
+      <CheckBox layoutX="276.0" layoutY="122.0" mnemonicParsing="false" text="Foreign Key" />
+      <Button fx:id="btn_crear" layoutX="94.0" layoutY="158.0" mnemonicParsing="false" onAction="#click_crear" prefHeight="31.0" prefWidth="106.0" style="-fx-background-color: #FFFACD;" text="Crear Atributo" />
    </children>
 </AnchorPane>

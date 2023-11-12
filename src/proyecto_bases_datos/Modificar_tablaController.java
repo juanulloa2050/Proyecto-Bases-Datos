@@ -143,28 +143,13 @@ private void click_modificar(ActionEvent event) throws IOException {
 
     @FXML
     private void click_campo(ActionEvent event) throws IOException {
-    String nuevoNombre = txt_nuevo_nombre.getText();
-    String nuevoTipoDato = desp_tipo_dato.getValue().toString();
-
-    if (nuevoTipoDato != null || nuevoNombre != null) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmación");
-        alert.setHeaderText("Estás a punto de agregar el atributo " + nuevoNombre);
-        alert.setContentText("¿Estás seguro de que agregar el atributo " + nuevoNombre + "? Esta acción es irreversible.");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            String addColumn = "ALTER TABLE " + tableSelected + " add " + nuevoNombre + " "+ nuevoTipoDato;
-            conection.Statment(addColumn);
-            click_volver(event);
-        }
-    } else {
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.setTitle("Advertencia");
-        alert.setHeaderText(null);
-        alert.setContentText("Por favor, pon un nombre y un tipo de dato.");
-        alert.showAndWait();
+    Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos());
+        window.setScene(MostrarScene);
+        window.show();
     }
-}
     
 
     @FXML

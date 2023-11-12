@@ -23,7 +23,7 @@ public class KeyController implements Initializable {
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<?> desp_key;
+    private ChoiceBox<String> desp_tipo_dato;
     @FXML
     private TextField txt_nombre;
 
@@ -38,5 +38,13 @@ public class KeyController implements Initializable {
     @FXML
     private void click_volver(ActionEvent event) {
     }
+    @FXML
+    private void llenarTiposDatos() {
+        desp_tipo_dato.getItems().addAll(
+            "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
+            "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
+            "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
+            "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
+        );}
     
 }
