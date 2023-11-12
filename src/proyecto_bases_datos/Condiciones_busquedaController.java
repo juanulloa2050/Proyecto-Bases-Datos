@@ -6,7 +6,12 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -27,6 +37,7 @@ import proyecto_bases_datos.managment.JDBC;
 public class Condiciones_busquedaController implements Initializable {
     public static JDBC conection;
     static String tablaSelected;
+    private ArrayList<ChoiceBox<String>> choiceBoxAtributos =new ArrayList<>();
     @FXML
     private ChoiceBox<?> dep_atributo1;
     @FXML
@@ -41,13 +52,22 @@ public class Condiciones_busquedaController implements Initializable {
     private Button btn_volver;
     @FXML
     private Button btn_mas1;
+    @FXML
+    private Button btn_menus1;
+    @FXML
+    private ScrollPane scrollPane;
+     @FXML
+    private VBox vBoxAddAtributos;
+    private int contadorAtributos = 1; // Contador para etiquetar los atributos
 
-    /**
-     * Initializes the controller class.
-     */
+
+
+    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
     @FXML
@@ -69,10 +89,40 @@ public class Condiciones_busquedaController implements Initializable {
         window.setTitle("Busqueda dos tabla");
         window.show();
     }
-
     @FXML
     private void click_mas1(ActionEvent event) {
+        //creo el label y el choice box
+        Label numeroAtributo = new Label("Atributo #" + contadorAtributos);
+        ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
+        nuevoAtributo.getItems().clear();
+        nuevoAtributo.getItems().addAll(conection.getDatafromOneField("Describe "+tablaSelected+";","Field"));
+        //Agregarlo a la lista local
+        choiceBoxAtributos.add(nuevoAtributo);
+        //Agregarlos al drame
+        vBoxAddAtributos.getChildren().add(numeroAtributo);
+        vBoxAddAtributos.getChildren().add(nuevoAtributo);
+
+    // Incrementar el contador de atributos
+    contadorAtributos++;
     }
+    @FXML
+private void click_menus1(ActionEvent event) {
+    // Verificar si hay elementos para eliminar
+    if (!vBoxAddAtributos.getChildren().isEmpty()) {
+        // Eliminar el último elemento (Label o ChoiceBox)
+        vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
+        //Eliminar el label
+        vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
+        //ELiminarlo del array de choice box
+        contadorAtributos--;
+        choiceBoxAtributos.remove(contadorAtributos-1);
+     } else {
+        System.out.println("No hay elementos para eliminar.");
+    }
+}
+
+
+
     public void setConnection(JDBC connection) {
         conection = connection;
     }
