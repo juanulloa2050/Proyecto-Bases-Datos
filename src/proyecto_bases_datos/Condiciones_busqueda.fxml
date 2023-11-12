@@ -26,13 +26,13 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="dep_atributo1" layoutX="122.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="dep_atributo1" layoutX="122.0" layoutY="359.0" onMouseClicked="#atributo1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <Label layoutX="202.0" layoutY="333.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador1" layoutX="206.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_operador1" layoutX="206.0" layoutY="359.0" onMouseClicked="#operadore1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <Label layoutX="284.0" layoutY="333.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
@@ -44,13 +44,13 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_atributo2" layoutX="116.0" layoutY="298.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_atributo2" layoutX="116.0" layoutY="298.0" onMouseClicked="#atributo2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <Label layoutX="202.0" layoutY="272.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador2" layoutX="206.0" layoutY="298.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_operador2" layoutX="206.0" layoutY="298.0" onMouseClicked="#operadore2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <Label layoutX="284.0" layoutY="272.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />

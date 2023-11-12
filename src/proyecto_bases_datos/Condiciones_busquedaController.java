@@ -39,13 +39,13 @@ public class Condiciones_busquedaController implements Initializable {
     static String tablaSelected;
     private ArrayList<ChoiceBox<String>> choiceBoxAtributos =new ArrayList<>();
     @FXML
-    private ChoiceBox<?> dep_atributo1;
+    private ChoiceBox<String> dep_atributo1;
     @FXML
-    private ChoiceBox<?> desp_operador1;
+    private ChoiceBox<String> desp_operador1;
     @FXML
-    private ChoiceBox<?> desp_atributo2;
+    private ChoiceBox<String> desp_atributo2;
     @FXML
-    private ChoiceBox<?> desp_operador2;
+    private ChoiceBox<String> desp_operador2;
     @FXML
     private Button btn_continuar;
     @FXML
@@ -59,7 +59,7 @@ public class Condiciones_busquedaController implements Initializable {
      @FXML
     private VBox vBoxAddAtributos;
     private int contadorAtributos = 1; // Contador para etiquetar los atributos
-
+    String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
 
 
     
@@ -68,9 +68,9 @@ public class Condiciones_busquedaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-    }    
-
-    @FXML
+    }
+   
+    @FXML //Aca toca hacer la busqueda sql.. Feo :(
     private void click_continuar(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
@@ -106,7 +106,7 @@ public class Condiciones_busquedaController implements Initializable {
     contadorAtributos++;
     }
     @FXML
-private void click_menus1(ActionEvent event) {
+    private void click_menus1(ActionEvent event) {
     // Verificar si hay elementos para eliminar
     if (!vBoxAddAtributos.getChildren().isEmpty()) {
         // Eliminar el último elemento (Label o ChoiceBox)
@@ -132,6 +132,30 @@ private void click_menus1(ActionEvent event) {
     public void setTablaSelected(String tablaSelecteds) {
         tablaSelected=tablaSelecteds;
     }
+    //Operadores 
+    @FXML
+    private void operadore2(){
+        desp_operador2.getItems().clear();
+        // Agregar operadores al ChoiceBox desp_operador2
+        desp_operador2.getItems().addAll(operadores);
+    }
+    @FXML
+    private void operadore1(){
+        desp_operador1.getItems().clear();
+        // Agregar operadores al ChoiceBox desp_operador1
+        desp_operador1.getItems().addAll(operadores);
+    }
+    //Atributos
+    @FXML
+    private void atributo1(){
+        dep_atributo1.getItems().clear();
+        dep_atributo1.getItems().addAll(conection.getDatafromOneField("Describe "+tablaSelected+";","Field"));
 
+    }
+    @FXML
+    private void atributo2(){
+        desp_atributo2.getItems().clear();
+        desp_atributo2.getItems().addAll(conection.getDatafromOneField("Describe "+tablaSelected+";","Field"));
+    }
     
 }
