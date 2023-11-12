@@ -26,6 +26,8 @@ public class KeyController implements Initializable {
     private ChoiceBox<String> desp_tipo_dato;
     @FXML
     private TextField txt_nombre;
+    @FXML
+    private Button btn_crear;
 
     /**
      * Initializes the controller class.
@@ -46,5 +48,9 @@ public class KeyController implements Initializable {
             "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
             "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
         );}
+
+    @FXML
+    private void click_crear(ActionEvent event) {
+    }
     
 }
