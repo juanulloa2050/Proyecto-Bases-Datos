@@ -145,7 +145,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
     @FXML
     private void click_campo(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("key.fxml"));
-        Parent root =loader.load();
+        loader.load();
         KeyController keyController= loader.getController();
         keyController.setConnection(conection);
         keyController.setTableSelected(tableSelected); 

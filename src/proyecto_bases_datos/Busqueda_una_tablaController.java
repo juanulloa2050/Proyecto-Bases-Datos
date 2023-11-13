@@ -68,7 +68,7 @@ public class Busqueda_una_tablaController implements Initializable {
             } 
             //envio de datos al siguiente controller
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Condiciones_busqueda.fxml"));
-            Parent root = loader.load();
+            loader.load();
             Condiciones_busquedaController condBusquedaCon=loader.getController();
             condBusquedaCon.setConnection(conection);
             condBusquedaCon.setTablaSelected(desp_tabla.getSelectionModel().getSelectedItem());

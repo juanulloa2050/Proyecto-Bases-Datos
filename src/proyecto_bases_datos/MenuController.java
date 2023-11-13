@@ -3,9 +3,6 @@ package proyecto_bases_datos;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javax.swing.JOptionPane;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -16,8 +13,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
-
-import java.util.ArrayList;
 import java.util.Optional;
 import java.sql.*;
 import javafx.event.ActionEvent;
@@ -83,7 +78,7 @@ public class MenuController implements Initializable {
         conection.setBaseDatos(desp_bases.getSelectionModel().getSelectedItem());
         //Envio de datos
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Tablas.fxml"));
-        Parent root =loader.load();
+        loader.load();
         TablasController tablasController= loader.getController();
         tablasController.setConnection(conection);
         TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
@@ -116,7 +111,7 @@ private void click_eliminar(ActionEvent event) throws SQLException {
     private void click_crear(ActionEvent event) throws IOException {
         //Envia el objeto a la otra clase
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Nueva_baseD.fxml"));
-        Parent root =loader.load();
+        loader.load();
         Nueva_baseDController newDataBase= loader.getController();
         newDataBase.setConnection(conection);
         //Cambio de pesataña

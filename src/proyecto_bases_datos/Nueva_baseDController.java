@@ -22,7 +22,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import static proyecto_bases_datos.MenuController.conection;
 import proyecto_bases_datos.managment.JDBC;
 
 /**

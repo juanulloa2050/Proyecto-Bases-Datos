@@ -84,7 +84,7 @@ public class Busquedas_dos_tablasController implements Initializable {
             }
             // envio de datos al frame condiciones busqueda cruzada
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Condiciones_busqueda_cruzada.fxml"));
-            Parent root = loader.load();
+            loader.load();
             Condiciones_busqueda_cruzadaController condBusquedaCruzada=loader.getController();
             condBusquedaCruzada.setConnection(conection);
             condBusquedaCruzada.setTablaSelected(desp_tabla1.getSelectionModel().getSelectedItem(),desp_tabla2.getSelectionModel().getSelectedItem() );
