@@ -80,7 +80,7 @@ public class TablasController implements Initializable {
     }
 //crea las tablas y las describe
 public void usarInformacion() {
-    try {
+    try{    
 
         for (String tabla : conection.getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected)) {
             Tab newTab = new Tab(tabla);
@@ -111,34 +111,19 @@ public void usarInformacion() {
             // Añadir el Tab al TabPane
             TabPane_Tablas.getTabs().add(newTab);
         }
+    
     } catch (NullPointerException e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Error Conection");
+        alert.setTitle("Esta seguro de continuar");
         alert.setHeaderText(null);
         alert.setContentText("Revise la coneccion con la base de datos Map");
         alert.showAndWait();
     }
+    
 }
 
 
-    @FXML
-    public void choicebox_action() {
-        // Limpia la ChoiceBox
-        box_SeleccionTabla.getItems().clear();
-        // Agrega cada base de datos a la BOx
-        try {
-            box_SeleccionTabla.getItems().addAll(
-                    TablasController.getConection().getDatafromOneField(GETTABLES, "TABLES_IN_" + dataBaseSelected));
-
-        } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error Conection");
-            alert.setHeaderText(null);
-            alert.setContentText("Revise la coneccion con la base de datos");
-            alert.showAndWait();
-        }
-
-    }
+    
 
     public void setConnection(JDBC connection) {
         conection = connection;
@@ -211,10 +196,6 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
     }
 
     @FXML
-    private void click_modificar_registro(ActionEvent event) {
-    }
-
-    @FXML
     private void click_borrar_registro(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Eliminar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
@@ -237,7 +218,16 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 //Inicio de busquedas
     @FXML
     private void click_buscar(ActionEvent event) throws IOException {
-        
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Busqueda_una_tabla.fxml"));
+        Parent root= loader.load();
+        Busqueda_una_tablaController busquedaUnaTabla= loader.getController();
+        busquedaUnaTabla.setConnection(TablasController.getConection());
+        //Envio coneccion al frame de dos tablas para la busqueda
+        FXMLLoader loader2=new FXMLLoader(getClass().getResource("Busquedas_dos_tablas.fxml"));
+        Parent root2=loader2.load();
+        Busquedas_dos_tablasController busquedaDosTablas=loader2.getController();
+        busquedaDosTablas.setConnection(TablasController.getConection());
+            //cambio de frame        
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
