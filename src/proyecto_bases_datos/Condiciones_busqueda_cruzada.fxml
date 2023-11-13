@@ -3,27 +3,27 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Condiciones_busqueda_cruzadaController">
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="664.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Condiciones_busqueda_cruzadaController">
    <children>
-      <ChoiceBox fx:id="desp_atributo_relacion" layoutX="139.0" layoutY="256.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <ChoiceBox fx:id="desp_operador_relacion" layoutX="266.0" layoutY="256.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <TextField fx:id="txt_valor_relacion" layoutX="395.0" layoutY="256.0" prefHeight="26.0" prefWidth="66.0" />
-      <Label layoutX="139.0" layoutY="226.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <ChoiceBox fx:id="desp_atributo_relacionTabla1" layoutX="215.0" layoutY="180.0" onMouseClicked="#atributoTabla1Relacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_operador_relacion" layoutX="299.0" layoutY="180.0" onMouseClicked="#operadorRelacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="215.0" layoutY="143.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="263.0" layoutY="226.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <Label layoutX="300.0" layoutY="143.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="395.0" layoutY="226.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
+      <Label layoutX="384.0" layoutY="143.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="413.0" layoutY="292.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
+      <Label layoutX="446.0" layoutY="292.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
@@ -56,65 +56,91 @@
          </font>
       </Label>
       <TextField layoutX="205.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" />
-      <Label layoutX="337.0" layoutY="333.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <Label layoutX="370.0" layoutY="327.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_atributo2" layoutX="337.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="413.0" layoutY="333.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <ChoiceBox fx:id="desp_atributo2" layoutX="370.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="458.0" layoutY="327.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador2" layoutX="416.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="497.0" layoutY="333.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
+      <ChoiceBox fx:id="desp_operador2" layoutX="462.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="561.0" layoutY="327.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="497.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" />
-      <Button fx:id="btn_continuar" layoutX="332.0" layoutY="400.0" mnemonicParsing="false" onAction="#click_continuar" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #B0E0E6;" text="Continuar">
+      <TextField layoutX="561.0" layoutY="359.0" prefHeight="26.0" prefWidth="66.0" />
+      <Button fx:id="btn_continuar" layoutX="384.0" layoutY="443.0" mnemonicParsing="false" onAction="#click_continuar" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #B0E0E6;" text="Continuar">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btn_volver" layoutX="31.0" layoutY="400.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #FFFACD;" text="Volver">
+      <Button fx:id="btn_volver" layoutX="33.0" layoutY="443.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #FFFACD;" text="Volver">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="56.0" layoutY="37.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 1:">
+      <Label layoutX="14.0" layoutY="37.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 1:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="345.0" layoutY="37.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:">
+      <Label layoutX="411.0" layoutY="37.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btn_mas1" layoutX="220.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_mas1" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="+">
+      <Button fx:id="btn_masTabla1" layoutX="180.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_masTabla1" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="+">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btn_mas2" layoutX="512.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_mas2" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="+">
+      <Button fx:id="btn_masTabla2" layoutX="577.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_masTabla2" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="+">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="263.0" layoutY="194.0" prefHeight="26.0" prefWidth="73.0" text="Relacion:">
+      <Label layoutX="282.0" layoutY="107.0" prefHeight="26.0" prefWidth="110.0" text="Relacion:">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="428.0" layoutY="63.0" prefHeight="26.0" prefWidth="184.0" text="Atributos seleccionados:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="345.0" layoutY="63.0" prefHeight="26.0" prefWidth="166.0" text="Campos seleccionados:">
+      <Label layoutX="33.0" layoutY="63.0" prefHeight="26.0" prefWidth="166.0" text="Campos seleccionados:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="63.0" prefHeight="26.0" prefWidth="166.0" text="Campos seleccionados:">
+      <ScrollPane layoutX="31.0" layoutY="89.0" prefHeight="181.0" prefWidth="166.0">
+         <content>
+            <VBox fx:id="vBoxAddAtributosTabla1" prefHeight="200.0" prefWidth="149.0" />
+         </content>
+      </ScrollPane>
+      <ScrollPane layoutX="458.0" layoutY="89.0" prefHeight="181.0" prefWidth="166.0">
+         <content>
+            <VBox fx:id="vBoxAddAtributosTabla2" prefHeight="200.0" prefWidth="148.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="btn_menosTabla1" layoutX="221.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_menusTabla1" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="-">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_menosTabla2" layoutX="620.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_menusTabla2" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="-">
+         <font>
+            <Font name="Times New Roman Bold" size="14.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="desp_atributo_relacionTabla2" layoutX="378.0" layoutY="180.0" onMouseClicked="#atributoTabla2Relacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="218.0" layoutY="206.0" prefHeight="28.0" prefWidth="228.0" text="Tabla 1                           Tabla 2">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>

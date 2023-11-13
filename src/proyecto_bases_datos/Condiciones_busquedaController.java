@@ -58,7 +58,7 @@ public class Condiciones_busquedaController implements Initializable {
     private ScrollPane scrollPane;
      @FXML
     private VBox vBoxAddAtributos;
-    private int contadorAtributos = 1; // Contador para etiquetar los atributos
+    private int contadorAtributos = 1;
     String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
 
 
