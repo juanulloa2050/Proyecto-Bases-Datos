@@ -111,7 +111,6 @@ public void usarInformacion() {
             TabPane_Tablas.getTabs().add(newTab);
         }
     } catch (NullPointerException e) {
-        e.printStackTrace();
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error Conection");
         alert.setHeaderText(null);
