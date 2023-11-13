@@ -84,7 +84,7 @@ public void click_crear() {
     boolean isForeignKey = CheckForeignKey.isSelected();
     String sql = " ";
     String key = "";
-    if (isPrimaryKey && isForeignKey) {
+    if (!isPrimaryKey && !isForeignKey) {
         key = "PRIMARY KEY, FOREIGN KEY";
          sql = "ALTER TABLE " + tableSelected+
                  "ADD COLUMN " + nombre + " " + tipoDato;
