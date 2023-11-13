@@ -140,10 +140,15 @@ private void click_modificar(ActionEvent event) throws IOException {
         alert.showAndWait();
     }
 }
-
+//Cambiarle el nombre al metodo, no tiene sentido 
     @FXML
     private void click_campo(ActionEvent event) throws IOException {
-    Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("key.fxml"));
+        Parent root =loader.load();
+        KeyController keyController= loader.getController();
+        keyController.setConnection(conection);
+        keyController.setTableSelected(tableSelected); 
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos());
@@ -151,7 +156,7 @@ private void click_modificar(ActionEvent event) throws IOException {
         window.show();
     }
     
-
+//Igual
     @FXML
     private void click_atributo(ActionEvent event) throws IOException {
         String atributoselec= desp_campos_modificables.getValue();
@@ -167,19 +172,13 @@ private void click_modificar(ActionEvent event) throws IOException {
             click_volver(event);
         }
     }
-
+ //DEfinir que es este metodo no entiendo
     @FXML
     private void click_key(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Añadir_key.fxml"));
-        Parent root =loader.load();
-        Modificar_tablaController.getConection();
-        KeyController keyController= loader.getController();
-        keyController.setConnection(conection);
-        keyController.setTableSelected(tableSelected); 
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Añadir_key.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Añadir Key");
+        window.setTitle("Añadir Key djasbdijbasjd");
         window.setScene(MostrarScene);
         window.show();
                

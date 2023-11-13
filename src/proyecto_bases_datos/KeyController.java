@@ -7,6 +7,9 @@ package proyecto_bases_datos;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,7 +25,7 @@ import proyecto_bases_datos.managment.JDBC;
  * @author juanu
  */
 public class KeyController implements Initializable {
-    static JDBC conection;
+    public static JDBC conection;
     @FXML
     private Button btn_volver;
     @FXML
@@ -59,9 +62,11 @@ public class KeyController implements Initializable {
     }    
     public void setConnection(JDBC connection) {
         conection = connection;
+        //JOptionPane.showMessageDialog(null, conection.getBaseDatos());
     }
     public void setTableSelected(String tableSelectedd) {
         tableSelected = tableSelectedd;
+        JOptionPane.showMessageDialog(null, tableSelected);
     }
 
     @FXML
