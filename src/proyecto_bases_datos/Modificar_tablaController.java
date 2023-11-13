@@ -170,12 +170,19 @@ private void click_modificar(ActionEvent event) throws IOException {
 
     @FXML
     private void click_key(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Añadir_key.fxml"));
+        Parent root =loader.load();
+        Modificar_tablaController.getConection();
+        KeyController keyController= loader.getController();
+        keyController.setConnection(conection);
+        keyController.setTableSelected(tableSelected); 
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Añadir_key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Añadir Key");
         window.setScene(MostrarScene);
         window.show();
+               
     }
 
     @FXML

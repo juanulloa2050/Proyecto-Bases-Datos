@@ -157,7 +157,7 @@ public void usarInformacion() {
         Modificar_tablaController modtablasController= loader.getController();
         modtablasController.setConnection(conection);
         //TODO Añadir settablaselected.!!!!
-        modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());        
+modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());        
 
         //Change the slide
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Modificar_tabla.fxml"));
