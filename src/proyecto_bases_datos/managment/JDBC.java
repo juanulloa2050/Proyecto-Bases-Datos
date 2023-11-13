@@ -45,14 +45,11 @@ public class JDBC {
         }
         return Data;
     }
-    public void Statment(String query){
-        try {
-            Statement st = conn.createStatement();
+    public void Statment(String query) throws SQLException{           
+         Statement st = conn.createStatement();
             System.out.println("Peticion: "+st.executeUpdate(query));
             st.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     //Getters and setters

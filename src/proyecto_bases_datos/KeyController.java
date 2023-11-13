@@ -4,19 +4,27 @@
  */
 package proyecto_bases_datos;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
 /**
@@ -38,73 +46,126 @@ public class KeyController implements Initializable {
     private CheckBox CheckPrimaryKey;
     @FXML
     private CheckBox CheckForeignKey;
-    public String tableSelected;
+    public static String tableSelected;
 
     /**
      * Initializes the controller class.
      */
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         CheckPrimaryKey.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {  
+            if (newValue) {
                 CheckForeignKey.setSelected(false);
             }
         });
-        
+
         CheckForeignKey.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 CheckPrimaryKey.setSelected(false);
             }
-        });   
-             
-    }    
+        });
+
+    }
+
     public void setConnection(JDBC connection) {
         conection = connection;
-        //JOptionPane.showMessageDialog(null, conection.getBaseDatos());
+        // JOptionPane.showMessageDialog(null, conection.getBaseDatos());
     }
-    public void setTableSelected(String tableSelectedd) {
+
+    public static void setTableSelected(String tableSelectedd) {
         tableSelected = tableSelectedd;
-        JOptionPane.showMessageDialog(null, tableSelected);
     }
 
     @FXML
-    private void click_volver(ActionEvent event) {
+    private void click_volver(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setTitle("Base de datos:" + conection.getBaseDatos());
+        window.setScene(MostrarScene);
+        window.show();
     }
+
     @FXML
     private void llenarTiposDatos() {
         desp_tipo_dato.getItems().addAll(
-            "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
-            "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
-            "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
-            "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
-        );}
+                "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
+                "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
+                "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
+                "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET");
+    }
 
     @FXML
-public void click_crear() {
-    String nombre = txt_nombre.getText();
-    String tipoDato = desp_tipo_dato.getValue();
-    boolean isPrimaryKey = CheckPrimaryKey.isSelected();
-    boolean isForeignKey = CheckForeignKey.isSelected();
-    String sql = " ";
-    String key = "";
-    if (!isPrimaryKey && !isForeignKey) {
-        key = "PRIMARY KEY, FOREIGN KEY";
-         sql = "ALTER TABLE " + tableSelected+
-                 "ADD COLUMN " + nombre + " " + tipoDato;
-    } else
-    if (isPrimaryKey) {
-        key = "PRIMARY KEY";
-        sql = "ALTER TABLE " + tableSelected+
-                 "ADD COLUMN " + nombre + " " + tipoDato + " " + key;
-    } else if (isForeignKey) {
-        key = "FOREIGN KEY";
-        sql = "ALTER TABLE " + tableSelected+
-                 "ADD COLUMN " + nombre + " " + tipoDato + " " + key;
-    }
-    conection.Statment(sql);
-}
+    public void click_crear(ActionEvent event) throws SQLException, IOException {
+        String nombre = txt_nombre.getText();
+        String tipoDato = desp_tipo_dato.getValue();
+        boolean isPrimaryKey = CheckPrimaryKey.isSelected();
+        boolean isForeignKey = CheckForeignKey.isSelected();
+        String sql = " ";
+        String key = "";
+        if (!isPrimaryKey && !isForeignKey) {
+            key = "PRIMARY KEY, FOREIGN KEY";
+            sql = "ALTER TABLE " + tableSelected +
+                    " ADD COLUMN " + nombre + " " + tipoDato + ";";
+        }
+        if (isPrimaryKey) {
+            key = "PRIMARY KEY";
+            sql = "ALTER TABLE " + tableSelected +
+                    " ADD COLUMN " + nombre + " " + tipoDato + " " + key;
+        } else if (isForeignKey) {
+            key = "FOREIGN KEY";
+            String DESCRIBE_TABLE = "DESCRIBE " + tableSelected;
+            ArrayList<String> atributos = new ArrayList<String>();
+            ArrayList<String> compatibleArrayList = conection.getDatafromOneField(DESCRIBE_TABLE, "Type");
+            for (String elemento : compatibleArrayList) {
+                if (elemento.equals(tipoDato)) {
+                    atributos.add(elemento);
+                }
+            }
 
-    
+            if (atributos.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Error");
+                alert.setContentText("No hay ningún atributo compatible.");
+                alert.showAndWait();
+                return;
+            }
+
+            String[] atributosArray = atributos.toArray(new String[0]);
+
+            String atributoSeleccionado = (String) JOptionPane.showInputDialog(null,
+                    "Selecciona el atributo al que se va a referenciar la clave foránea:",
+                    "Selecciona un atributo", JOptionPane.QUESTION_MESSAGE, null, atributosArray, atributosArray[0]);
+
+            if (atributoSeleccionado != null) {
+                // Aquí puedes continuar con la creación de tu clave foránea
+                key = "FOREIGN KEY";
+                sql = "ALTER TABLE " + tableSelected +
+                        " ADD COLUMN " + nombre + " " + tipoDato + ", " +
+                        "ADD CONSTRAINT " + nombre +
+                        " FOREIGN KEY (" + nombre + ")" +
+                        " REFERENCES " + tableSelected + "(" + atributoSeleccionado + ")";
+            }
+
+        }
+        try {
+            conection.Statment(sql);
+            click_volver(event);
+        } catch (SQLException e) {
+            if (e.getMessage().contains("primary key")) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Error");
+                alert.setContentText("Ya existe una clave primaria en la tabla.");
+                alert.showAndWait();
+            } else {
+                throw e;
+            }
+        }
+
+    }
+
 }

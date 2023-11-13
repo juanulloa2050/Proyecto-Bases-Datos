@@ -98,7 +98,7 @@ public class MenuController implements Initializable {
 
     
 @FXML
-private void click_eliminar(ActionEvent event) {
+private void click_eliminar(ActionEvent event) throws SQLException {
     Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
     alert.setHeaderText("Estás a punto de eliminar "+desp_bases.getValue());

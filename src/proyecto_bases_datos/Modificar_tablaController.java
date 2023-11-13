@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -116,7 +117,7 @@ public class Modificar_tablaController implements Initializable {
     }
 
     @FXML
-private void click_modificar(ActionEvent event) throws IOException {
+private void click_modificar(ActionEvent event) throws IOException, SQLException {
     String nombreColumna = desp_campos_modificables.getValue();
     String nuevoNombre = txt_nuevo_nombre.getText();
     String nuevoTipoDato = desp_tipo_dato.getValue().toString();
@@ -158,7 +159,7 @@ private void click_modificar(ActionEvent event) throws IOException {
     
 //Igual
     @FXML
-    private void click_atributo(ActionEvent event) throws IOException {
+    private void click_atributo(ActionEvent event) throws IOException, SQLException {
         String atributoselec= desp_campos_modificables.getValue();
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmación");
@@ -178,7 +179,7 @@ private void click_modificar(ActionEvent event) throws IOException {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Añadir Key djasbdijbasjd");
+        window.setTitle("Añadir Key");
         window.setScene(MostrarScene);
         window.show();
                

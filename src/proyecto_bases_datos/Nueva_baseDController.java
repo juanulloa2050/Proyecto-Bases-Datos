@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -53,7 +54,7 @@ public class Nueva_baseDController implements Initializable {
     }   
 
     @FXML
-    private void click_crear(ActionEvent event) throws IOException {
+    private void click_crear(ActionEvent event) throws IOException, SQLException {
          Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
     alert.setHeaderText("Estás a punto de crear una nueva base de datos");

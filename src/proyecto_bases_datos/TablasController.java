@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
@@ -179,7 +180,7 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
     }
 
     @FXML
-    private void click_borrar(ActionEvent event) {
+    private void click_borrar(ActionEvent event) throws SQLException {
         String nombreCompleto = TabPane_Tablas.getSelectionModel().getSelectedItem().getText();
     String[] partes = nombreCompleto.split("\\.");
     String nombreTabla = partes[partes.length - 1];
