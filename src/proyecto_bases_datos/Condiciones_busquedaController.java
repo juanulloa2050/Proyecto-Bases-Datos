@@ -8,10 +8,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import javax.swing.JOptionPane;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +20,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -65,7 +59,6 @@ public class Condiciones_busquedaController implements Initializable {
     private TextField valor2;
     @FXML
     private ChoiceBox<String> operadorLogico;
-
     private int contadorAtributos = 1;
     String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
 
@@ -85,7 +78,7 @@ public class Condiciones_busquedaController implements Initializable {
                 throw new NullPointerException();
             } else{
                 query.append(" "+sel.getSelectionModel().getSelectedItem());
-                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributos.getLast().getSelectionModel().getSelectedItem())){
+                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributos.get(choiceBoxAtributos.size()-1).getSelectionModel().getSelectedItem())){
                     query.append(",");
                 }
             }
