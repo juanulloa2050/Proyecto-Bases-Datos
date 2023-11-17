@@ -126,7 +126,8 @@ public class Condiciones_busquedaController implements Initializable {
    
     @FXML 
     private void click_continuar(ActionEvent event) throws IOException {
-        System.out.println(queryUnaTabla());
+        System.out.println(queryUnaTabla()); //llenar esto con try cath para los erroes que lance
+        //, como si la busqueda quedo mal en sql, el nullpointer, y mas cosas. 
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
