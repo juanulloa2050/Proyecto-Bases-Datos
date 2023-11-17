@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -58,6 +59,13 @@ public class Condiciones_busquedaController implements Initializable {
     private ScrollPane scrollPane;
      @FXML
     private VBox vBoxAddAtributos;
+    @FXML
+    private TextField valor1;
+    @FXML
+    private TextField valor2;
+    @FXML
+    private ChoiceBox<String> operadorLogico;
+
     private int contadorAtributos = 1;
     String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
 
@@ -69,9 +77,56 @@ public class Condiciones_busquedaController implements Initializable {
         // TODO
         
     }
+    public String queryUnaTabla(){
+        StringBuilder query = new StringBuilder();
+        query.append("Select");
+        for (ChoiceBox<String> sel: choiceBoxAtributos){
+            if (sel.getSelectionModel().getSelectedItem()==null){
+                throw new NullPointerException();
+            } else{
+                query.append(" "+sel.getSelectionModel().getSelectedItem());
+                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributos.getLast().getSelectionModel().getSelectedItem())){
+                    query.append(",");
+                }
+            }
+            
+        }
+        query.append(" from "+tablaSelected+" where ");
+        if (dep_atributo1.getSelectionModel().getSelectedItem() == null || 
+            desp_operador1.getSelectionModel().getSelectedItem()==null ||
+            valor1.getText()==null
+            ){
+                if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
+                desp_operador2.getSelectionModel().getSelectedItem()==null ||
+                valor2.getText()==null
+                ){throw new NullPointerException("");}
+                    
+                query.append(desp_atributo2.getSelectionModel().getSelectedItem()
+                +" "+desp_operador2.getSelectionModel().getSelectedItem()
+                +" "+valor2.getText());
+        } else{
+            query.append(dep_atributo1.getSelectionModel().getSelectedItem()
+            +" "+desp_operador1.getSelectionModel().getSelectedItem()
+            +" "+valor1.getText());
+            if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
+                desp_operador2.getSelectionModel().getSelectedItem()==null ||
+                valor2.getText()==null ||
+                operadorLogico.getSelectionModel().getSelectedItem()==null
+                ){throw new NullPointerException("");}
+                else{
+                    query.append(" "+operadorLogico.getSelectionModel().getSelectedItem()
+                    +" "+desp_atributo2.getSelectionModel().getSelectedItem()
+                    +" "+desp_operador2.getSelectionModel().getSelectedItem()
+                    +" "+valor2.getText());
+                }
+        }
+        query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
+        return query.toString();
+    }
    
-    @FXML //Aca toca hacer la busqueda sql.. Feo :(
+    @FXML 
     private void click_continuar(ActionEvent event) throws IOException {
+        System.out.println(queryUnaTabla());
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -95,6 +150,7 @@ public class Condiciones_busquedaController implements Initializable {
         Label numeroAtributo = new Label("Atributo #" + contadorAtributos);
         ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
         nuevoAtributo.getItems().clear();
+        nuevoAtributo.getItems().addAll("*");
         nuevoAtributo.getItems().addAll(conection.getDatafromOneField("Describe "+tablaSelected+";","Field"));
         //Agregarlo a la lista local
         choiceBoxAtributos.add(nuevoAtributo);
@@ -144,6 +200,11 @@ public class Condiciones_busquedaController implements Initializable {
         desp_operador1.getItems().clear();
         // Agregar operadores al ChoiceBox desp_operador1
         desp_operador1.getItems().addAll(operadores);
+    }
+    @FXML
+    private void operadorLogico(){
+        operadorLogico.getItems().clear();
+        operadorLogico.getItems().addAll("AND", "OR");
     }
     //Atributos
     @FXML
