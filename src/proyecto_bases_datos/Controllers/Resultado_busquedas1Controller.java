@@ -53,8 +53,10 @@ public class Resultado_busquedas1Controller implements Initializable {
     @FXML
     private TabPane tabPane_Tablaresultado;
     private String queriee;
+    private String TablaName;
     public static JDBC conection;
-    List<String> informacionFila;
+    private List<String> informacionFila;
+    private List<String> columnasSeleccionadas = new ArrayList<>();
     
 
 
@@ -71,6 +73,9 @@ public class Resultado_busquedas1Controller implements Initializable {
     }
     public void setQuerie(String querie) {
         queriee = querie;
+    }
+    public void setNombreTabla(String nombre) {
+        TablaName = nombre;
     }
 
     @FXML
@@ -95,8 +100,35 @@ public class Resultado_busquedas1Controller implements Initializable {
     //Lo que debe estar despues de lo del click derecho encima de la tabla
     @FXML
     private void click_borrar(ActionEvent event) {
+        System.out.println(columnasSeleccionadas);
         System.out.println(informacionFila);
+        
+        StringBuilder queryBorrarRegistro = new StringBuilder();
+        queryBorrarRegistro.append("DELETE FROM " + TablaName + " WHERE ");
+    
+        for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+            queryBorrarRegistro.append(columnasSeleccionadas.get(i)).append(" = ");
+    
+            // Verificar si la información de la fila es un número
+            if (isNumeric(informacionFila.get(i))) {
+                queryBorrarRegistro.append(informacionFila.get(i));
+            } else {
+                queryBorrarRegistro.append("'").append(informacionFila.get(i)).append("'");
+            }
+    
+            if (i < columnasSeleccionadas.size() - 1) {
+                queryBorrarRegistro.append(" AND ");
+            }
+        }
+    
+        System.out.println(queryBorrarRegistro);
     }
+    
+    // Método para verificar si una cadena es un número
+    private boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");  // Acepta números enteros o decimales
+    }
+    
 
     @FXML
     private void click_modificar(ActionEvent event) throws IOException {
@@ -151,7 +183,13 @@ public class Resultado_busquedas1Controller implements Initializable {
         //coge el array de la fila seleccionada. 
         tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
+                //Informacion que agarra de la fila
                 informacionFila = new ArrayList<>(newSelection);
+                //Informacion de cada columna para poder armar la query, lo hace en orden. 
+                columnasSeleccionadas.clear(); // Limpiar el array antes de agregar nuevas columnas
+                for (TableColumn<ObservableList<String>, ?> columna : tableView.getColumns()) {
+                    columnasSeleccionadas.add(columna.getText());
+                }
             }
         });
     }

@@ -139,6 +139,7 @@ public class Condiciones_busquedaController implements Initializable {
             String querie=queryUnaTabla();
             rBusquedas1Controller.setQuerie(querie);
             rBusquedas1Controller.usarInformacion();
+            rBusquedas1Controller.setNombreTabla(tablaSelected);
             window.setScene(MostrarScene);
             window.setTitle("Resultado Busqueda");
             window.show();
