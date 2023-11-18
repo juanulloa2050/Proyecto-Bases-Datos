@@ -286,7 +286,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
                     +" "+valorCondicion2.getText());
                 }
         }
-        query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
+       // query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
         return query.toString();
     }
    
@@ -307,6 +307,10 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas2.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Resultado_busquedas2Controller rBusquedas2Controller = new Resultado_busquedas2Controller();
+        rBusquedas2Controller.setConnection(conection);
+        String querie=queryUnaTabla();
+        rBusquedas2Controller.setQuerie(querie);
         window.setScene(MostrarScene);
         window.setTitle("Resultado Busqueda");
         window.show();
