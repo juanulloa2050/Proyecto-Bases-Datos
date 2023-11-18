@@ -44,7 +44,11 @@ public class MenuController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO     
+        // TODO   
+        if (conection != null) {
+           choicebox_action();
+        }
+        
     }    
 
     public void setConnection(JDBC connection) {
@@ -62,7 +66,8 @@ public class MenuController implements Initializable {
         
         try{
             desp_bases.getItems().addAll(conection.getDatafromOneField(GETDATABASES,"SCHEMA_NAME"));
-        }catch (NullPointerException e){
+        }catch (Exception e){
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Conection");
             alert.setHeaderText(null);
