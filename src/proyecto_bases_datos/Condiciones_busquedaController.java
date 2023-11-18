@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -105,7 +107,7 @@ public class Condiciones_busquedaController implements Initializable {
                 desp_operador2.getSelectionModel().getSelectedItem()==null ||
                 valor2.getText()==null ||
                 operadorLogico.getSelectionModel().getSelectedItem()==null
-                ){throw new NullPointerException("");}
+                ){query.append("");}
                 else{
                     query.append(" "+operadorLogico.getSelectionModel().getSelectedItem()
                     +" "+desp_atributo2.getSelectionModel().getSelectedItem()
@@ -120,13 +122,29 @@ public class Condiciones_busquedaController implements Initializable {
     @FXML 
     private void click_continuar(ActionEvent event) throws IOException {
         System.out.println(queryUnaTabla()); //llenar esto con try cath para los erroes que lance
-        //, como si la busqueda quedo mal en sql, el nullpointer, y mas cosas. 
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Resultado Busqueda");
-        window.show();
+        //, como si la busqueda quedo mal en sql, el nullpointer, y mas cosas que pueden salir. 
+        try{
+            //Cambio de slide
+                Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
+                Scene MostrarScene = new Scene(MostrarParent);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(MostrarScene);
+                window.setTitle("Resultado Busqueda");
+                window.show();
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Revise los espacios vacios, vuelva a intentarlo");
+            alert.showAndWait();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error con la base base de datos");
+            alert.showAndWait();
+        }
+        
     }
 
     @FXML
