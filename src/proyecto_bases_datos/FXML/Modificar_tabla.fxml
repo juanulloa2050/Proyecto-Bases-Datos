@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Modificar_tablaController">
+<AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Modificar_tablaController">
    <children>
       <ChoiceBox fx:id="desp_campos_modificables" layoutX="80.0" layoutY="100.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" />
       <Label fx:id="lbl_nombretabla" layoutX="40.0" layoutY="25.0" prefHeight="28.0" prefWidth="273.0" text="Modificar Tabla">

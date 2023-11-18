@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.InterfazController">
+<AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.InterfazController">
    <children>
       <TextField fx:id="txt_usr" alignment="CENTER" layoutX="88.0" layoutY="84.0" promptText="USUARIO">
          <font>

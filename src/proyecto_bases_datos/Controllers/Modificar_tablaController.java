@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package proyecto_bases_datos;
+package proyecto_bases_datos.Controllers;
+
+import static proyecto_bases_datos.Controllers.TablasController.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +27,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import static proyecto_bases_datos.TablasController.conection;
 import proyecto_bases_datos.managment.JDBC;
 
 /**

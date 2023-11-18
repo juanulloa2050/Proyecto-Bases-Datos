@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="336.0" prefWidth="372.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.BusquedasController">
+<AnchorPane id="AnchorPane" prefHeight="336.0" prefWidth="372.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Controllers.BusquedasController">
    <children>
       <Button fx:id="btn_una_tabla" layoutX="96.0" layoutY="146.0" mnemonicParsing="false" onAction="#click_una_tabla" prefHeight="44.0" prefWidth="180.0" style="-fx-background-color: #B0E0E6;" text="Búsqueda una tabla">
          <font>

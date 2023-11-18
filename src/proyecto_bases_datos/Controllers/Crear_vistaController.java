@@ -1,9 +1,8 @@
-package proyecto_bases_datos;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
+package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,14 +22,12 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class BusquedasController implements Initializable {
+public class Crear_vistaController implements Initializable {
 
     @FXML
-    private Button btn_una_tabla;
-    @FXML
-    private Button btn_dos_tablas;
-    @FXML
     private Button btn_volver;
+    @FXML
+    private Button btn_crear;
 
     /**
      * Initializes the controller class.
@@ -41,32 +38,22 @@ public class BusquedasController implements Initializable {
     }    
 
     @FXML
-    private void click_una_tabla(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busqueda_una_tabla.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Busqueda una tabla");
-        window.show();
-    }
-
-    @FXML
-    private void click_dos_tablas(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas_dos_tablas.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Busqueda dos tabla");
-        window.show();
-    }
-
-    @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Tablas");
+        window.setTitle("Resultado Busqueda");
+        window.show();
+    }
+
+    @FXML
+    private void click_crear(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXMLResultado_busquedas1.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Resultado Busqueda");
         window.show();
     }
     

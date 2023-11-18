@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Modificar_registroController">
+<AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Controllers.Modificar_registroController">
    <children>
       <Button fx:id="btn_añadir" layoutX="242.0" layoutY="55.0" mnemonicParsing="false" onAction="#click_añadir" style="-fx-background-color: #B0E0E6;" text="Añadir">
          <font>

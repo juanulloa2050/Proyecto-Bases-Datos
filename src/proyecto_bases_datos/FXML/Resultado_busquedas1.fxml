@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Resultado_busquedas1Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Resultado_busquedas1Controller">
    <children>
       <Button fx:id="btn_volver" layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="34.0" prefWidth="67.0" style="-fx-background-color: #FFFACD;" text="volver">
          <font>

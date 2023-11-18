@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="211.0" prefWidth="344.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Nueva_baseDController">
+<AnchorPane id="AnchorPane" prefHeight="211.0" prefWidth="344.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Nueva_baseDController">
    <children>
       <TextField fx:id="txt_nombre_baseD" alignment="CENTER" layoutX="80.0" layoutY="67.0" promptText="Nombre base de datos">
          <font>

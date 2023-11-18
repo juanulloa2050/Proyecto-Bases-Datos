@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="698.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Condiciones_busqueda_cruzadaController">
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="698.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Condiciones_busqueda_cruzadaController">
    <children>
       <ChoiceBox fx:id="desp_atributo_relacionTabla1" layoutX="215.0" layoutY="180.0" onMouseClicked="#atributoTabla1Relacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
       <ChoiceBox fx:id="desp_operador_relacion" layoutX="316.0" layoutY="180.0" onMouseClicked="#operadorRelacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />

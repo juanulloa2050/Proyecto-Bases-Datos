@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="420.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Crear_vistaController">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="420.0" style="-fx-background-color: white;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="proyecto_bases_datos.Controllers.Crear_vistaController">
    <children>
       <Button fx:id="btn_volver" layoutX="56.0" layoutY="142.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #FFFACD;" text="Volver">
          <font>

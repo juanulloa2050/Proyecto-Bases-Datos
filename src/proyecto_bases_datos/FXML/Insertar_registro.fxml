@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="390.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Insertar_registroController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="390.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Insertar_registroController">
    <children>
       <Button fx:id="btn_insertar" layoutX="125.0" layoutY="320.0" mnemonicParsing="false" onAction="#click_insertar" prefHeight="25.0" prefWidth="148.0" style="-fx-background-color: #B0E0E6;" text="Insertar Dato">
          <font>

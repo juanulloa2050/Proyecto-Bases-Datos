@@ -1,4 +1,4 @@
-package proyecto_bases_datos;
+package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;

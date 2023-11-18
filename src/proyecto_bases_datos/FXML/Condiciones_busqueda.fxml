@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="451.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Condiciones_busquedaController">
+<AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="451.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Condiciones_busquedaController">
    <children>
       <Label layoutX="16.0" layoutY="386.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
          <font>

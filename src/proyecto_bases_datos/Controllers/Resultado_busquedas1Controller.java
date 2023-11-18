@@ -2,13 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package proyecto_bases_datos;
+package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -21,11 +23,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -34,16 +38,21 @@ import proyecto_bases_datos.managment.JDBC;
  *
  * @author juanu
  */
-public class Resultado_busquedas2Controller implements Initializable {
+public class Resultado_busquedas1Controller implements Initializable {
 
     @FXML
     private Button btn_volver;
     @FXML
     private Button btn_crear_vista;
-    private JDBC conection;
-    private String queriee;
+    @FXML
+    private Button btn_borrar;
+    @FXML
+    private Button btn_modificar;
     @FXML
     private TabPane tabPane_Tablaresultado;
+    private String tablaSelected;
+    private String queriee;
+    public static JDBC conection;
 
     /**
      * Initializes the controller class.
@@ -51,11 +60,21 @@ public class Resultado_busquedas2Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+  
     }    
+      public void setConnection(JDBC connection) {
+        conection = connection;
+    }
+    public void setTablaSelected(String tablaSelecteds) {
+        tablaSelected = tablaSelecteds;
+    }
+    public void setQuerie(String querie) {
+        queriee = querie;
+    }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda_cruzada.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -64,14 +83,29 @@ public class Resultado_busquedas2Controller implements Initializable {
     }
 
     @FXML
-    private void click_crear_vista(ActionEvent event) {
+    private void click_crear_vista(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Crear_vista.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Crear Vista");
+        window.show();
     }
-          public void setConnection(JDBC connection) {
-        conection = connection;
+
+    @FXML
+    private void click_borrar(ActionEvent event) {
     }
-    public void setQuerie(String querie) {
-        queriee = querie;
+
+    @FXML
+    private void click_modificar(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_registro.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Modificar registro");
+        window.show();
     }
+
     public void usarInformacion() throws SQLException {
         // Ejecutar la consulta SQL y obtener el ResultSet
         ResultSet rs = conection.getRs(queriee);
@@ -109,5 +143,5 @@ public class Resultado_busquedas2Controller implements Initializable {
         Tab tab = tabPane_Tablaresultado.getTabs().get(0);
         tab.setContent(tableView);
     }
-    
 }
+

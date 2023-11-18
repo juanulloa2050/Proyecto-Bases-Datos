@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="378.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.KeyController">
+<AnchorPane id="AnchorPane" prefHeight="203.0" prefWidth="378.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.KeyController">
    <children>
       <Button fx:id="btn_volver" layoutX="216.0" layoutY="158.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #FFFACD;" text="Volver" />
       <Label layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="134.0" text="Nombre del atributo:">

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package proyecto_bases_datos;
+package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
@@ -22,12 +23,14 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Crear_vistaController implements Initializable {
+public class Insertar_registroController implements Initializable {
 
     @FXML
-    private Button btn_volver;
+    private Button btn_insertar;
     @FXML
-    private Button btn_crear;
+    private Label txt_titulo;
+    @FXML
+    private Button btn_volver;
 
     /**
      * Initializes the controller class.
@@ -38,22 +41,16 @@ public class Crear_vistaController implements Initializable {
     }    
 
     @FXML
-    private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Resultado Busqueda");
-        window.show();
+    private void click_insertar(ActionEvent event) {
     }
 
     @FXML
-    private void click_crear(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXMLResultado_busquedas1.fxml"));
+    private void click_volver(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
-        window.setTitle("Resultado Busqueda");
+        window.setTitle("Tablas");
         window.show();
     }
     

@@ -1,8 +1,9 @@
+package proyecto_bases_datos.Controllers;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,7 +16,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 /**
@@ -23,14 +23,12 @@ import javafx.stage.Stage;
  *
  * @author juanu
  */
-public class Crear_tablaController implements Initializable {
+public class BusquedasController implements Initializable {
 
     @FXML
-    private Button btn_añadir;
+    private Button btn_una_tabla;
     @FXML
-    private TextField txt_nombre;
-    @FXML
-    private Button btn_crear;
+    private Button btn_dos_tablas;
     @FXML
     private Button btn_volver;
 
@@ -43,11 +41,23 @@ public class Crear_tablaController implements Initializable {
     }    
 
     @FXML
-    private void click_añadir(ActionEvent event) {
+    private void click_una_tabla(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busqueda_una_tabla.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Busqueda una tabla");
+        window.show();
     }
 
     @FXML
-    private void click_crear(ActionEvent event) {
+    private void click_dos_tablas(ActionEvent event) throws IOException {
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas_dos_tablas.fxml"));
+        Scene MostrarScene = new Scene(MostrarParent);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(MostrarScene);
+        window.setTitle("Busqueda dos tabla");
+        window.show();
     }
 
     @FXML
