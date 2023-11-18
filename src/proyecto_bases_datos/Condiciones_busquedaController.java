@@ -154,6 +154,7 @@ public class Condiciones_busquedaController implements Initializable {
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Error con la base base de datos");
+            e.printStackTrace();
             alert.showAndWait();
         }
     }

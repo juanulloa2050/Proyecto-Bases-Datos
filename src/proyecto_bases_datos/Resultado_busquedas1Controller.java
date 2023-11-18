@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -106,18 +107,41 @@ public class Resultado_busquedas1Controller implements Initializable {
     }
 
     public void usarInformacion() throws SQLException {
-            // Ejecutar la consulta SQL y obtener el ResultSet
-            ResultSet rs = conection.getRs(queriee);
-            // Obtener los metadatos del ResultSet
-            ResultSetMetaData metaData = rs.getMetaData();
-            System.out.println(metaData);
-            // Obtener el número de columnas
-            int columnCount = metaData.getColumnCount();
-            // Añadir una pestaña al TabPane para cada columna en el resultado
+        // Ejecutar la consulta SQL y obtener el ResultSet
+        ResultSet rs = conection.getRs(queriee);
+        // Obtener los metadatos del ResultSet
+        ResultSetMetaData metaData = rs.getMetaData();
+        // Obtener el número de columnas
+        int columnCount = metaData.getColumnCount();
+    
+        // Crear una nueva TableView
+        TableView<ObservableList<String>> tableView = new TableView<>();
+    
+        // Crear una columna para cada columna en el ResultSet
+        for (int i = 1; i <= columnCount; i++) {
+            String columnName = metaData.getColumnName(i);
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(columnName);
+            final int columnIndex = i - 1;
+            column.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(columnIndex)));
+            tableView.getColumns().add(column);
+        }
+    
+        // Cargar los datos en la tabla
+        while (rs.next()) {
+            ObservableList<String> row = FXCollections.observableArrayList();
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnName(i);
-                Tab newTab = new Tab(columnName);
-                tabPane_Tablaresultado.getTabs().add(newTab);
+                row.add(rs.getString(i));
             }
+            tableView.getItems().add(row);
+        }
+    
+        // Añadir la TableView a la primera pestaña
+        if (tabPane_Tablaresultado.getTabs().isEmpty()) {
+            Tab newTab = new Tab();
+            tabPane_Tablaresultado.getTabs().add(newTab);
+        }
+        Tab tab = tabPane_Tablaresultado.getTabs().get(0);
+        tab.setContent(tableView);
     }
 }
+
