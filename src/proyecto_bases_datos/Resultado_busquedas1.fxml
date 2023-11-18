@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Resultado_busquedas1Controller">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Resultado_busquedas1Controller">
    <children>
       <Button fx:id="btn_volver" layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="34.0" prefWidth="67.0" style="-fx-background-color: #FFFACD;" text="volver">
          <font>
@@ -26,5 +27,6 @@
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
+      <TabPane fx:id="tabPane_Tablaresultado" layoutY="1.0" prefHeight="291.0" prefWidth="601.0" tabClosingPolicy="UNAVAILABLE" />
    </children>
 </AnchorPane>

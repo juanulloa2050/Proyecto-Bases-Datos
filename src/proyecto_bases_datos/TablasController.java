@@ -79,6 +79,7 @@ public class TablasController implements Initializable {
         if (conection != null) {
         usarInformacion();    
         }
+
     }
 //crea las tablas y las describe
 public void usarInformacion() {
