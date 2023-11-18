@@ -148,7 +148,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
         loader.load();
         KeyController keyController= loader.getController();
         keyController.setConnection(conection);
-        keyController.setTableSelected(tableSelected); 
+        KeyController.setTableSelected(tableSelected); 
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

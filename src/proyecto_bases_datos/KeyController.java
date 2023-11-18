@@ -119,38 +119,42 @@ public class KeyController implements Initializable {
             key = "FOREIGN KEY";
             String DESCRIBE_TABLE = "DESCRIBE " + tableSelected;
             ArrayList<String> atributos = new ArrayList<String>();
-            ArrayList<String> compatibleArrayList = conection.getDatafromOneField(DESCRIBE_TABLE, "Type");
-            for (String elemento : compatibleArrayList) {
-                if (elemento.equals(tipoDato)) {
-                    atributos.add(elemento);
+            ArrayList<String> nombresArrayList = conection.getDatafromOneField(DESCRIBE_TABLE, "Field");
+            ArrayList<String> tiposArrayList = conection.getDatafromOneField(DESCRIBE_TABLE, "Type");
+            
+            for (int i = 0; i < nombresArrayList.size(); i++) {
+               String nombreAtributo = nombresArrayList.get(i);
+                String tipoAtributo = tiposArrayList.get(i);
+                if (tipoAtributo.equalsIgnoreCase(tipoDato)) {
+                    atributos.add(nombreAtributo + " (" + tipoAtributo + ")");
                 }
             }
-
-            if (atributos.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+            String[] atributosArray = atributos.toArray(new String[0]);
+             String atributoSeleccionado= "";
+            if (atributos.size() > 0) {
+                atributoSeleccionado = (String) JOptionPane.showInputDialog(null,
+                        "Selecciona el atributo al que se va a referenciar la clave foránea:",
+                        "Selecciona un atributo", JOptionPane.QUESTION_MESSAGE, null, atributosArray, atributosArray[0]);
+                if (atributoSeleccionado != null) {
+                    key = "FOREIGN KEY";
+                    String nombreAtributoSeleccionado = atributoSeleccionado.substring(0, atributoSeleccionado.indexOf('(')).trim();
+                    String createIndexSql = "CREATE INDEX idx_" + nombreAtributoSeleccionado + " ON " + tableSelected + "(" + nombreAtributoSeleccionado + ")";
+                    conection.Statment(createIndexSql);
+                    sql = "ALTER TABLE " + tableSelected +
+                            " ADD COLUMN " + nombre + " " + tipoDato + ", " +
+                            "ADD CONSTRAINT " + nombre +
+                            " FOREIGN KEY (" + nombre + ")" +
+                            " REFERENCES " + tableSelected + "(" + nombreAtributoSeleccionado + ")";
+                    click_volver(event);
+                }
+            } else {
+                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Dialog");
                 alert.setHeaderText("Error");
                 alert.setContentText("No hay ningún atributo compatible.");
                 alert.showAndWait();
                 return;
-            }
-
-            String[] atributosArray = atributos.toArray(new String[0]);
-
-            String atributoSeleccionado = (String) JOptionPane.showInputDialog(null,
-                    "Selecciona el atributo al que se va a referenciar la clave foránea:",
-                    "Selecciona un atributo", JOptionPane.QUESTION_MESSAGE, null, atributosArray, atributosArray[0]);
-
-            if (atributoSeleccionado != null) {
-                // Aquí puedes continuar con la creación de tu clave foránea
-                key = "FOREIGN KEY";
-                sql = "ALTER TABLE " + tableSelected +
-                        " ADD COLUMN " + nombre + " " + tipoDato + ", " +
-                        "ADD CONSTRAINT " + nombre +
-                        " FOREIGN KEY (" + nombre + ")" +
-                        " REFERENCES " + tableSelected + "(" + atributoSeleccionado + ")";
-            }
-
+             }
         }
         try {
             conection.Statment(sql);
