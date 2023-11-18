@@ -9,6 +9,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -22,10 +24,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -48,6 +54,9 @@ public class Resultado_busquedas1Controller implements Initializable {
     private TabPane tabPane_Tablaresultado;
     private String queriee;
     public static JDBC conection;
+    List<String> informacionFila;
+    
+
 
     /**
      * Initializes the controller class.
@@ -83,9 +92,10 @@ public class Resultado_busquedas1Controller implements Initializable {
         window.setTitle("Crear Vista");
         window.show();
     }
-
+    //Lo que debe estar despues de lo del click derecho encima de la tabla
     @FXML
     private void click_borrar(ActionEvent event) {
+        System.out.println(informacionFila);
     }
 
     @FXML
@@ -97,6 +107,9 @@ public class Resultado_busquedas1Controller implements Initializable {
         window.setTitle("Modificar registro");
         window.show();
     }
+
+
+
 
     public void usarInformacion() throws SQLException {
         // Ejecutar la consulta SQL y obtener el ResultSet
@@ -134,6 +147,16 @@ public class Resultado_busquedas1Controller implements Initializable {
         }
         Tab tab = tabPane_Tablaresultado.getTabs().get(0);
         tab.setContent(tableView);
+
+        //coge el array de la fila seleccionada. 
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                informacionFila = new ArrayList<>(newSelection);
+            }
+        });
     }
+
+
+    
 }
 
