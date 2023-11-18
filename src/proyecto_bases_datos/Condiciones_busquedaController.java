@@ -6,6 +6,7 @@ package proyecto_bases_datos;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,10 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -52,26 +55,92 @@ public class Condiciones_busquedaController implements Initializable {
     private ScrollPane scrollPane;
      @FXML
     private VBox vBoxAddAtributos;
+    @FXML
+    private TextField valor1;
+    @FXML
+    private TextField valor2;
+    @FXML
+    private ChoiceBox<String> operadorLogico;
     private int contadorAtributos = 1;
     String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
-
-
-    
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
     }
+    public String queryUnaTabla(){
+        StringBuilder query = new StringBuilder();
+        query.append("Select");
+        for (ChoiceBox<String> sel: choiceBoxAtributos){
+            if (sel.getSelectionModel().getSelectedItem()==null){
+                throw new NullPointerException();
+            } else{
+                query.append(" "+sel.getSelectionModel().getSelectedItem());
+                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributos.get(choiceBoxAtributos.size()-1).getSelectionModel().getSelectedItem())){
+                    query.append(",");
+                }
+            }
+            
+        }
+        query.append(" from "+tablaSelected+" where ");
+        if (dep_atributo1.getSelectionModel().getSelectedItem() == null || 
+            desp_operador1.getSelectionModel().getSelectedItem()==null ||
+            valor1.getText()==null
+            ){
+                if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
+                desp_operador2.getSelectionModel().getSelectedItem()==null ||
+                valor2.getText()==null
+                ){throw new NullPointerException("");}
+                    
+                query.append(desp_atributo2.getSelectionModel().getSelectedItem()
+                +" "+desp_operador2.getSelectionModel().getSelectedItem()
+                +" "+valor2.getText());
+        } else{
+            query.append(dep_atributo1.getSelectionModel().getSelectedItem()
+            +" "+desp_operador1.getSelectionModel().getSelectedItem()
+            +" "+valor1.getText());
+            if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
+                desp_operador2.getSelectionModel().getSelectedItem()==null ||
+                valor2.getText()==null ||
+                operadorLogico.getSelectionModel().getSelectedItem()==null
+                ){query.append("");}
+                else{
+                    query.append(" "+operadorLogico.getSelectionModel().getSelectedItem()
+                    +" "+desp_atributo2.getSelectionModel().getSelectedItem()
+                    +" "+desp_operador2.getSelectionModel().getSelectedItem()
+                    +" "+valor2.getText());
+                }
+        }
+        query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
+        return query.toString();
+    }
    
-    @FXML //Aca toca hacer la busqueda sql.. Feo :(
+    @FXML 
     private void click_continuar(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Resultado Busqueda");
-        window.show();
+        System.out.println(queryUnaTabla()); //llenar esto con try cath para los erroes que lance
+        //, como si la busqueda quedo mal en sql, el nullpointer, y mas cosas que pueden salir. 
+        try{
+            //Cambio de slide
+                Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas1.fxml"));
+                Scene MostrarScene = new Scene(MostrarParent);
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                window.setScene(MostrarScene);
+                window.setTitle("Resultado Busqueda");
+                window.show();
+        }catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Revise los espacios vacios, vuelva a intentarlo");
+            alert.showAndWait();
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error con la base base de datos");
+            alert.showAndWait();
+        }
+        
     }
 
     @FXML
@@ -89,6 +158,7 @@ public class Condiciones_busquedaController implements Initializable {
         Label numeroAtributo = new Label("Atributo #" + contadorAtributos);
         ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
         nuevoAtributo.getItems().clear();
+        nuevoAtributo.getItems().addAll("*");
         nuevoAtributo.getItems().addAll(conection.getDatafromOneField("Describe "+tablaSelected+";","Field"));
         //Agregarlo a la lista local
         choiceBoxAtributos.add(nuevoAtributo);
@@ -138,6 +208,11 @@ public class Condiciones_busquedaController implements Initializable {
         desp_operador1.getItems().clear();
         // Agregar operadores al ChoiceBox desp_operador1
         desp_operador1.getItems().addAll(operadores);
+    }
+    @FXML
+    private void operadorLogico(){
+        operadorLogico.getItems().clear();
+        operadorLogico.getItems().addAll("AND", "OR");
     }
     //Atributos
     @FXML
