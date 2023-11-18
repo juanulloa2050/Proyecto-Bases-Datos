@@ -9,8 +9,6 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -23,13 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -50,7 +46,6 @@ public class Resultado_busquedas1Controller implements Initializable {
     private Button btn_modificar;
     @FXML
     private TabPane tabPane_Tablaresultado;
-    private String tablaSelected;
     private String queriee;
     public static JDBC conection;
 
@@ -64,9 +59,6 @@ public class Resultado_busquedas1Controller implements Initializable {
     }    
       public void setConnection(JDBC connection) {
         conection = connection;
-    }
-    public void setTablaSelected(String tablaSelecteds) {
-        tablaSelected = tablaSelecteds;
     }
     public void setQuerie(String querie) {
         queriee = querie;

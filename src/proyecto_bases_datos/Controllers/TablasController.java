@@ -11,9 +11,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.swing.JOptionPane;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -140,7 +137,7 @@ public void usarInformacion() {
     private void click_modificar(ActionEvent event) throws IOException {
         //Pasar informacion controller
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_tabla.fxml"));
-        Parent root =loader.load();
+        loader.load();
         TablasController.getConection();
         Modificar_tablaController modtablasController= loader.getController();
         modtablasController.setConnection(conection);
@@ -222,12 +219,12 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
     @FXML
     private void click_buscar(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Busqueda_una_tabla.fxml"));
-        Parent root= loader.load();
+        loader.load();
         Busqueda_una_tablaController busquedaUnaTabla= loader.getController();
         busquedaUnaTabla.setConnection(TablasController.getConection());
         //Envio coneccion al frame de dos tablas para la busqueda
         FXMLLoader loader2=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas_dos_tablas.fxml"));
-        Parent root2=loader2.load();
+        loader2.load();
         Busquedas_dos_tablasController busquedaDosTablas=loader2.getController();
         busquedaDosTablas.setConnection(TablasController.getConection());
             //cambio de frame        

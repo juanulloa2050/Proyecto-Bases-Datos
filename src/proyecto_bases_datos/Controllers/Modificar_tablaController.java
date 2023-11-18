@@ -3,9 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package proyecto_bases_datos.Controllers;
-
-import static proyecto_bases_datos.Controllers.TablasController.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
