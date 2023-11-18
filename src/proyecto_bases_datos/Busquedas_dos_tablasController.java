@@ -83,13 +83,13 @@ public class Busquedas_dos_tablasController implements Initializable {
                 throw new SQLException("");
             }
             // envio de datos al frame condiciones busqueda cruzada
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Condiciones_busqueda_cruzada.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda_cruzada.fxml"));
             loader.load();
             Condiciones_busqueda_cruzadaController condBusquedaCruzada=loader.getController();
             condBusquedaCruzada.setConnection(conection);
             condBusquedaCruzada.setTablaSelected(desp_tabla1.getSelectionModel().getSelectedItem(),desp_tabla2.getSelectionModel().getSelectedItem() );
             //cambio de frame
-            Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda_cruzada.fxml"));
+            Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda_cruzada.fxml"));
             Scene MostrarScene = new Scene(MostrarParent);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(MostrarScene);
@@ -114,7 +114,7 @@ public class Busquedas_dos_tablasController implements Initializable {
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);

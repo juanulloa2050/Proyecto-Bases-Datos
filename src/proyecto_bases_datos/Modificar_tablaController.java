@@ -144,12 +144,12 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
 //Cambiarle el nombre al metodo, no tiene sentido 
     @FXML
     private void click_campo(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("key.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/key.fxml"));
         loader.load();
         KeyController keyController= loader.getController();
         keyController.setConnection(conection);
         KeyController.setTableSelected(tableSelected); 
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Modificar tabla: "+conection.getBaseDatos());
@@ -176,7 +176,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
  //DEfinir que es este metodo no entiendo
     @FXML
     private void click_key(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("key.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Añadir Key");
@@ -187,7 +187,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Modificar tabla: "+conection.getBaseDatos());

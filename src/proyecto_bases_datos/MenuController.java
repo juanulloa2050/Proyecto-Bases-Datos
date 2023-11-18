@@ -82,13 +82,13 @@ public class MenuController implements Initializable {
         //Cambiar la base de datos seleccionada
         conection.setBaseDatos(desp_bases.getSelectionModel().getSelectedItem());
         //Envio de datos
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Tablas.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         loader.load();
         TablasController tablasController= loader.getController();
         tablasController.setConnection(conection);
         TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
         //Cambio de slide.
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -115,12 +115,12 @@ private void click_eliminar(ActionEvent event) throws SQLException {
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
         //Envia el objeto a la otra clase
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Nueva_baseD.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Nueva_baseD.fxml"));
         loader.load();
         Nueva_baseDController newDataBase= loader.getController();
         newDataBase.setConnection(conection);
         //Cambio de pesataña
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Nueva_baseD.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Nueva_baseD.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Nueva base de datos");
@@ -130,7 +130,7 @@ private void click_eliminar(ActionEvent event) throws SQLException {
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Interfaz.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Interfaz.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Acceso");
@@ -140,5 +140,7 @@ private void click_eliminar(ActionEvent event) throws SQLException {
 
     @FXML
     private void click_exit(ActionEvent event) {
+        //cerrar el programa
+        System.exit(0);
     }
 }

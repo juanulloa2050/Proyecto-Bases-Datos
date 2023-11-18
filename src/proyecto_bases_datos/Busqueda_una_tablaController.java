@@ -70,13 +70,13 @@ public class Busqueda_una_tablaController implements Initializable {
                 throw new NullPointerException("");
             } 
             //envio de datos al siguiente controller
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Condiciones_busqueda.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda.fxml"));
             loader.load();
             Condiciones_busquedaController condBusquedaCon=loader.getController();
             condBusquedaCon.setConnection(conection);
             condBusquedaCon.setTablaSelected(desp_tabla.getSelectionModel().getSelectedItem());
             //Cambiar de slide
-            Parent MostrarParent = FXMLLoader.load(getClass().getResource("Condiciones_busqueda.fxml"));
+            Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Condiciones_busqueda.fxml"));
             Scene MostrarScene = new Scene(MostrarParent);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(MostrarScene);
@@ -94,7 +94,7 @@ public class Busqueda_una_tablaController implements Initializable {
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);

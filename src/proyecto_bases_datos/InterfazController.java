@@ -58,13 +58,13 @@ public class InterfazController implements Initializable {
             //Crea la conexion
             connection =new JDBC("mysql","world", usuario, clave, puerto);
             //Envia el objeto a la otra clase
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("Menu.fxml"));
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
             root =loader.load();
             MenuController menuDataBases= loader.getController();
             menuDataBases.setConnection(connection);
             
             //CAmbio de frame
-            root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
             Stage stage = (Stage) btn_acceder.getScene().getWindow();
             stage.setScene(new Scene(root)); 
             stage.setTitle("Menu");

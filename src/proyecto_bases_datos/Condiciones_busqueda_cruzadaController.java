@@ -294,7 +294,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     //Metodos funcionales
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas_dos_tablas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas_dos_tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -304,7 +304,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
         System.out.println(queryUnaTabla());
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Resultado_busquedas2.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas2.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Resultado_busquedas2Controller rBusquedas2Controller = new Resultado_busquedas2Controller();

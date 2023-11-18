@@ -139,7 +139,7 @@ public void usarInformacion() {
     @FXML
     private void click_modificar(ActionEvent event) throws IOException {
         //Pasar informacion controller
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Modificar_tabla.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_tabla.fxml"));
         Parent root =loader.load();
         TablasController.getConection();
         Modificar_tablaController modtablasController= loader.getController();
@@ -148,7 +148,7 @@ public void usarInformacion() {
 modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());        
 
         //Change the slide
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Modificar_tabla.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setTitle("Modificar tabla " + conection.getBaseDatos() + ":");
@@ -159,7 +159,7 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 
     @FXML
     private void click_crear(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Crear_tabla.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Crear_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -189,7 +189,7 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -200,7 +200,7 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 
     @FXML
     private void click_borrar_registro(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Eliminar_registro.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Eliminar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -211,7 +211,7 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 
     @FXML
     private void click_nuevo_dato(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Insertar_registro.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Insertar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);
@@ -221,17 +221,17 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
 //Inicio de busquedas
     @FXML
     private void click_buscar(ActionEvent event) throws IOException {
-        FXMLLoader loader=new FXMLLoader(getClass().getResource("Busqueda_una_tabla.fxml"));
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Busqueda_una_tabla.fxml"));
         Parent root= loader.load();
         Busqueda_una_tablaController busquedaUnaTabla= loader.getController();
         busquedaUnaTabla.setConnection(TablasController.getConection());
         //Envio coneccion al frame de dos tablas para la busqueda
-        FXMLLoader loader2=new FXMLLoader(getClass().getResource("Busquedas_dos_tablas.fxml"));
+        FXMLLoader loader2=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas_dos_tablas.fxml"));
         Parent root2=loader2.load();
         Busquedas_dos_tablasController busquedaDosTablas=loader2.getController();
         busquedaDosTablas.setConnection(TablasController.getConection());
             //cambio de frame        
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busquedas.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busquedas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(MostrarScene);

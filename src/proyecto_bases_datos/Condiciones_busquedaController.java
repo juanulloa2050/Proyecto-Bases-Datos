@@ -130,7 +130,7 @@ public class Condiciones_busquedaController implements Initializable {
         // pueden salir.
         try {
             // Cambio de slide
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Resultado_busquedas1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
             Parent MostrarParent = loader.load();
             Scene MostrarScene = new Scene(MostrarParent);
             Resultado_busquedas1Controller rBusquedas1Controller = loader.getController();
@@ -160,7 +160,7 @@ public class Condiciones_busquedaController implements Initializable {
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("Busqueda_una_tabla.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Busqueda_una_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 

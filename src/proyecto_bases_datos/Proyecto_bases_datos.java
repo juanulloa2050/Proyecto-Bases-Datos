@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class Proyecto_bases_datos extends Application {
      @Override
     public void start(Stage ventana) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Interfaz.fxml")); //Arma la ventana con el XML
+        Parent root = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Interfaz.fxml")); //Arma la ventana con el XML
         Scene scene = new Scene(root);
         ventana.setScene(scene);
         ventana.setTitle("Acceso");
