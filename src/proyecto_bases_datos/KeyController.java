@@ -55,6 +55,7 @@ public class KeyController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        llenarTiposDatos();
         CheckPrimaryKey.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
                 CheckForeignKey.setSelected(false);

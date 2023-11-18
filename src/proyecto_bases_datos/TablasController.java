@@ -76,7 +76,9 @@ public class TablasController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        usarInformacion();
+        if (conection != null) {
+        usarInformacion();    
+        }
     }
 //crea las tablas y las describe
 public void usarInformacion() {
@@ -116,7 +118,7 @@ public void usarInformacion() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Esta seguro de continuar");
         alert.setHeaderText(null);
-        alert.setContentText("Revise la coneccion con la base de datos Map");
+        alert.setContentText("Revise la conexión con la base de datos Map");
         alert.showAndWait();
     }
     

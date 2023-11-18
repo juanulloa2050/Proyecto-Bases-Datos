@@ -55,7 +55,7 @@ public class Busqueda_una_tablaController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Conection");
             alert.setHeaderText(null);
-            alert.setContentText("Revise la coneccion con la base de datos");
+            alert.setContentText("Revise la conexión con la base de datos");
             alert.showAndWait();
         }
     }   

@@ -152,7 +152,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Key.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos());
+        window.setTitle("Modificar tabla: "+conection.getBaseDatos());
         window.setScene(MostrarScene);
         window.show();
     }
@@ -190,7 +190,7 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Modificar tabla: "+"ENTABLA:::   "+conection.getBaseDatos());
+        window.setTitle("Modificar tabla: "+conection.getBaseDatos());
         window.setScene(MostrarScene);
         window.show();
     }
