@@ -117,8 +117,7 @@ public class Condiciones_busquedaController implements Initializable {
                         + " " + desp_operador2.getSelectionModel().getSelectedItem()
                         + " " + valor2.getText());
             }
-        }
-        query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
+        } // Limitar lineas de busquedas, valor que puede cambiar
         return query.toString();
     }
 
