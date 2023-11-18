@@ -159,6 +159,8 @@ modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelec
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Crear_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Crear_tablaController crearTablaController = new Crear_tablaController();
+        crearTablaController.setConnection(conection);
         window.setScene(MostrarScene);
         window.setTitle("Crear Tabla");
         window.show();
