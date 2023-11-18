@@ -11,12 +11,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="441.0" prefWidth="364.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Condiciones_busquedaController">
    <children>
-      <Label layoutX="14.0" layoutY="346.0" prefHeight="26.0" prefWidth="96.0" text="Condición 1:">
+      <Label layoutX="14.0" layoutY="359.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="285.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
+      <Label layoutX="14.0" layoutY="298.0" prefHeight="26.0" prefWidth="96.0" text="Condición 1:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
@@ -82,9 +82,9 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ScrollPane layoutX="93.0" layoutY="101.0" prefHeight="173.0" prefWidth="190.0">
+      <ScrollPane layoutX="58.0" layoutY="101.0" prefHeight="173.0" prefWidth="259.0">
          <content>
-            <VBox fx:id="vBoxAddAtributos" prefHeight="171.0" prefWidth="171.0" />
+            <VBox fx:id="vBoxAddAtributos" prefHeight="171.0" prefWidth="243.0" />
          </content>
       </ScrollPane>
       <Button fx:id="btn_menus1" layoutX="285.0" layoutY="37.0" mnemonicParsing="false" onAction="#click_menus1" prefHeight="26.0" prefWidth="35.0" style="-fx-background-color: #B0E0E6;" text="-">

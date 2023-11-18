@@ -40,6 +40,9 @@ public class Busqueda_una_tablaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        if (conection!=null) {
+         choicebox_action();   
+        }
     }
      
      
