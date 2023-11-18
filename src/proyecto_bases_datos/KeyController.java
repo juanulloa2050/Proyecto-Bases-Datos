@@ -84,7 +84,10 @@ public class KeyController implements Initializable {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Base de datos:" + conection.getBaseDatos());
+        if (window !=null) {
+            window.setTitle("Base de datos:" + conection.getBaseDatos());
+        } else{  System.out.println("La ventana es null");}
+        
         window.setScene(MostrarScene);
         window.show();
     }
@@ -145,7 +148,6 @@ public class KeyController implements Initializable {
                             "ADD CONSTRAINT " + nombre +
                             " FOREIGN KEY (" + nombre + ")" +
                             " REFERENCES " + tableSelected + "(" + nombreAtributoSeleccionado + ")";
-                    click_volver(event);
                 }
             } else {
                  Alert alert = new Alert(Alert.AlertType.ERROR);
