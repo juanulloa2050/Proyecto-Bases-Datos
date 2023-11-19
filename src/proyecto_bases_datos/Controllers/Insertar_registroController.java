@@ -40,6 +40,7 @@ public class Insertar_registroController implements Initializable {
     @FXML
     private Button btn_volver;
     private static ArrayList<String> atributos;
+    private static ArrayList<String> tipos;
     private static ArrayList<TextField> listaTextField=new ArrayList<>();
 
     /**
@@ -56,7 +57,7 @@ public class Insertar_registroController implements Initializable {
             Label atributo = new Label("Para "+atributos.get(j));
             vBoxRegistros.getChildren().add(atributo);
             TextField valor =new TextField();
-            valor.setPromptText("Ingrese el nuevo valor");
+            valor.setPromptText("Ingrese el nuevo valor para "+atributos.get(j)+" de tipo "+ tipos.get(j));
             listaTextField.add(valor);
             vBoxRegistros.getChildren().add(valor);
         } 
@@ -79,6 +80,10 @@ public class Insertar_registroController implements Initializable {
     //Setters
     public void setConnection(JDBC connection) {
         conection = connection;
+    }
+    public void setTiposSeleccionados(ArrayList<String> tiposSelected) {
+        tipos=new ArrayList<>(tiposSelected);
+        
     }
     public void setColumnasSeleccionadas(ArrayList<String> columnasSelected){
         atributos=new ArrayList<>( columnasSelected);

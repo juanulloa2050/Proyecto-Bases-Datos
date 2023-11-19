@@ -211,9 +211,10 @@ public void usarInformacion() {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Insertar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Insertar_registroController insertarRegitro=load.getController();
-        insertarRegitro.setConnection(conection);
-        insertarRegitro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
+        Insertar_registroController insertarRegistro=load.getController();
+        insertarRegistro.setConnection(conection);
+        insertarRegistro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
+        insertarRegistro.setTiposSeleccionados(conection.getDatafromOneField(query, "Type"));
         window.setScene(MostrarScene);
         window.setTitle("Insertar Registro");
         window.show();
