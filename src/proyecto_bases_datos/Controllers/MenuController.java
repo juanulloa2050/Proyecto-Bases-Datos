@@ -3,6 +3,9 @@ package proyecto_bases_datos.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -87,7 +90,10 @@ public class MenuController implements Initializable {
         loader.load();
         TablasController tablasController= loader.getController();
         tablasController.setConnection(conection);
-        TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
+        if (desp_bases.getSelectionModel().getSelectedItem()==null) {
+            JOptionPane.showMessageDialog(null, "Seleccione una base de datos");
+        }else{
+TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
         //Cambio de slide.
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
@@ -95,6 +101,8 @@ public class MenuController implements Initializable {
         window.setScene(MostrarScene);
         window.setTitle("Menu Tablas, esta en la base de datos: "+conection.getBaseDatos());
         window.show();
+        }
+        
     }
 
     
