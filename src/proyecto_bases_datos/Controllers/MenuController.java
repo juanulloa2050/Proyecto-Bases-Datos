@@ -10,6 +10,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -25,7 +26,7 @@ import javafx.scene.Scene;
 public class MenuController implements Initializable {
     public static JDBC conection;
     @FXML
-    private ChoiceBox<String> desp_bases;
+    private ComboBox<String> desp_bases; // Cambiado de ChoiceBox a ComboBox
     @FXML
     private Button btn_acceder;
     @FXML
