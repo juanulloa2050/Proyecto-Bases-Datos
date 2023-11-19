@@ -99,7 +99,7 @@ public class Modificar_registroController implements Initializable {
 
     @FXML
     private void click_modificar(ActionEvent event) {
-        System.out.println("lo que guarda"+queriee);
+        //Hacer lo de la query
     }
 
     @FXML

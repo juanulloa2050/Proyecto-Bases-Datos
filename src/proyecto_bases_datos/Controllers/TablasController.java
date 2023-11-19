@@ -210,9 +210,15 @@ public void usarInformacion() {
 
     @FXML
     private void click_nuevo_dato(ActionEvent event) throws IOException {
+        String query="Describe "+TabPane_Tablas.getSelectionModel().getSelectedItem().getText();
+        FXMLLoader load=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Insertar_registro.fxml"));
+        load.load();
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Insertar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Insertar_registroController insertarRegitro=load.getController();
+        insertarRegitro.setConnection(conection);
+        insertarRegitro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
         window.setScene(MostrarScene);
         window.setTitle("Insertar Registro");
         window.show();
