@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -51,8 +52,6 @@ public class Condiciones_busquedaController implements Initializable {
     @FXML
     private Button btn_menus1;
     @FXML
-    private ScrollPane scrollPane;
-    @FXML
     private VBox vBoxAddAtributos;
     @FXML
     private TextField valor1;
@@ -63,6 +62,10 @@ public class Condiciones_busquedaController implements Initializable {
     private int contadorAtributos = 1;
     Resultado_busquedas1Controller rBusquedas1Controller = new Resultado_busquedas1Controller();
     String[] operadores = { "<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
+    @FXML
+    private CheckBox primera_Condición;
+    @FXML
+    private CheckBox segunda_Condicion;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
