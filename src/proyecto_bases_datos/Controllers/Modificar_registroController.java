@@ -39,9 +39,9 @@ import proyecto_bases_datos.managment.JDBC;
 public class Modificar_registroController implements Initializable {
 
     @FXML
-    private Button btn_añadir;
+    private Button btn_modificar;
     @FXML
-    private Button btn_buscar;
+    private Button btn_refrescar;
     @FXML
     private Button btn_volver;
     @FXML
@@ -57,8 +57,8 @@ public class Modificar_registroController implements Initializable {
     private String queriee;
     private String TablaName;
     public static JDBC conection;
-    private ObservableList<String> informacionFila;
-    private List<String> columnasSeleccionadas = new ArrayList<>();
+    private static ObservableList<String> informacionFila;
+    private static ArrayList<String> columnasSeleccionadas=new ArrayList<>();
     private ArrayList<TextField> valores=new ArrayList<>();
 
 
@@ -68,9 +68,11 @@ public class Modificar_registroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }
     @FXML
-    public void todosLosCamposxModificar(){
+    public void refrescar(){
+
         if (columnasSeleccionadas == null || columnasSeleccionadas.isEmpty()) {
             System.out.println("columnasSeleccionadas está vacía");
             return;
@@ -85,23 +87,19 @@ public class Modificar_registroController implements Initializable {
             System.out.println("AtributosxActualizar es null");
             return;
         }
-
+        AtributosxActualizar.getChildren().clear();
         for (int j = 0; j < columnasSeleccionadas.size(); j++) {
             Label atributo = new Label("Para "+columnasSeleccionadas.get(j));
-              AtributosxActualizar.getChildren().add(atributo);
+            AtributosxActualizar.getChildren().add(atributo);
             TextField valor =new TextField(informacionFila.get(j));
             valores.add(valor);
             AtributosxActualizar.getChildren().add(valor);
-        }
-        AtributosxActualizar.setVisible(true);
+        } 
     }  
 
     @FXML
-    private void click_añadir(ActionEvent event) {
-    }
-
-    @FXML
-    private void click_buscar(ActionEvent event) {
+    private void click_modificar(ActionEvent event) {
+        System.out.println("lo que guarda"+columnasSeleccionadas);
     }
 
     @FXML
@@ -139,8 +137,8 @@ public class Modificar_registroController implements Initializable {
             informacionFila = inforow;
         }
     }
-    public void setColumnasSeleccionadas(List<String> columnasSelected){
-        columnasSeleccionadas=columnasSelected;
+    public void setColumnasSeleccionadas(ArrayList<String> columnasSelected){
+        columnasSeleccionadas=new ArrayList<>( columnasSelected);
     }
     
 }

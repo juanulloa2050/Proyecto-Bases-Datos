@@ -21,7 +21,7 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btn_buscar" layoutX="214.0" layoutY="394.0" mnemonicParsing="false" onAction="#click_buscar" prefHeight="46.0" prefWidth="148.0" style="-fx-background-color: #B0E0E6;" text="Actualizar">
+      <Button fx:id="btn_modificar" layoutX="214.0" layoutY="394.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="46.0" prefWidth="148.0" style="-fx-background-color: #B0E0E6;" text="Actualizar">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
@@ -33,7 +33,7 @@
       </Button>
       <ScrollPane fx:id="scrollPane" layoutX="14.0" layoutY="87.0" prefHeight="225.0" prefWidth="372.0">
          <content>
-            <VBox fx:id="AtributosxActualizar" onMouseClicked="#todosLosCamposxModificar" prefHeight="222.0" prefWidth="361.0" />
+            <VBox fx:id="AtributosxActualizar" prefHeight="222.0" prefWidth="361.0" />
          </content>
       </ScrollPane>
       <Label layoutX="14.0" layoutY="324.0" prefHeight="25.0" prefWidth="200.0" text="Condicion primaria">
@@ -44,5 +44,10 @@
       <ChoiceBox fx:id="primaryKey" layoutX="22.0" layoutY="356.0" prefHeight="25.0" prefWidth="115.0" />
       <ChoiceBox fx:id="OperadorprimaryKey" layoutX="161.0" layoutY="356.0" prefHeight="25.0" prefWidth="66.0" />
       <TextField fx:id="valorCondicionPrimaria" layoutX="237.0" layoutY="356.0" />
+      <Button fx:id="btn_refrescar" layoutX="276.0" layoutY="27.0" mnemonicParsing="false" onAction="#refrescar" onMouseClicked="#refrescar" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: #B0E0E6;" text="refresh">
+         <font>
+            <Font name="Times New Roman Bold" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

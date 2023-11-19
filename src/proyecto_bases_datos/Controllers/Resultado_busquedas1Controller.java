@@ -49,7 +49,7 @@ public class Resultado_busquedas1Controller implements Initializable {
     private String queriee;
     private String TablaName;
     public static JDBC conection;
-    private List<String> columnasSeleccionadas = new ArrayList<>();
+    private ArrayList<String> columnasSeleccionadas = new ArrayList<>();
     
 
 
@@ -147,8 +147,9 @@ public class Resultado_busquedas1Controller implements Initializable {
         modRegistro.setNombreTabla(TablaName);
         modRegistro.setInformacionFila(informacionFila);
         modRegistro.setColumnasSeleccionadas(columnasSeleccionadas);
+        modRegistro.refrescar();
         window.setScene(MostrarScene);
-        modRegistro.todosLosCamposxModificar();
+        
         window.setTitle("Modificar registro");
         window.show();}
 
