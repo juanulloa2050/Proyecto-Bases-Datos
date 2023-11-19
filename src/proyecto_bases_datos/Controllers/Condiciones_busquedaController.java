@@ -135,8 +135,7 @@ public class Condiciones_busquedaController implements Initializable {
             Resultado_busquedas1Controller rBusquedas1Controller = loader.getController();
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             rBusquedas1Controller.setConnection(conection);
-            String querie=queryUnaTabla();
-            rBusquedas1Controller.setQuerie(querie);
+            rBusquedas1Controller.setQuerie(queryUnaTabla());
             rBusquedas1Controller.usarInformacion();
             rBusquedas1Controller.setNombreTabla(tablaSelected);
             window.setScene(MostrarScene);
