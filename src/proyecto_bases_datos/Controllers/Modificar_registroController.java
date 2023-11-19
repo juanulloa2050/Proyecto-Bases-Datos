@@ -93,6 +93,7 @@ public class Modificar_registroController implements Initializable {
             valores.add(valor);
             AtributosxActualizar.getChildren().add(valor);
         }
+        AtributosxActualizar.setVisible(true);
     }  
 
     @FXML

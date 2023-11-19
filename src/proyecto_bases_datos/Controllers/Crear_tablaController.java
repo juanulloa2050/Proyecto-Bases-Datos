@@ -21,6 +21,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -84,6 +85,7 @@ public class Crear_tablaController implements Initializable {
     @FXML
     private void click_crear(ActionEvent event) throws SQLException, IOException {
         System.out.println(queryCrear());
+        conection.Statment(queryCrear());
         click_volver(event);
     }
     
@@ -116,8 +118,12 @@ public class Crear_tablaController implements Initializable {
         textFieldAtributosName.add(userInput);
         choiceBoxAtributos.add(nuevoAtributo);
         // Agregarlos al frame
-        vBoxAddAtributos.getChildren().addAll(numeroAtributo, nuevoAtributo);
-        vBoxAddAtributos.getChildren().add(userInput);
+        HBox hBox = new HBox();
+        vBoxAddAtributos.getChildren().addAll(numeroAtributo);
+        hBox.getChildren().addAll(userInput,nuevoAtributo);
+        //dar espacio entre userINput y nuevo atributo
+        hBox.setSpacing(120);
+        vBoxAddAtributos.getChildren().addAll(hBox);
         // Incrementar el contador de atributos
         contadorAtributos++;
     }
