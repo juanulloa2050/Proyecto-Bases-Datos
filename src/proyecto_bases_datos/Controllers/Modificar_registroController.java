@@ -54,8 +54,8 @@ public class Modificar_registroController implements Initializable {
     private ChoiceBox<String> OperadorprimaryKey;
     @FXML 
     private TextField valorCondicionPrimaria;
-    private String queriee;
-    private String TablaName;
+    private static String queriee;
+    private static String TablaName;
     public static JDBC conection;
     private static ObservableList<String> informacionFila;
     private static ArrayList<String> columnasSeleccionadas=new ArrayList<>();
@@ -99,22 +99,21 @@ public class Modificar_registroController implements Initializable {
 
     @FXML
     private void click_modificar(ActionEvent event) {
-        System.out.println("lo que guarda"+columnasSeleccionadas);
+        System.out.println("lo que guarda"+queriee);
     }
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
-            loader.load();
+            Parent MostrarParent = loader.load();
+            Scene MostrarScene = new Scene(MostrarParent);
             Resultado_busquedas1Controller rBusquedas1Controller = loader.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             rBusquedas1Controller.setConnection(conection);
             rBusquedas1Controller.setQuerie(queriee);
             rBusquedas1Controller.usarInformacion();
             rBusquedas1Controller.setNombreTabla(TablaName);
-            Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
-            Scene MostrarScene = new Scene(MostrarParent);
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(MostrarScene);
             window.setTitle("Resultado Busqueda");
             window.show();
