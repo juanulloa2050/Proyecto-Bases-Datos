@@ -51,7 +51,7 @@ public class Resultado_busquedas1Controller implements Initializable {
     @FXML
     private Button btn_modificar;
     @FXML
-    private TabPane tabPane_Tablaresultado;
+    private TableView tabPane_Tablaresultado;
     private String queriee;
     private String TablaName;
     public static JDBC conection;
@@ -148,10 +148,6 @@ public class Resultado_busquedas1Controller implements Initializable {
         window.setTitle("Modificar registro");
         window.show();
     }
-
-
-
-
     public void usarInformacion() throws SQLException {
         // Ejecutar la consulta SQL y obtener el ResultSet
         ResultSet rs = conection.getRs(queriee);
@@ -160,16 +156,13 @@ public class Resultado_busquedas1Controller implements Initializable {
         // Obtener el número de columnas
         int columnCount = metaData.getColumnCount();
     
-        // Crear una nueva TableView
-        TableView<ObservableList<String>> tableView = new TableView<>();
-    
         // Crear una columna para cada columna en el ResultSet
         for (int i = 1; i <= columnCount; i++) {
             String columnName = metaData.getColumnName(i);
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(columnName);
             final int columnIndex = i - 1;
             column.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(columnIndex)));
-            tableView.getColumns().add(column);
+            tabPane_Tablaresultado.getColumns().add(column);
         }
     
         // Cargar los datos en la tabla
@@ -178,29 +171,8 @@ public class Resultado_busquedas1Controller implements Initializable {
             for (int i = 1; i <= columnCount; i++) {
                 row.add(rs.getString(i));
             }
-            tableView.getItems().add(row);
+            tabPane_Tablaresultado.getItems().add(row);
         }
-    
-        // Añadir la TableView a la primera pestaña
-        if (tabPane_Tablaresultado.getTabs().isEmpty()) {
-            Tab newTab = new Tab();
-            tabPane_Tablaresultado.getTabs().add(newTab);
-        }
-        Tab tab = tabPane_Tablaresultado.getTabs().get(0);
-        tab.setContent(tableView);
-
-        //coge el array de la fila seleccionada. 
-        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            if (newSelection != null) {
-                //Informacion que agarra de la fila
-                informacionFila = new ArrayList<>(newSelection);
-                //Informacion de cada columna para poder armar la query, lo hace en orden. 
-                columnasSeleccionadas.clear(); // Limpiar el array antes de agregar nuevas columnas
-                for (TableColumn<ObservableList<String>, ?> columna : tableView.getColumns()) {
-                    columnasSeleccionadas.add(columna.getText());
-                }
-            }
-        });
     }
 
 
