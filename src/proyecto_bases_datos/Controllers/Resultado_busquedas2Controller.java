@@ -43,7 +43,7 @@ public class Resultado_busquedas2Controller implements Initializable {
     private JDBC conection;
     private String queriee;
     @FXML
-    private TabPane tabPane_Tablaresultado;
+    private TableView tabPane_Tablaresultado;
 
     /**
      * Initializes the controller class.
@@ -80,16 +80,13 @@ public class Resultado_busquedas2Controller implements Initializable {
         // Obtener el número de columnas
         int columnCount = metaData.getColumnCount();
     
-        // Crear una nueva TableView
-        TableView<ObservableList<String>> tableView = new TableView<>();
-    
         // Crear una columna para cada columna en el ResultSet
         for (int i = 1; i <= columnCount; i++) {
             String columnName = metaData.getColumnName(i);
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(columnName);
             final int columnIndex = i - 1;
             column.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(columnIndex)));
-            tableView.getColumns().add(column);
+            tabPane_Tablaresultado.getColumns().add(column);
         }
     
         // Cargar los datos en la tabla
@@ -98,16 +95,8 @@ public class Resultado_busquedas2Controller implements Initializable {
             for (int i = 1; i <= columnCount; i++) {
                 row.add(rs.getString(i));
             }
-            tableView.getItems().add(row);
+            tabPane_Tablaresultado.getItems().add(row);
         }
-    
-        // Añadir la TableView a la primera pestaña
-        if (tabPane_Tablaresultado.getTabs().isEmpty()) {
-            Tab newTab = new Tab();
-            tabPane_Tablaresultado.getTabs().add(newTab);
-        }
-        Tab tab = tabPane_Tablaresultado.getTabs().get(0);
-        tab.setContent(tableView);
     }
     
 }
