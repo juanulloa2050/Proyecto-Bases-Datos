@@ -82,10 +82,11 @@ public class Crear_tablaController implements Initializable {
      @FXML
     private void click_mas1(ActionEvent event) {
         // creo el label y el choice box
-        Label numeroAtributo = new Label("Atributo #" + contadorAtributos);
+        Label numeroAtributo = new Label("Atributo #" + contadorAtributos +" tipo de dato: ");
         ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
         // Crear el TextField y agregarlo al VBox
         TextField userInput = new TextField();
+        userInput.setPromptText("Atributo_name");
         nuevoAtributo.getItems().clear();
         nuevoAtributo.getItems().addAll(
             "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
@@ -96,9 +97,8 @@ public class Crear_tablaController implements Initializable {
         // Agregarlo a la lista local
         choiceBoxAtributos.add(nuevoAtributo);
         // Agregarlos al frame
-        vBoxAddAtributos.getChildren().add(numeroAtributo);
+        vBoxAddAtributos.getChildren().addAll(numeroAtributo, nuevoAtributo);
         vBoxAddAtributos.getChildren().add(userInput);
-        vBoxAddAtributos.getChildren().add(nuevoAtributo);
         // Incrementar el contador de atributos
         contadorAtributos++;
     }
@@ -110,6 +110,7 @@ public class Crear_tablaController implements Initializable {
             // Eliminar el último elemento (Label o ChoiceBox)
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             // Eliminar el label
+            vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             // ELiminarlo del array de choice box
             contadorAtributos--;
