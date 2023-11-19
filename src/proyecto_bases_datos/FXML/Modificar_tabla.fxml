@@ -9,8 +9,8 @@
 
 <AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="387.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Modificar_tablaController">
    <children>
-      <ComboBox fx:id="desp_campos_modificables" layoutX="81.0" layoutY="279.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" />
-      <Label fx:id="lbl_nombretabla" layoutX="102.0" layoutY="14.0" prefHeight="28.0" prefWidth="179.0" text="Modificar Tabla">
+      <ComboBox fx:id="desp_campos_modificables" layoutX="78.0" layoutY="219.0" onMouseClicked="#choicebox_action" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" />
+      <Label fx:id="lbl_nombretabla" layoutX="52.0" layoutY="14.0" prefHeight="28.0" prefWidth="273.0" text="Modificar Tabla">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
@@ -25,16 +25,16 @@
             <Font name="Times New Roman Italic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btn_modificar" layoutX="82.0" layoutY="330.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Modificar atributo">
+      <Button fx:id="btn_modificar" layoutX="79.0" layoutY="270.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Modificar atributo">
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btn_añadir_campo" layoutX="84.0" layoutY="182.0" mnemonicParsing="false" onAction="#click_campo" prefHeight="42.0" prefWidth="224.0" style="-fx-background-color: #FFFACD;" text="Añadir Nuevo Atributo" textFill="RED">
+      <Button fx:id="btn_añadir_campo" layoutX="83.0" layoutY="359.0" mnemonicParsing="false" onAction="#click_campo" prefHeight="42.0" prefWidth="224.0" style="-fx-background-color: #FFFACD;" text="Añadir un Nuevo Atributo" textFill="RED">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btn_borrar" layoutX="82.0" layoutY="368.0" mnemonicParsing="false" onAction="#click_atributo" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Borrar atributo">
+      <Button fx:id="btn_borrar" layoutX="79.0" layoutY="308.0" mnemonicParsing="false" onAction="#click_atributo" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Borrar atributo">
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font>
@@ -44,7 +44,7 @@
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <Label fx:id="lbl_nombretabla1" layoutX="76.0" layoutY="241.0" prefHeight="28.0" prefWidth="237.0" text="Seleccione atributo a modificar:">
+      <Label fx:id="lbl_nombretabla1" layoutX="73.0" layoutY="181.0" prefHeight="28.0" prefWidth="237.0" text="Seleccione atributo a modificar:">
          <font>
             <Font name="Times New Roman Italic" size="18.0" />
          </font>
