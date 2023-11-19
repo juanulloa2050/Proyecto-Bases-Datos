@@ -12,52 +12,42 @@
 
 <AnchorPane id="AnchorPane" prefHeight="484.0" prefWidth="451.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Condiciones_busquedaController">
    <children>
-      <Label disable="true" layoutX="16.0" layoutY="386.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
+      <Label disable="true" layoutX="127.0" layoutY="365.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="298.0" prefHeight="26.0" prefWidth="96.0" text="Condición 1:">
+      <ChoiceBox fx:id="dep_atributo1" disable="true" layoutX="127.0" layoutY="386.0" onMouseClicked="#atributo1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label disable="true" layoutX="200.0" layoutY="365.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label disable="true" layoutX="116.0" layoutY="365.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <ChoiceBox fx:id="desp_operador1" disable="true" layoutX="204.0" layoutY="386.0" onMouseClicked="#operadore1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label disable="true" layoutX="280.0" layoutY="365.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="dep_atributo1" disable="true" layoutX="116.0" layoutY="386.0" onMouseClicked="#atributo1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label disable="true" layoutX="201.0" layoutY="365.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <TextField fx:id="valor1" disable="true" layoutX="280.0" layoutY="386.0" prefHeight="26.0" prefWidth="96.0" />
+      <Label disable="true" layoutX="127.0" layoutY="274.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador1" disable="true" layoutX="208.0" layoutY="386.0" onMouseClicked="#operadore1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label disable="true" layoutX="284.0" layoutY="365.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
+      <ChoiceBox fx:id="desp_atributo2" disable="true" layoutX="127.0" layoutY="300.0" onMouseClicked="#atributo2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label disable="true" layoutX="200.0" layoutY="274.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="valor1" disable="true" layoutX="286.0" layoutY="386.0" prefHeight="26.0" prefWidth="96.0" />
-      <Label layoutX="116.0" layoutY="272.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <ChoiceBox fx:id="desp_operador2" disable="true" layoutX="204.0" layoutY="300.0" onMouseClicked="#operadore2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label disable="true" layoutX="280.0" layoutY="274.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_atributo2" layoutX="116.0" layoutY="298.0" onMouseClicked="#atributo2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="202.0" layoutY="272.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="desp_operador2" layoutX="206.0" layoutY="298.0" onMouseClicked="#operadore2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="284.0" layoutY="272.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font>
-      </Label>
-      <TextField fx:id="valor2" layoutX="284.0" layoutY="298.0" prefHeight="26.0" prefWidth="96.0" />
+      <TextField fx:id="valor2" disable="true" layoutX="280.0" layoutY="300.0" prefHeight="26.0" prefWidth="96.0" />
       <Button fx:id="btn_continuar" layoutX="311.0" layoutY="444.0" mnemonicParsing="false" onAction="#click_continuar" prefHeight="26.0" prefWidth="96.0" style="-fx-background-color: #B0E0E6;" text="Continuar">
          <font>
             <Font name="Times New Roman" size="14.0" />
@@ -93,12 +83,21 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label disable="true" layoutX="24.0" layoutY="339.0" prefHeight="26.0" prefWidth="81.0" text="Operador">
+      <Label disable="true" layoutX="16.0" layoutY="339.0" prefHeight="26.0" prefWidth="166.0" text="Operador de condición:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="operadorLogico" disable="true" layoutX="116.0" layoutY="339.0" onMouseClicked="#operadorLogico" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <CheckBox fx:id="segunda_Condición" layoutX="284.0" layoutY="343.0" mnemonicParsing="false" text="Segunda Condición" />
+      <ChoiceBox fx:id="operadorLogico" disable="true" layoutX="204.0" layoutY="339.0" onMouseClicked="#operadorLogico" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <CheckBox fx:id="primera_Condición" layoutX="7.0" layoutY="300.0" mnemonicParsing="false" text="Condición 1:">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="segunda_Condicion" disable="true" layoutX="7.0" layoutY="388.0" mnemonicParsing="false" text="Condición 2:">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
