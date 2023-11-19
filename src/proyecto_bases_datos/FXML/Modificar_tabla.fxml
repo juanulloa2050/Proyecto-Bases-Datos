@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,28 +16,32 @@
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_tipo_dato" layoutX="154.0" layoutY="215.0" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
       <TextField fx:id="txt_nuevo_nombre" alignment="CENTER" layoutX="80.0" layoutY="166.0" prefHeight="25.0" prefWidth="224.0" promptText="Nuevo Nombre Campo">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
-         </font></TextField>
+         </font>
+      </TextField>
       <Label layoutX="50.0" layoutY="215.0" prefHeight="25.0" prefWidth="81.0" text="Tipo de dato:">
          <font>
             <Font name="Times New Roman Italic" size="14.0" />
-         </font></Label>
+         </font>
+      </Label>
       <Button fx:id="btn_modificar" layoutX="80.0" layoutY="263.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Modificar atributo">
          <font>
             <Font name="Times New Roman" size="12.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Button fx:id="btn_añadir_campo" layoutX="82.0" layoutY="365.0" mnemonicParsing="false" onAction="#click_campo" prefHeight="42.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Añadir Nuevo Atributo" />
       <Button fx:id="btn_borrar" layoutX="80.0" layoutY="301.0" mnemonicParsing="false" onAction="#click_atributo" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #B0E0E6;" text="Borrar atributo">
          <font>
             <Font name="Times New Roman" size="12.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Button fx:id="btn_volver" layoutX="82.0" layoutY="421.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="25.0" prefWidth="224.0" style="-fx-background-color: #FFFACD;" text="Volver">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
-         </font></Button>
+         </font>
+      </Button>
       <Label fx:id="lbl_nombretabla1" layoutX="68.0" layoutY="64.0" prefHeight="28.0" prefWidth="273.0" text="Seleccione atributo a modificar:">
          <font>
             <Font name="Times New Roman Italic" size="18.0" />
@@ -47,5 +52,6 @@
             <Font name="Times New Roman Italic" size="18.0" />
          </font>
       </Label>
+      <ComboBox fx:id="desp_tipo_dato" layoutX="154.0" layoutY="215.0" prefWidth="150.0" style="-fx-background-color: #B0E0E6;" />
    </children>
 </AnchorPane>
