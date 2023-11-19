@@ -51,11 +51,10 @@ public class Resultado_busquedas1Controller implements Initializable {
     @FXML
     private Button btn_modificar;
     @FXML
-    private TableView tabPane_Tablaresultado;
+    private TableView tabPane_Tablaresultado =null;
     private String queriee;
     private String TablaName;
     public static JDBC conection;
-    private List<String> informacionFila;
     private List<String> columnasSeleccionadas = new ArrayList<>();
     
 
@@ -96,7 +95,7 @@ public class Resultado_busquedas1Controller implements Initializable {
         window.setScene(MostrarScene);
         window.setTitle("Crear Vista");
         window.show();
-    }
+    }   
     //Lo que debe estar despues de lo del click derecho encima de la tabla
     @FXML
     private void click_borrar(ActionEvent event) {
@@ -128,8 +127,15 @@ public class Resultado_busquedas1Controller implements Initializable {
     private boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");  // Acepta números enteros o decimales
     }
-    
-
+    ObservableList<String> informacionFila;
+    @FXML
+    private void click_izquierdo() {
+        // Obtener la fila seleccionada
+        if (tabPane_Tablaresultado.getSelectionModel().getSelectedItem() != null) {
+                    informacionFila = (ObservableList<String>) tabPane_Tablaresultado.getSelectionModel().getSelectedItem();
+            System.out.println(informacionFila);
+        }
+    }
     @FXML
     private void click_modificar(ActionEvent event) throws IOException {
         //enviar datos
@@ -137,16 +143,21 @@ public class Resultado_busquedas1Controller implements Initializable {
         lod.load();
         //cambio slide
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_registro.fxml"));
+        if (informacionFila == null) {
+            System.out.println("No se ha seleccionado ninguna fila");
+        }else{
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Modificar_registroController modRegistro=lod.getController();
-        modRegistro.todosLosCamposxModificar();
         modRegistro.setConnection(conection);
         modRegistro.setNombreTabla(TablaName);
-        modRegistro.setQuerie(queriee);
+        modRegistro.setInformacionFila(informacionFila);
+        modRegistro.setColumnasSeleccionadas(columnasSeleccionadas);
         window.setScene(MostrarScene);
+        modRegistro.todosLosCamposxModificar();
         window.setTitle("Modificar registro");
-        window.show();
+        window.show();}
+
     }
     public void usarInformacion() throws SQLException {
         // Ejecutar la consulta SQL y obtener el ResultSet
@@ -163,6 +174,7 @@ public class Resultado_busquedas1Controller implements Initializable {
             final int columnIndex = i - 1;
             column.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().get(columnIndex)));
             tabPane_Tablaresultado.getColumns().add(column);
+            columnasSeleccionadas.add(columnName);
         }
     
         // Cargar los datos en la tabla

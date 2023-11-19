@@ -27,6 +27,6 @@
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tabPane_Tablaresultado" layoutX="1.0" layoutY="-1.0" prefHeight="334.0" prefWidth="700.0" />
+      <TableView fx:id="tabPane_Tablaresultado" layoutX="1.0" layoutY="-1.0" onMouseClicked="#click_izquierdo" prefHeight="334.0" prefWidth="700.0" />
    </children>
 </AnchorPane>

@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,7 +57,7 @@ public class Modificar_registroController implements Initializable {
     private String queriee;
     private String TablaName;
     public static JDBC conection;
-    private List<String> informacionFila;
+    private ObservableList<String> informacionFila;
     private List<String> columnasSeleccionadas = new ArrayList<>();
     private ArrayList<TextField> valores=new ArrayList<>();
 
@@ -70,15 +71,29 @@ public class Modificar_registroController implements Initializable {
     }
     @FXML
     public void todosLosCamposxModificar(){
-        
+        if (columnasSeleccionadas == null || columnasSeleccionadas.isEmpty()) {
+            System.out.println("columnasSeleccionadas está vacía");
+            return;
+        }
+
+        if (informacionFila == null || informacionFila.isEmpty()) {
+            System.out.println("informacionFila está vacía");
+            return;
+        }
+
+        if (AtributosxActualizar == null) {
+            System.out.println("AtributosxActualizar es null");
+            return;
+        }
+
         for (int j = 0; j < columnasSeleccionadas.size(); j++) {
             Label atributo = new Label("Para "+columnasSeleccionadas.get(j));
+              AtributosxActualizar.getChildren().add(atributo);
             TextField valor =new TextField(informacionFila.get(j));
             valores.add(valor);
-            AtributosxActualizar.getChildren().add(atributo);
             AtributosxActualizar.getChildren().add(valor);
         }
-    }    
+    }  
 
     @FXML
     private void click_añadir(ActionEvent event) {
@@ -118,8 +133,10 @@ public class Modificar_registroController implements Initializable {
     public void setNombreTabla(String nombre) {
         TablaName = nombre;
     }
-    public void setInformacionFila(List<String> inforow){
-        informacionFila=inforow;
+    public void setInformacionFila(ObservableList<String> inforow) {
+        if (inforow != null) {
+            informacionFila = inforow;
+        }
     }
     public void setColumnasSeleccionadas(List<String> columnasSelected){
         columnasSeleccionadas=columnasSelected;
