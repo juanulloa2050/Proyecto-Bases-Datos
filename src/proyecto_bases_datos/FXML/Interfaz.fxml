@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="T" prefHeight="400.0" prefWidth="335.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.InterfazController">
    <children>
@@ -36,5 +37,10 @@
             <Font name="Times New Roman Bold Italic" size="12.0" />
          </font>
       </Label>
+      <Text fill="#166a7d" layoutX="6.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gestor de Bases De Datos">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
