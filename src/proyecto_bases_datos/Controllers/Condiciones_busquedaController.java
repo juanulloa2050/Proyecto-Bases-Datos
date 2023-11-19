@@ -74,6 +74,19 @@ public class Condiciones_busquedaController implements Initializable {
         }
     }
 
+    public String esNoNumerico(String valor) {
+        try {
+            Integer.parseInt(valor);
+        } catch (NumberFormatException e1) {
+            try {
+                Float.parseFloat(valor);
+            } catch (NumberFormatException e2) {
+                String devolucion = '"' + valor + '"';
+                return devolucion;
+            }
+        }
+        return valor; // Return a default value if the value is numeric
+    }
     public String queryUnaTabla() {
         StringBuilder query = new StringBuilder();
         query.append("Select");
@@ -87,35 +100,34 @@ public class Condiciones_busquedaController implements Initializable {
                     query.append(",");
                 }
             }
-
         }
         query.append(" from " + tablaSelected + " where ");
         if (dep_atributo1.getSelectionModel().getSelectedItem() == null ||
                 desp_operador1.getSelectionModel().getSelectedItem() == null ||
-                valor1.getText() == null) {
+                esNoNumerico(valor1.getText()) == null) {
             if (desp_atributo2.getSelectionModel().getSelectedItem() == null ||
                     desp_operador2.getSelectionModel().getSelectedItem() == null ||
-                    valor2.getText() == null) {
+                    esNoNumerico(valor2.getText()) == null) {
                 throw new NullPointerException("");
             }
 
             query.append(desp_atributo2.getSelectionModel().getSelectedItem()
                     + " " + desp_operador2.getSelectionModel().getSelectedItem()
-                    + " " + valor2.getText());
+                    + " " + esNoNumerico(valor2.getText()));
         } else {
             query.append(dep_atributo1.getSelectionModel().getSelectedItem()
                     + " " + desp_operador1.getSelectionModel().getSelectedItem()
-                    + " " + valor1.getText());
+                    + " " + esNoNumerico(valor1.getText()));
             if (desp_atributo2.getSelectionModel().getSelectedItem() == null ||
                     desp_operador2.getSelectionModel().getSelectedItem() == null ||
-                    valor2.getText() == null ||
+                    esNoNumerico(valor2.getText()) == null ||
                     operadorLogico.getSelectionModel().getSelectedItem() == null) {
                 query.append("");
             } else {
                 query.append(" " + operadorLogico.getSelectionModel().getSelectedItem()
                         + " " + desp_atributo2.getSelectionModel().getSelectedItem()
                         + " " + desp_operador2.getSelectionModel().getSelectedItem()
-                        + " " + valor2.getText());
+                        + " " + esNoNumerico(valor2.getText()));
             }
         } // Limitar lineas de busquedas, valor que puede cambiar
         return query.toString();
