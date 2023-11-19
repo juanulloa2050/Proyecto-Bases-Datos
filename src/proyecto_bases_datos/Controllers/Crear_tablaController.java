@@ -32,7 +32,9 @@ import proyecto_bases_datos.managment.JDBC;
  */
 public class Crear_tablaController implements Initializable {
     public static JDBC conection;
+    public String tablaSelected;
     private ArrayList<ChoiceBox<String>> choiceBoxAtributos = new ArrayList<>();
+    private ArrayList<TextField> textFieldAtributosName = new ArrayList<>();
     @FXML
     private TextField txt_nombre;
     @FXML
@@ -54,21 +56,37 @@ public class Crear_tablaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    }
+    public String queryCrear(){
+        StringBuilder queryCrear = new StringBuilder();
+        queryCrear.append("Create Table "+txt_nombre.getText() +" (");
+        if (choiceBoxAtributos!=null || textFieldAtributosName!=null){
+            for (int i = 0; i < choiceBoxAtributos.size(); i++) {
+                if (choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem()!=null &&
+                    textFieldAtributosName.get(i).getText()!=null){
+                        queryCrear.append(
+                        textFieldAtributosName.get(i).getText()+" "
+                        +choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem());
+                } else{
+                    throw new NullPointerException("Llene todos los campos");
+                }
+                if (i!=choiceBoxAtributos.size()-1){
+                    queryCrear.append(", ");
+                }else{
+                    queryCrear.append(")");
+                }
+            }
+        } else{
+            throw new NullPointerException("no hay nada");
+        }
+        return queryCrear.toString();
     }    
     @FXML
     private void click_crear(ActionEvent event) throws SQLException, IOException {
-        System.out.println(getAtributos());
-        String nombreTabla=txt_nombre.getText();
-        conection.Statment("CREATE TABLE " + nombreTabla + " ("+ getAtributos() +")");
+        System.out.println(queryCrear());
         click_volver(event);
     }
-    public String getAtributos() {
-        String atributos = "";
-        for (int i = 0; i < choiceBoxAtributos.size(); i++) {
-            atributos += ((TextField) vBoxAddAtributos.getChildren().get(i * 3 + 1)).getText()+ " " +  choiceBoxAtributos.get(i).getValue() + ", ";
-        }
-        return atributos.substring(0, atributos.length() - 2);
-    }
+    
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
@@ -95,6 +113,7 @@ public class Crear_tablaController implements Initializable {
             "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
         );
         // Agregarlo a la lista local
+        textFieldAtributosName.add(userInput);
         choiceBoxAtributos.add(nuevoAtributo);
         // Agregarlos al frame
         vBoxAddAtributos.getChildren().addAll(numeroAtributo, nuevoAtributo);
@@ -115,6 +134,7 @@ public class Crear_tablaController implements Initializable {
             // ELiminarlo del array de choice box
             contadorAtributos--;
             choiceBoxAtributos.remove(contadorAtributos - 1);
+            textFieldAtributosName.remove(contadorAtributos-1);
         } else {
             System.out.println("No hay elementos para eliminar.");
         }
