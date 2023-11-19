@@ -142,13 +142,13 @@ public void usarInformacion() {
         Modificar_tablaController modtablasController= loader.getController();
         modtablasController.setConnection(conection);
         //TODO Añadir settablaselected.!!!!
-modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());        
+        modtablasController.setTableSelected(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());        
 
         //Change the slide
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_tabla.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setTitle("Modificar tabla " + conection.getBaseDatos() + ":");
+        window.setTitle("Esta en la bases de datos " + conection.getBaseDatos() + ":");
         window.setScene(MostrarScene);
         window.show();
 

@@ -132,9 +132,18 @@ public class Resultado_busquedas1Controller implements Initializable {
 
     @FXML
     private void click_modificar(ActionEvent event) throws IOException {
+        //enviar datos
+        FXMLLoader lod=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_registro.fxml"));
+        lod.load();
+        //cambio slide
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Modificar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Modificar_registroController modRegistro=lod.getController();
+        modRegistro.todosLosCamposxModificar();
+        modRegistro.setConnection(conection);
+        modRegistro.setNombreTabla(TablaName);
+        modRegistro.setQuerie(queriee);
         window.setScene(MostrarScene);
         window.setTitle("Modificar registro");
         window.show();
