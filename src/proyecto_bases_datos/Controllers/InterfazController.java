@@ -44,9 +44,9 @@ public class InterfazController implements Initializable {
 
     @FXML
     public void acceder_action() throws IOException {
-        String usuario = "root";//txt_usr.getText();
-        String puerto = "3306";//txt_puerto.getText();
-        String clave = "12345";//txt_clave.getText();
+        String usuario = txt_usr.getText();
+        String puerto = txt_puerto.getText();
+        String clave = txt_clave.getText();
 
         if (usuario.isEmpty() || puerto.isEmpty() || clave.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

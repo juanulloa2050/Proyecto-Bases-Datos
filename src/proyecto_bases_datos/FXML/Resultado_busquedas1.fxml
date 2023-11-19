@@ -5,28 +5,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Resultado_busquedas1Controller">
+<AnchorPane id="AnchorPane" prefHeight="460.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Resultado_busquedas1Controller">
    <children>
-      <Button fx:id="btn_volver" layoutX="67.0" layoutY="325.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="34.0" prefWidth="67.0" style="-fx-background-color: #FFFACD;" text="volver">
+      <Button fx:id="btn_volver" layoutX="77.0" layoutY="377.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="34.0" prefWidth="67.0" style="-fx-background-color: #FFFACD;" text="volver">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btn_crear_vista" layoutX="199.0" layoutY="322.0" mnemonicParsing="false" onAction="#click_crear_vista" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #B0E0E6;" text="Crear Vista">
+      <Button fx:id="btn_crear_vista" layoutX="275.0" layoutY="374.0" mnemonicParsing="false" onAction="#click_crear_vista" prefHeight="40.0" prefWidth="151.0" style="-fx-background-color: #B0E0E6;" text="Crear Vista">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Button>
-      <Button fx:id="btn_borrar" layoutX="415.0" layoutY="300.0" mnemonicParsing="false" onAction="#click_borrar" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #B0E0E6;" text="Borrar registro">
+      <Button fx:id="btn_borrar" layoutX="528.0" layoutY="345.0" mnemonicParsing="false" onAction="#click_borrar" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #B0E0E6;" text="Borrar registro">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btn_modificar" layoutX="415.0" layoutY="342.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #B0E0E6;" text="Modificar registro">
+      <Button fx:id="btn_modificar" layoutX="528.0" layoutY="394.0" mnemonicParsing="false" onAction="#click_modificar" prefHeight="34.0" prefWidth="122.0" style="-fx-background-color: #B0E0E6;" text="Modificar registro">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tabPane_Tablaresultado" prefHeight="295.0" prefWidth="601.0" />
+      <TableView fx:id="tabPane_Tablaresultado" layoutX="1.0" layoutY="-1.0" prefHeight="334.0" prefWidth="700.0" />
    </children>
 </AnchorPane>
