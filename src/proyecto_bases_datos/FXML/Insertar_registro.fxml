@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="515.0" prefWidth="503.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Insertar_registroController">
    <children>
@@ -14,7 +15,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="txt_titulo" layoutX="79.0" layoutY="38.0" prefHeight="43.0" prefWidth="233.0" text="Insertar datos tabla: ">
+      <Label fx:id="txt_titulo" layoutX="27.0" layoutY="38.0" prefHeight="43.0" prefWidth="233.0" text="Insertar datos tabla: ">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
@@ -26,13 +27,14 @@
       </Button>
       <ScrollPane layoutX="27.0" layoutY="81.0" prefHeight="371.0" prefWidth="446.0">
          <content>
-            <VBox fx:id="vBoxRegistros" prefHeight="362.0" prefWidth="439.0" />
+            <VBox fx:id="vBoxRegistros" prefHeight="363.0" prefWidth="443.0" />
          </content>
       </ScrollPane>
-      <Button fx:id="btn_refresh" layoutX="303.0" layoutY="47.0" mnemonicParsing="false" onAction="#refrescar" prefHeight="26.0" prefWidth="65.0" style="-fx-background-color: #B0E0E6;" text="Refresh">
+      <Button fx:id="btn_refresh" layoutX="394.0" layoutY="47.0" mnemonicParsing="false" onAction="#refrescar" prefHeight="26.0" prefWidth="79.0" style="-fx-background-color: #B0E0E6;" text="Refrescar">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
+      <Text layoutX="275.0" layoutY="42.0" opacity="0.31" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no le aparece nada, presione refrescar" />
    </children>
 </AnchorPane>
