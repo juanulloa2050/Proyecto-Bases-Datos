@@ -43,8 +43,6 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private ChoiceBox<String> desp_operador_relacion;
     @FXML
-    private TextField txt_valor_relacion;
-    @FXML
     private ChoiceBox<String> dep_atributo1;
     @FXML
     private ChoiceBox<String> desp_operador1;
