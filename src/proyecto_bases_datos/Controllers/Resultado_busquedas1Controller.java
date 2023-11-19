@@ -46,7 +46,7 @@ public class Resultado_busquedas1Controller implements Initializable {
     private Button btn_modificar;
     @FXML
     private TableView tabPane_Tablaresultado =null;
-    private String queriee;
+    private static String queriee;
     private String TablaName;
     public static JDBC conection;
     private ArrayList<String> columnasSeleccionadas = new ArrayList<>();
@@ -144,6 +144,7 @@ public class Resultado_busquedas1Controller implements Initializable {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Modificar_registroController modRegistro=lod.getController();
         modRegistro.setConnection(conection);
+        modRegistro.setQuerie(queriee);
         modRegistro.setNombreTabla(TablaName);
         modRegistro.setInformacionFila(informacionFila);
         modRegistro.setColumnasSeleccionadas(columnasSeleccionadas);
