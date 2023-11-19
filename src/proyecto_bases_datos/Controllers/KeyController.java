@@ -23,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -37,7 +38,7 @@ public class KeyController implements Initializable {
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<String> desp_tipo_dato;
+    private ComboBox<String> desp_tipo_dato;
     @FXML
     private TextField txt_nombre;
     @FXML
@@ -99,17 +100,28 @@ public class KeyController implements Initializable {
                 "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
                 "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
                 "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET");
+                desp_tipo_dato.setVisibleRowCount(5);
     }
 
     @FXML
     public void click_crear(ActionEvent event) throws SQLException, IOException {
-        String nombre = txt_nombre.getText();
+
+        if (desp_tipo_dato.getSelectionModel().getSelectedItem()==null || txt_nombre.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Error");
+            alert.setContentText("Por favor, rellene todos los campos.");
+            alert.showAndWait();
+            return;
+            
+        }else{
+                    String nombre = txt_nombre.getText();
         String tipoDato = desp_tipo_dato.getValue();
         boolean isPrimaryKey = CheckPrimaryKey.isSelected();
         boolean isForeignKey = CheckForeignKey.isSelected();
         String sql = " ";
         String key = "";
-        if (!isPrimaryKey && !isForeignKey) {
+if (!isPrimaryKey && !isForeignKey) {
             key = "PRIMARY KEY, FOREIGN KEY";
             sql = "ALTER TABLE " + tableSelected +
                     " ADD COLUMN " + nombre + " " + tipoDato + ";";
@@ -174,5 +186,5 @@ public class KeyController implements Initializable {
         }
 
     }
-
+        }
 }

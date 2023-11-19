@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -35,14 +36,12 @@ public class Modificar_tablaController implements Initializable {
     static JDBC conection;
     static String tableSelected;
     @FXML
-    private ChoiceBox<String> desp_campos_modificables;
+    private ComboBox<String> desp_campos_modificables;
     @FXML
-    private ChoiceBox<String> desp_campos_key;
+    private ComboBox<String> desp_campos_key;
     @FXML
     private Label lbl_nombretabla; // Cambiar el valor de este label, debera tener un texto asi: ¿Cual campo desea
                                    // modificar?
-    @FXML
-    private ChoiceBox<String> desp_tipo_dato;
     @FXML
     private TextField txt_nuevo_nombre;
     @FXML
@@ -63,19 +62,33 @@ public class Modificar_tablaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         cambioLBL();
+        if (conection != null) {
+         choicebox_action();
+        }
         llenarTiposDatos();
     }
 
     public void setConnection(JDBC connection) {
         conection = connection;
     }
+
+    // ...
+
+    @FXML
+    private ComboBox<String> desp_tipo_dato;
+
+    // ...
+
     private void llenarTiposDatos() {
         desp_tipo_dato.getItems().addAll(
             "INT", "TINYINT", "SMALLINT", "MEDIUMINT", "BIGINT", "DECIMAL", "NUMERIC",
             "FLOAT", "DOUBLE", "BIT", "DATE", "DATETIME", "TIMESTAMP", "TIME", "YEAR",
             "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
             "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
-        );}
+        );
+        // Limitar el número de cosas visibles
+        desp_tipo_dato.setVisibleRowCount(5);
+    }
     @FXML
     public void choicebox_action() {
         // Limpia la ChoiceBox
@@ -86,6 +99,7 @@ public class Modificar_tablaController implements Initializable {
         try {
             desp_campos_modificables.getItems()
                     .addAll(TablasController.getConection().getDatafromOneField(DESCRIBE_TABLE, "FIELD"));
+                    desp_campos_modificables.setVisibleRowCount(5);
         } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Conection");
@@ -100,6 +114,7 @@ public class Modificar_tablaController implements Initializable {
         desp_campos_key.getItems().clear();
         //Añade los valores de key para una base de datos
         desp_campos_key.getItems().addAll("Primary Key", "Foreign Key", "Unique Key", "Candidate Key","Alternate Key","Composite key");
+        desp_campos_key.setVisibleRowCount(5);
         
     }
 
@@ -120,11 +135,11 @@ private void click_modificar(ActionEvent event) throws IOException, SQLException
     String nuevoNombre = txt_nuevo_nombre.getText();
     String nuevoTipoDato = desp_tipo_dato.getValue().toString();
 
-    if (nombreColumna != null || nuevoNombre != null || nuevoTipoDato != null) {
+    if (nombreColumna != null && nuevoNombre != null && nuevoTipoDato != null) {
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Confirmación");
         alert.setHeaderText("Estás a punto de modificar la columna " + nombreColumna);
-        alert.setContentText("¿Estás seguro de que quieres cambiar el tipo de dato a " + nuevoNombre + "? Esta acción es irreversible.");
+        alert.setContentText("¿Estás seguro de que deseas realizar los cambios?");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
             String renameColumn = "ALTER TABLE " + tableSelected + " change " + nombreColumna + " " + nuevoNombre+ " " +nuevoTipoDato;

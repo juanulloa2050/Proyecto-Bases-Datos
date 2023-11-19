@@ -3,6 +3,9 @@ package proyecto_bases_datos.Controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -10,6 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
@@ -25,7 +29,7 @@ import javafx.scene.Scene;
 public class MenuController implements Initializable {
     public static JDBC conection;
     @FXML
-    private ChoiceBox<String> desp_bases;
+    private ComboBox<String> desp_bases; // Cambiado de ChoiceBox a ComboBox
     @FXML
     private Button btn_acceder;
     @FXML
@@ -86,7 +90,10 @@ public class MenuController implements Initializable {
         loader.load();
         TablasController tablasController= loader.getController();
         tablasController.setConnection(conection);
-        TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
+        if (desp_bases.getSelectionModel().getSelectedItem()==null) {
+            JOptionPane.showMessageDialog(null, "Seleccione una base de datos");
+        }else{
+TablasController.setDataBaseSelected(desp_bases.getSelectionModel().getSelectedItem());
         //Cambio de slide.
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
@@ -94,12 +101,15 @@ public class MenuController implements Initializable {
         window.setScene(MostrarScene);
         window.setTitle("Menu Tablas, esta en la base de datos: "+conection.getBaseDatos());
         window.show();
+        }
+        
     }
 
     
 @FXML
-private void click_eliminar(ActionEvent event) throws SQLException {
-    Alert alert = new Alert(AlertType.CONFIRMATION);
+private void click_eliminar(ActionEvent event)  {
+    if (desp_bases.getValue()!=null) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
     alert.setHeaderText("Estás a punto de eliminar "+desp_bases.getValue());
     alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
@@ -107,9 +117,20 @@ private void click_eliminar(ActionEvent event) throws SQLException {
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
         String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
-        conection.Statment(DROPDATABASE);
+        try {
+            conection.Statment(DROPDATABASE);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         desp_bases.getItems().clear();        
     } 
+    }else{  Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText("No estas seleccionando ninguna base de datos");
+
+    }
+    
 }
 
     @FXML

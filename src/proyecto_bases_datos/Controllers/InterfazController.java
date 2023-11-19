@@ -17,11 +17,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
-
 /** Este crea la interfaz donde se le ingresa lo del root y eso */
 public class InterfazController implements Initializable {
     JDBC connection;
-    
 
     @FXML
     private AnchorPane T;
@@ -40,7 +38,7 @@ public class InterfazController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     public void acceder_action() throws IOException {
@@ -55,20 +53,27 @@ public class InterfazController implements Initializable {
             alert.setContentText("Por favor, rellene todos los campos.");
             alert.showAndWait();
         } else {
-            //Crea la conexion
-            connection =new JDBC("mysql","world", usuario, clave, puerto);
-            //Envia el objeto a la otra clase
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
-            root =loader.load();
-            MenuController menuDataBases= loader.getController();
-            menuDataBases.setConnection(connection);
-            
-            //CAmbio de frame
-            root = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
-            Stage stage = (Stage) btn_acceder.getScene().getWindow();
-            stage.setScene(new Scene(root)); 
-            stage.setTitle("Menu");
-            stage.setUserData(connection);
+            // Crea la conexion
+            connection = new JDBC("mysql", "world", usuario, clave, puerto);
+            // Envia el objeto a la otra clase
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
+            root = loader.load();
+            MenuController menuDataBases = loader.getController();
+            if (connection.getConn() == null) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText("Servicio: MySQL es null (Puede no estar encendido o ingreso mal la contraseña).");
+                alert.showAndWait();
+            } else {
+                menuDataBases.setConnection(connection);
+                // CAmbio de frame
+                root = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
+                Stage stage = (Stage) btn_acceder.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.setTitle("Menu");
+                stage.setUserData(connection);
+            }
         }
     }
 }

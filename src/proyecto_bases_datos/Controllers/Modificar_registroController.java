@@ -68,7 +68,6 @@ public class Modificar_registroController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
     }
     @FXML
     public void refrescar(){
