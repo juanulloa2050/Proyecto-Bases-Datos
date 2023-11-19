@@ -98,8 +98,9 @@ public class MenuController implements Initializable {
 
     
 @FXML
-private void click_eliminar(ActionEvent event) throws SQLException {
-    Alert alert = new Alert(AlertType.CONFIRMATION);
+private void click_eliminar(ActionEvent event)  {
+    if (desp_bases.getValue()!=null) {
+        Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
     alert.setHeaderText("Estás a punto de eliminar "+desp_bases.getValue());
     alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
@@ -107,9 +108,20 @@ private void click_eliminar(ActionEvent event) throws SQLException {
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
         String DROPDATABASE="Drop database "+desp_bases.getSelectionModel().getSelectedItem();
-        conection.Statment(DROPDATABASE);
+        try {
+            conection.Statment(DROPDATABASE);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         desp_bases.getItems().clear();        
     } 
+    }else{  Alert alert = new Alert(AlertType.ERROR);
+    alert.setTitle("Error");
+    alert.setContentText("No estas seleccionando ninguna base de datos");
+
+    }
+    
 }
 
     @FXML

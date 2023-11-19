@@ -86,7 +86,7 @@ public class Modificar_tablaController implements Initializable {
             "CHAR", "VARCHAR", "BINARY", "VARBINARY", "TINYBLOB", "BLOB", "MEDIUMBLOB",
             "LONGBLOB", "TINYTEXT", "TEXT", "MEDIUMTEXT", "LONGTEXT", "ENUM", "SET"
         );
-        // Limit the number of visible items in the ComboBox
+        // Limitar el número de cosas visibles
         desp_tipo_dato.setVisibleRowCount(5);
     }
     @FXML
