@@ -124,7 +124,6 @@ public class Condiciones_busquedaController implements Initializable {
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
         System.out.println(queryUnaTabla());
-        rBusquedas1Controller.setQuerie(queryUnaTabla());
          // llenar esto con try cath para los erroes que lance
         // , como si la busqueda quedo mal en sql, el nullpointer, y mas cosas que
         // pueden salir.
