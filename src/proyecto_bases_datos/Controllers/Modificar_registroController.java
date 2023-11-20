@@ -53,7 +53,7 @@ public class Modificar_registroController implements Initializable {
     @FXML
     private ChoiceBox<String> OperadorprimaryKey;
     @FXML 
-    private TextField valorCondicionPrimaria;
+    private TextField valorCondicionPrimaria=new TextField("dsad");
     private static String queriee;
     private static String TablaName;
     public static JDBC conection;
@@ -72,6 +72,7 @@ public class Modificar_registroController implements Initializable {
     @FXML
     public void refrescar(){
 
+
         if (columnasSeleccionadas == null || columnasSeleccionadas.isEmpty()) {
             System.out.println("columnasSeleccionadas está vacía");
             return;
@@ -86,6 +87,7 @@ public class Modificar_registroController implements Initializable {
             System.out.println("AtributosxActualizar es null");
             return;
         }
+        valores.clear();
         AtributosxActualizar.getChildren().clear();
         for (int j = 0; j < columnasSeleccionadas.size(); j++) {
             Label atributo = new Label("Para "+columnasSeleccionadas.get(j));
@@ -94,11 +96,44 @@ public class Modificar_registroController implements Initializable {
             valores.add(valor);
             AtributosxActualizar.getChildren().add(valor);
         } 
-    }  
+    }
+    public String queryUpdate(){
+        StringBuilder queryUpdate=new StringBuilder();
+        queryUpdate.append("UPDATE "+ TablaName+" SET ");
+        for (int i = 0; i < columnasSeleccionadas.size(); i++) {
+            queryUpdate.append(columnasSeleccionadas.get(i)+" = ");
 
+            if (isNumeric(valores.get(i).getText())) {
+                queryUpdate.append(valores.get(i).getText());
+            }else{
+                queryUpdate.append("'"+valores.get(i).getText()+"'");
+            }
+            if (i<columnasSeleccionadas.size()-1){
+                queryUpdate.append(", ");
+            }
+        }
+        queryUpdate.append(" where "+ primaryKey.getSelectionModel().getSelectedItem()+" "
+                    +OperadorprimaryKey.getSelectionModel().getSelectedItem()+valorCondicionPrimaria.getText()+";");
+        return queryUpdate.toString();
+    }
+    private boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");  // Acepta números enteros o decimales
+    }
+    public void primaryKey(){
+        primaryKey.getItems().clear();
+        String query="SELECT COLUMN_NAME, COLUMN_KEY FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = '"+conection.getBaseDatos()+"' AND TABLE_NAME = '"+TablaName+"' and COLUMN_KEY IN('PRI', 'UNI');";
+        primaryKey.getItems().addAll(conection.getDatafromOneField(query,"COLUMN_NAME"));
+    }
+    public void operadores(){
+        String[] operadores = { "<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL" };
+        OperadorprimaryKey.getItems().clear();
+        OperadorprimaryKey.getItems().addAll(operadores);
+    }
     @FXML
     private void click_modificar(ActionEvent event) {
         //Hacer lo de la query
+        System.out.println(queryUpdate());
+        
     }
 
     @FXML
