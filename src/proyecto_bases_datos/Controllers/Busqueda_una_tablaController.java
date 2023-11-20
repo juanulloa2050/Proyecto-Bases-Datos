@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -32,7 +33,7 @@ public class Busqueda_una_tablaController implements Initializable {
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<String> desp_tabla;
+    private ComboBox<String> desp_tabla;
 
     /**
      * Initializes the controller class.
@@ -53,6 +54,7 @@ public class Busqueda_una_tablaController implements Initializable {
         try {
             desp_tabla.getItems().addAll(
                     conection.getDatafromOneField("SHOW TABLES;", "TABLES_IN_" + conection.getBaseDatos()));
+                    desp_tabla.setVisibleRowCount(5);
 
         } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);

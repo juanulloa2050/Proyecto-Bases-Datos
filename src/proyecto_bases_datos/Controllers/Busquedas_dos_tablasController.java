@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import proyecto_bases_datos.managment.JDBC;
 
@@ -33,9 +34,9 @@ public class Busquedas_dos_tablasController implements Initializable {
     @FXML
     private Button btn_volver;
     @FXML
-    private ChoiceBox<String> desp_tabla2;
+    private ComboBox<String> desp_tabla2;
     @FXML
-    private ChoiceBox<String> desp_tabla1;
+    private ComboBox<String> desp_tabla1;
 
     /**
      * Initializes the controller class.
@@ -50,6 +51,7 @@ public class Busquedas_dos_tablasController implements Initializable {
         // Agrega cada base de datos a la BOx
         try {
             desp_tabla1.getItems().addAll(conection.getDatafromOneField("SHOW TABLES;", "TABLES_IN_" + conection.getBaseDatos()));
+            desp_tabla1.setVisibleRowCount(5);
         } catch (NullPointerException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error Conection");
@@ -64,6 +66,7 @@ public class Busquedas_dos_tablasController implements Initializable {
             // Agrega cada base de datos a la BOx
             try {
                 desp_tabla2.getItems().addAll(conection.getDatafromOneField("SHOW TABLES;", "TABLES_IN_" + conection.getBaseDatos()));
+                desp_tabla2.setVisibleRowCount(5);
             } catch (NullPointerException e) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error Conection");
