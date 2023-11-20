@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,24 +99,34 @@ public class Resultado_busquedas1Controller implements Initializable {
         System.out.println(informacionFila);
         
         StringBuilder queryBorrarRegistro = new StringBuilder();
-        queryBorrarRegistro.append("DELETE FROM " + TablaName + " WHERE ");
-    
+        queryBorrarRegistro.append("DELETE FROM "+TablaName+" WHERE ");
+
         for (int i = 0; i < columnasSeleccionadas.size(); i++) {
-            queryBorrarRegistro.append(columnasSeleccionadas.get(i)).append(" = ");
-    
-            // Verificar si la información de la fila es un número
-            if (isNumeric(informacionFila.get(i))) {
-                queryBorrarRegistro.append(informacionFila.get(i));
+            queryBorrarRegistro.append(columnasSeleccionadas.get(i));
+            if (informacionFila.get(i) == null) {
+                queryBorrarRegistro.append(" IS NULL");
             } else {
-                queryBorrarRegistro.append("'").append(informacionFila.get(i)).append("'");
+                queryBorrarRegistro.append(" = '").append(informacionFila.get(i)).append("'");
             }
-    
-            if (i < columnasSeleccionadas.size() - 1) {
+            if (i != columnasSeleccionadas.size() - 1) {
                 queryBorrarRegistro.append(" AND ");
             }
         }
-    
-        System.out.println(queryBorrarRegistro);
+
+        queryBorrarRegistro.append(";");
+        System.out.println(queryBorrarRegistro.toString());
+        // Ejecutar la consulta DELETE
+        try {
+            System.out.println(queryBorrarRegistro.toString());
+            conection.Statment(queryBorrarRegistro.toString());
+            //actualizar tableview
+            tabPane_Tablaresultado.getItems().clear();
+            tabPane_Tablaresultado.getColumns().clear();
+            usarInformacion();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al borrar el registro"+e.getMessage());
+        }
     }
     
     // Método para verificar si una cadena es un número
