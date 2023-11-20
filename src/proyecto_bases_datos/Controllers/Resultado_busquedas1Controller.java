@@ -11,6 +11,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -25,7 +26,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
@@ -123,16 +127,23 @@ public class Resultado_busquedas1Controller implements Initializable {
         queryBorrarRegistro.append(";");
         System.out.println(queryBorrarRegistro.toString());
         // Ejecutar la consulta DELETE
-        try {
-            System.out.println(queryBorrarRegistro.toString());
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmación");
+        alert.setHeaderText("Estás a punto de eliminar un registro");
+        alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            try{
             conection.Statment(queryBorrarRegistro.toString());
             //actualizar tableview
             tabPane_Tablaresultado.getItems().clear();
             tabPane_Tablaresultado.getColumns().clear();
-            usarInformacion();
-        } catch (SQLException e) {
+            usarInformacion(); 
+            } catch (SQLException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al borrar el registro"+e.getMessage());
+            }
         }
     }
     ObservableList<String> informacionFila;

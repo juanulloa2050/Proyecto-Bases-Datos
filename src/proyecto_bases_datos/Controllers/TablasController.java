@@ -171,7 +171,7 @@ public void usarInformacion() {
         String nombreCompleto = TabPane_Tablas.getSelectionModel().getSelectedItem().getText();
     String[] partes = nombreCompleto.split("\\.");
     String nombreTabla = partes[partes.length - 1];
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+    Alert alert = new Alert(AlertType.CONFIRMATION);
     alert.setTitle("Confirmación");
     alert.setHeaderText("Estás a punto de eliminar "+ nombreTabla);
     alert.setContentText("¿Estás seguro de que quieres continuar? Esta acción es irreversible.");
