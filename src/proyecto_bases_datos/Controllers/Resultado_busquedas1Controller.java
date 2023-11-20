@@ -84,13 +84,20 @@ public class Resultado_busquedas1Controller implements Initializable {
     }
 
     @FXML
-    private void click_crear_vista(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Crear_vista.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Crear Vista");
-        window.show();
+    private void click_crear_vista(ActionEvent event){
+        //Pedir al usuario el nombre para la vista
+        String nombreVista = JOptionPane.showInputDialog("Ingrese el nombre de la vista");
+        // Crear la consulta para crear la vista
+        String queryCrearVista = "CREATE VIEW " + nombreVista + TablaName+" AS " + queriee+";";
+        // Ejecutar la consulta para crear la vista
+        try {
+            conection.Statment(queryCrearVista);
+            JOptionPane.showMessageDialog(null, "Vista creada con éxito");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al crear la vista");
+        }
+
     }   
     //Lo que debe estar despues de lo del click derecho encima de la tabla
     @FXML
@@ -127,11 +134,6 @@ public class Resultado_busquedas1Controller implements Initializable {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error al borrar el registro"+e.getMessage());
         }
-    }
-    
-    // Método para verificar si una cadena es un número
-    private boolean isNumeric(String str) {
-        return str.matches("-?\\d+(\\.\\d+)?");  // Acepta números enteros o decimales
     }
     ObservableList<String> informacionFila;
     @FXML
