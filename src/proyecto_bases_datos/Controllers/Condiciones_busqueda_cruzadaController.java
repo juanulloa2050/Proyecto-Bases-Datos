@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,7 +43,6 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private ChoiceBox<String> desp_atributo_relacionTabla2;
     @FXML
     private ChoiceBox<String> desp_operador_relacion;
-    @FXML
     private ChoiceBox<String> dep_atributo1;
     @FXML
     private ChoiceBox<String> desp_operador1;
@@ -77,6 +77,18 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private int contadorAtributosTabla1 = 1;
     private int contadorAtributosTabla2 = 1;
     String[] operadores = {"<", ">", "<=", ">=", "=", "<>", "LIKE", "NOT LIKE", "IS NULL", "IS NOT NULL"};
+    @FXML
+    private Label atributo_Tabla1;
+    @FXML
+    private Label atributo_Tabla2;
+    @FXML
+    private ChoiceBox<?> desp_atributo1;
+    @FXML
+    private Label campos_Tabla1;
+    @FXML
+    private CheckBox check_Condicion2;
+    @FXML
+    private CheckBox check_Condicion1;
     /**
      * Initializes the controller class.
      */
