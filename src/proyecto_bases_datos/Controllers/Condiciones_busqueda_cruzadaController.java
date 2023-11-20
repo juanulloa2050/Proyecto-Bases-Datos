@@ -84,6 +84,8 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private Label campos_Tabla1;
     @FXML
+    private Label campos_Tabla2;
+    @FXML
     private CheckBox check_Condicion2;
     @FXML
     private CheckBox check_Condicion1;
@@ -93,6 +95,8 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        campos_Tabla1.setText("Añadir campos de la tabla "+tablaSelected1);
+        campos_Tabla2.setText("Añadir campos de la tabla "+tablaSelected2);
         //hacer que si condicion1 no esta habilitado no se pueda habilitar condicion2
         check_Condicion1.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (check_Condicion1.isSelected()) {
