@@ -213,7 +213,7 @@ public void usarInformacion() {
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Insertar_registroController insertarRegistro=load.getController();
         insertarRegistro.setConnection(conection);
-        insertarRegitro.setTablaName(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());
+        insertarRegistro.setTablaName(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());
         insertarRegistro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
         insertarRegistro.setTiposSeleccionados(conection.getDatafromOneField(query, "Type"));
         window.setScene(MostrarScene);
