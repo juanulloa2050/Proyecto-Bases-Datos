@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="483.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Modificar_registroController">
    <children>
@@ -16,7 +17,7 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" text="que desee actualizar.">
+      <Label layoutX="14.0" layoutY="50.0" prefHeight="25.0" prefWidth="200.0" text="que desee actualizar:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
@@ -44,10 +45,12 @@
       <ChoiceBox fx:id="primaryKey" layoutX="22.0" layoutY="356.0" onMouseClicked="#primaryKey" prefHeight="25.0" prefWidth="115.0" />
       <ChoiceBox fx:id="OperadorprimaryKey" layoutX="161.0" layoutY="356.0" onMouseClicked="#operadores" prefHeight="25.0" prefWidth="66.0" />
       <TextField fx:id="valorCondicionPrimaria" layoutX="237.0" layoutY="356.0" />
-      <Button fx:id="btn_refrescar" layoutX="276.0" layoutY="27.0" mnemonicParsing="false" onAction="#refrescar" onMouseClicked="#refrescar" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: #B0E0E6;" text="refresh">
+      <Button fx:id="btn_refrescar" layoutX="297.0" layoutY="40.0" mnemonicParsing="false" onAction="#refrescar" onMouseClicked="#refrescar" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: #B0E0E6;" text="Refresh">
          <font>
             <Font name="Times New Roman Bold" size="18.0" />
          </font>
       </Button>
+      <Text layoutX="236.0" layoutY="19.0" opacity="0.27" strokeType="OUTSIDE" strokeWidth="0.0" text="Si no le aparece información" />
+      <Text layoutX="292.0" layoutY="29.0" opacity="0.27" strokeType="OUTSIDE" strokeWidth="0.0" text="de click en Refresh" />
    </children>
 </AnchorPane>
