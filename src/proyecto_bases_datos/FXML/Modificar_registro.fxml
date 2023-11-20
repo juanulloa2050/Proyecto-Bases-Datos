@@ -41,8 +41,8 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="primaryKey" layoutX="22.0" layoutY="356.0" prefHeight="25.0" prefWidth="115.0" />
-      <ChoiceBox fx:id="OperadorprimaryKey" layoutX="161.0" layoutY="356.0" prefHeight="25.0" prefWidth="66.0" />
+      <ChoiceBox fx:id="primaryKey" layoutX="22.0" layoutY="356.0" onMouseClicked="#primaryKey" prefHeight="25.0" prefWidth="115.0" />
+      <ChoiceBox fx:id="OperadorprimaryKey" layoutX="161.0" layoutY="356.0" onMouseClicked="#operadores" prefHeight="25.0" prefWidth="66.0" />
       <TextField fx:id="valorCondicionPrimaria" layoutX="237.0" layoutY="356.0" />
       <Button fx:id="btn_refrescar" layoutX="276.0" layoutY="27.0" mnemonicParsing="false" onAction="#refrescar" onMouseClicked="#refrescar" prefHeight="46.0" prefWidth="87.0" style="-fx-background-color: #B0E0E6;" text="refresh">
          <font>
