@@ -75,6 +75,19 @@ public class Condiciones_busquedaController implements Initializable {
             atributo1();
             atributo2();
         }
+        primera_Condición.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            desp_atributo2.setDisable(!newValue);
+            desp_operador2.setDisable(!newValue);
+            valor2.setDisable(!newValue);
+            segunda_Condicion.setDisable(false);
+        });
+
+        segunda_Condicion.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            dep_atributo1.setDisable(!newValue);
+            desp_operador1.setDisable(!newValue);
+            valor1.setDisable(!newValue);
+             operadorLogico.setDisable(false);
+        });
     }
 
     public String esNoNumerico(String valor) {
@@ -92,48 +105,58 @@ public class Condiciones_busquedaController implements Initializable {
     }
     public String queryUnaTabla() {
         StringBuilder query = new StringBuilder();
-        query.append("Select");
+        query.append("SELECT ");
         for (ChoiceBox<String> sel : choiceBoxAtributos) {
             if (sel.getSelectionModel().getSelectedItem() == null) {
-                throw new NullPointerException();
+                showAlert("Los campos están vacíos. Por favor, complétalos.");
+                return null;
             } else {
-                query.append(" " + sel.getSelectionModel().getSelectedItem());
+                query.append(sel.getSelectionModel().getSelectedItem());
                 if (!sel.getSelectionModel().getSelectedItem().equals(
                         choiceBoxAtributos.get(choiceBoxAtributos.size() - 1).getSelectionModel().getSelectedItem())) {
                     query.append(",");
                 }
             }
         }
-        query.append(" from " + tablaSelected + " where ");
-        if (dep_atributo1.getSelectionModel().getSelectedItem() == null ||
-                desp_operador1.getSelectionModel().getSelectedItem() == null ||
-                esNoNumerico(valor1.getText()) == null) {
+        query.append(" FROM " + tablaSelected);
+        if (primera_Condición.isSelected()) {
             if (desp_atributo2.getSelectionModel().getSelectedItem() == null ||
                     desp_operador2.getSelectionModel().getSelectedItem() == null ||
                     esNoNumerico(valor2.getText()) == null) {
-                throw new NullPointerException("");
-            }
-
-            query.append(desp_atributo2.getSelectionModel().getSelectedItem()
-                    + " " + desp_operador2.getSelectionModel().getSelectedItem()
-                    + " " + esNoNumerico(valor2.getText()));
-        } else {
-            query.append(dep_atributo1.getSelectionModel().getSelectedItem()
-                    + " " + desp_operador1.getSelectionModel().getSelectedItem()
-                    + " " + esNoNumerico(valor1.getText()));
-            if (desp_atributo2.getSelectionModel().getSelectedItem() == null ||
-                    desp_operador2.getSelectionModel().getSelectedItem() == null ||
-                    esNoNumerico(valor2.getText()) == null ||
-                    operadorLogico.getSelectionModel().getSelectedItem() == null) {
-                query.append("");
+                showAlert("Los campos están vacíos. Por favor, complétalos.");
+                return null;
             } else {
-                query.append(" " + operadorLogico.getSelectionModel().getSelectedItem()
-                        + " " + desp_atributo2.getSelectionModel().getSelectedItem()
+                query.append(" WHERE " + desp_atributo2.getSelectionModel().getSelectedItem()
                         + " " + desp_operador2.getSelectionModel().getSelectedItem()
                         + " " + esNoNumerico(valor2.getText()));
             }
-        } // Limitar lineas de busquedas, valor que puede cambiar
+        }
+        if (segunda_Condicion.isSelected()) {
+            if (dep_atributo1.getSelectionModel().getSelectedItem() == null ||
+                    desp_operador1.getSelectionModel().getSelectedItem() == null ||
+                    esNoNumerico(valor1.getText()) == null) {
+                showAlert("Los campos están vacíos. Por favor, complétalos.");
+                return null;
+            } else {
+                if (primera_Condición.isSelected()) {
+                    query.append(" AND ");
+                } else {
+                    query.append(" WHERE ");
+                }
+                query.append(dep_atributo1.getSelectionModel().getSelectedItem()
+                        + " " + desp_operador1.getSelectionModel().getSelectedItem()
+                        + " " + esNoNumerico(valor1.getText()));
+            }
+        }
         return query.toString();
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Advertencia");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML

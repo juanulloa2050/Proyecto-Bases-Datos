@@ -302,13 +302,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
         System.out.println(queryUnaTabla());
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas2.fxml"));
+        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Resultado_busquedas2Controller rBusquedas2Controller = new Resultado_busquedas2Controller();
-        rBusquedas2Controller.setConnection(conection);
+        Resultado_busquedas1Controller rBusquedas1Controller = new Resultado_busquedas1Controller();
+        rBusquedas1Controller.setConnection(conection);
         String querie=queryUnaTabla();
-        rBusquedas2Controller.setQuerie(querie);
+        rBusquedas1Controller.setQuerie(querie);
         window.setScene(MostrarScene);
         window.setTitle("Resultado Busqueda");
         window.show();
