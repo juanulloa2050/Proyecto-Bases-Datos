@@ -179,8 +179,13 @@ public void usarInformacion() {
     Optional<ButtonType> result = alert.showAndWait();
     if (result.get() == ButtonType.OK){
         String DROPTABLE="Drop table "+nombreTabla;
+        String queryBorrarVista = "DROP VIEW IF EXISTS " + nombreTabla;
+        try{
         conection.Statment("Use "+dataBaseSelected);
-        conection.Statment(DROPTABLE);   
+        conection.Statment(DROPTABLE); 
+        } catch (SQLException e) {
+            conection.Statment(queryBorrarVista);
+        }
         //Actualiza la tabla
         TabPane_Tablas.getTabs().remove(TabPane_Tablas.getSelectionModel().getSelectedItem());  
     } 
