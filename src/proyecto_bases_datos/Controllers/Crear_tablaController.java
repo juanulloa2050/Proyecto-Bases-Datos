@@ -136,7 +136,6 @@ public class Crear_tablaController implements Initializable {
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             // Eliminar el label
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
-            vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             // ELiminarlo del array de choice box
             contadorAtributos--;
             choiceBoxAtributos.remove(contadorAtributos - 1);
