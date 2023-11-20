@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -133,6 +134,19 @@ public class Modificar_registroController implements Initializable {
     private void click_modificar(ActionEvent event) {
         //Hacer lo de la query
         System.out.println(queryUpdate());
+        try {
+            conection.Statment(queryUpdate());
+            click_volver(event);
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Esta seguro de continuar");
+            alert.setHeaderText(null);
+            alert.setContentText("Error con la base de datos, vuelve a intentarlo");
+            alert.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        
         
     }
 
