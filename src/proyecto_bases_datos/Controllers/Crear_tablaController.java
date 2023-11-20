@@ -70,9 +70,9 @@ public class Crear_tablaController implements Initializable {
                 if (choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem() != null &&
                     textFieldAtributosName.get(i).getText() != null) {
                     String attributeName = textFieldAtributosName.get(i).getText();
-                    queryCrear.append(attributeName).append(" ");
+                    queryCrear.append(attributeName+ " ");
                     String selectedType = choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem();
-                    if ("VARCHAR".equals(selectedType)) {
+                    if (selectedType.equalsIgnoreCase("VARCHAR")) {
                         String size = JOptionPane.showInputDialog("Ingrese el tamaño del VARCHAR para el atributo " + attributeName + ":");
                         selectedType += "(" + size + ")";
                     }
@@ -103,7 +103,6 @@ public class Crear_tablaController implements Initializable {
     }
     @FXML
     private void click_crear(ActionEvent event) throws SQLException, IOException {
-        System.out.println(queryCrear());
         conection.Statment(queryCrear());
         click_volver(event);
     }
