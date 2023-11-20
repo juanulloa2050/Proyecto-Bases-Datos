@@ -6,6 +6,9 @@ package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import java.net.URL;
 import java.sql.SQLException;
 
@@ -16,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -58,30 +62,45 @@ public class Crear_tablaController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    public String queryCrear(){
+    public String queryCrear() {
         StringBuilder queryCrear = new StringBuilder();
-        queryCrear.append("Create Table "+txt_nombre.getText() +" (");
-        if (choiceBoxAtributos!=null || textFieldAtributosName!=null){
+        queryCrear.append("CREATE TABLE ").append(txt_nombre.getText()).append(" (");
+        if (choiceBoxAtributos != null && textFieldAtributosName != null) {
             for (int i = 0; i < choiceBoxAtributos.size(); i++) {
-                if (choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem()!=null &&
-                    textFieldAtributosName.get(i).getText()!=null){
-                        queryCrear.append(
-                        textFieldAtributosName.get(i).getText()+" "
-                        +choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem());
-                } else{
-                    throw new NullPointerException("Llene todos los campos");
+                if (choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem() != null &&
+                    textFieldAtributosName.get(i).getText() != null) {
+                    String attributeName = textFieldAtributosName.get(i).getText();
+                    queryCrear.append(attributeName).append(" ");
+                    String selectedType = choiceBoxAtributos.get(i).getSelectionModel().getSelectedItem();
+                    if ("VARCHAR".equals(selectedType)) {
+                        String size = JOptionPane.showInputDialog("Ingrese el tamaño del VARCHAR para el atributo " + attributeName + ":");
+                        selectedType += "(" + size + ")";
+                    }
+                    queryCrear.append(selectedType);
+                } else {
+                    showAlert("Llene todos los campos");
+                    return null;
                 }
-                if (i!=choiceBoxAtributos.size()-1){
+                if (i != choiceBoxAtributos.size() - 1) {
                     queryCrear.append(", ");
-                }else{
+                } else {
                     queryCrear.append(")");
                 }
             }
-        } else{
-            throw new NullPointerException("no hay nada");
+        } else {
+            showAlert("No hay nada");
+            return null;
         }
         return queryCrear.toString();
-    }    
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Advertencia");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
     @FXML
     private void click_crear(ActionEvent event) throws SQLException, IOException {
         System.out.println(queryCrear());
@@ -138,9 +157,8 @@ public class Crear_tablaController implements Initializable {
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             vBoxAddAtributos.getChildren().remove(vBoxAddAtributos.getChildren().size() - 1);
             // ELiminarlo del array de choice box
-            contadorAtributos--;
             choiceBoxAtributos.remove(contadorAtributos - 1);
-            textFieldAtributosName.remove(contadorAtributos-1);
+            textFieldAtributosName.remove(contadorAtributos - 1);
         } else {
             System.out.println("No hay elementos para eliminar.");
         }
