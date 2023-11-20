@@ -6,6 +6,7 @@ package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,6 +44,7 @@ public class Insertar_registroController implements Initializable {
     private static ArrayList<String> atributos;
     private static ArrayList<String> tipos;
     private static ArrayList<TextField> listaTextField=new ArrayList<>();
+    private static String tablaSelected;
 
     /**
      * Initializes the controller class.
@@ -52,6 +55,7 @@ public class Insertar_registroController implements Initializable {
     } 
     @FXML
     public void refrescar(){
+        listaTextField.clear();
         vBoxRegistros.getChildren().clear();
         for (int j = 0; j < atributos.size(); j++) {
             Label atributo = new Label("Para "+atributos.get(j));
@@ -61,11 +65,45 @@ public class Insertar_registroController implements Initializable {
             listaTextField.add(valor);
             vBoxRegistros.getChildren().add(valor);
         } 
+    }
+    public String queryInsertar(){
+        StringBuilder query = new StringBuilder();
+        query.append("INSERT INTO "+ tablaSelected + " VALUES (");
+        for (int i = 0; i < listaTextField.size(); i++) {
+            if (listaTextField.get(i).getText()!=null) {
+                query.append("'"+listaTextField.get(i).getText()+"'");
+            } 
+            
+            if(i!=listaTextField.size()-1){
+                query.append(", ");
+            }else {
+                query.append(")");
+            }            
+        }
+
+
+        return query.toString();
     }    
 
     @FXML
-    private void click_insertar(ActionEvent event) {
-        System.out.println(atributos);
+    private void click_insertar(ActionEvent event) throws IOException{
+        try {
+            conection.Statment(queryInsertar());
+            Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Tablas.fxml"));
+            Scene MostrarScene = new Scene(MostrarParent);
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(MostrarScene);
+            window.setTitle("Tablas");
+            window.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Esta seguro de continuar");
+            alert.setHeaderText(null);
+            alert.setContentText("Problemas con la base de datos, vuelve a intentar");
+            alert.showAndWait();
+        }
+        
     }
 
     @FXML
@@ -87,6 +125,9 @@ public class Insertar_registroController implements Initializable {
     }
     public void setColumnasSeleccionadas(ArrayList<String> columnasSelected){
         atributos=new ArrayList<>( columnasSelected);
+    }
+    public void setTablaName(String tabla){
+        tablaSelected=tabla;
     }
     
 }
