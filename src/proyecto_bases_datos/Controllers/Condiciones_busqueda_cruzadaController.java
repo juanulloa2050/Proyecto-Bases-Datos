@@ -6,6 +6,7 @@ package proyecto_bases_datos.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -99,6 +101,12 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         campos_Tabla2.setText("Añadir campos de la tabla "+tablaSelected2);
         //hacer que si condicion1 no esta habilitado no se pueda habilitar condicion2
         check_Condicion1.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!check_Condicion1.isSelected()) {
+                desp_atributo1.setDisable(true);
+                desp_operador1.setDisable(true);
+                valorCondicion1.setDisable(true);
+                check_Condicion2.setDisable(true);
+            }
             if (check_Condicion1.isSelected()) {
             desp_atributo1.setDisable(!newValue);
             desp_operador1.setDisable(!newValue);
@@ -353,17 +361,34 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     }
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
-        System.out.println(queryTablas());
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Resultado_busquedas1Controller rBusquedas1Controller = new Resultado_busquedas1Controller();
-        rBusquedas1Controller.setConnection(conection);
-        String querie=queryTablas();
-        rBusquedas1Controller.setQuerie(querie);
-        window.setScene(MostrarScene);
-        window.setTitle("Resultado Busqueda");
-        window.show();
+       System.out.println(queryTablas());
+        try {
+            // Cambio de slide
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
+            Parent MostrarParent = loader.load();
+            Scene MostrarScene = new Scene(MostrarParent);
+            Resultado_busquedas1Controller rBusquedas1Controller = loader.getController();
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            rBusquedas1Controller.setConnection(conection);
+            rBusquedas1Controller.setQuerie(queryTablas());
+            rBusquedas1Controller.usarInformacion();
+            window.setScene(MostrarScene);
+            window.setTitle("Resultado Busqueda");
+            window.show();
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Revise los espacios vacios, vuelva a intentarlo");
+            alert.showAndWait();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Error con la base base de datos");
+            e.printStackTrace();
+            alert.showAndWait();
+        }
     }
     public void setConnection(JDBC connection) {
         conection = connection;
