@@ -8,89 +8,90 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="698.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Condiciones_busqueda_cruzadaController">
+<AnchorPane id="AnchorPane" prefHeight="502.0" prefWidth="702.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="proyecto_bases_datos.Controllers.Condiciones_busqueda_cruzadaController">
    <children>
-      <ChoiceBox fx:id="desp_atributo_relacionTabla1" layoutX="260.0" layoutY="143.0" onMouseClicked="#atributoTabla1Relacion" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: #B0E0E6;" />
-      <ChoiceBox fx:id="desp_operador_relacion" layoutX="298.0" layoutY="195.0" onMouseClicked="#operadorRelacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label fx:id="atributo_Tabla1" layoutX="256.0" layoutY="122.0" prefHeight="26.0" prefWidth="160.0" text="Atributo de la Tabla1:">
+      <ChoiceBox fx:id="desp_atributo_relacionTabla1" layoutX="262.0" layoutY="115.0" onMouseClicked="#atributoTabla1Relacion" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: #B0E0E6;" />
+      <ChoiceBox fx:id="desp_operador_relacion" layoutX="300.0" layoutY="167.0" onMouseClicked="#operadorRelacion" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label fx:id="atributo_Tabla1" layoutX="258.0" layoutY="94.0" prefHeight="26.0" prefWidth="160.0" text="Atributo de la Tabla1:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="294.0" layoutY="169.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <Label layoutX="296.0" layoutY="141.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="atributo_Tabla2" layoutX="259.0" layoutY="218.0" prefHeight="26.0" prefWidth="160.0" text="Atributo de la Tabla 2:">
+      <Label fx:id="atributo_Tabla2" layoutX="261.0" layoutY="190.0" prefHeight="26.0" prefWidth="160.0" text="Atributo de la Tabla 2:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="80.0" layoutY="306.0" prefHeight="26.0" prefWidth="96.0" text="Condición 1:">
+      <Label layoutX="79.0" layoutY="315.0" prefHeight="26.0" prefWidth="96.0" text="Condición 1:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="539.0" layoutY="305.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
+      <Label layoutX="538.0" layoutY="314.0" prefHeight="26.0" prefWidth="96.0" text="Condición 2:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="22.0" layoutY="321.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <Label layoutX="21.0" layoutY="330.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_atributo1" layoutX="22.0" layoutY="347.0" onMouseClicked="#condicion1TablasCruzadas" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="161.0" layoutY="321.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <ChoiceBox fx:id="desp_atributo1" disable="true" layoutX="21.0" layoutY="356.0" onMouseClicked="#condicion1TablasCruzadas" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="160.0" layoutY="330.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador1" layoutX="163.0" layoutY="347.0" onMouseClicked="#operador_condicion1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="14.0" layoutY="379.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
+      <ChoiceBox fx:id="desp_operador1" disable="true" layoutX="162.0" layoutY="356.0" onMouseClicked="#operador_condicion1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="13.0" layoutY="388.0" prefHeight="26.0" prefWidth="66.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="valorCondicion1" layoutX="68.0" layoutY="379.0" prefHeight="26.0" prefWidth="166.0" />
-      <Label layoutX="487.0" layoutY="321.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
+      <TextField fx:id="valorCondicion1" disable="true" layoutX="67.0" layoutY="388.0" prefHeight="26.0" prefWidth="166.0" />
+      <Label layoutX="486.0" layoutY="330.0" prefHeight="26.0" prefWidth="66.0" text="Atributo:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_atributo2" layoutX="487.0" layoutY="347.0" onMouseClicked="#condicion2TablasCruzadas" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="607.0" layoutY="319.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
+      <ChoiceBox fx:id="desp_atributo2" disable="true" layoutX="486.0" layoutY="356.0" onMouseClicked="#condicion2TablasCruzadas" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="606.0" layoutY="328.0" prefHeight="26.0" prefWidth="73.0" text="Operador:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="desp_operador2" layoutX="610.0" layoutY="347.0" onMouseClicked="#operador_condicion2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="438.0" layoutY="379.0" prefHeight="26.0" prefWidth="48.0" text="Valor:">
+      <ChoiceBox fx:id="desp_operador2" disable="true" layoutX="609.0" layoutY="356.0" onMouseClicked="#operador_condicion2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="437.0" layoutY="388.0" prefHeight="26.0" prefWidth="48.0" text="Valor:">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <TextField fx:id="valorCondicion2" layoutX="487.0" layoutY="379.0" prefHeight="26.0" prefWidth="200.0" />
-      <Button fx:id="btn_continuar" layoutX="410.0" layoutY="443.0" mnemonicParsing="false" onAction="#click_continuar" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #B0E0E6;" text="Continuar">
+      <TextField fx:id="valorCondicion2" disable="true" layoutX="486.0" layoutY="388.0" prefHeight="26.0" prefWidth="200.0" />
+      <Button fx:id="btn_continuar" layoutX="231.0" layoutY="422.0" mnemonicParsing="false" onAction="#click_continuar" prefHeight="39.0" prefWidth="236.0" style="-fx-background-color: #B0E0E6;" text="Continuar">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btn_volver" layoutX="33.0" layoutY="443.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #FFFACD;" text="Volver">
+      <Button fx:id="btn_volver" layoutX="231.0" layoutY="469.0" mnemonicParsing="false" onAction="#click_volver" prefHeight="26.0" prefWidth="236.0" style="-fx-background-color: #FFFACD;" text="Volver">
          <font>
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="campos_Tabla1" layoutX="35.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 1:">
+      <Label fx:id="campos_Tabla1" layoutX="35.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 1:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="478.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:">
+      <Label layoutX="478.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
@@ -105,7 +106,7 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="201.0" layoutY="93.0" prefHeight="28.0" prefWidth="270.0" text="Relación entre las Tablas:" textFill="RED">
+      <Label layoutX="214.0" layoutY="14.0" prefHeight="28.0" prefWidth="270.0" text="Relación entre Tablas:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="24.0" />
          </font>
@@ -140,25 +141,15 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <ChoiceBox fx:id="desp_atributo_relacionTabla2" layoutX="258.0" layoutY="243.0" onMouseClicked="#atributoTabla2Relacion" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="294.0" layoutY="408.0" prefHeight="26.0" prefWidth="73.0" text="Operador">
+      <ChoiceBox fx:id="desp_atributo_relacionTabla2" layoutX="260.0" layoutY="215.0" onMouseClicked="#atributoTabla2Relacion" prefHeight="26.0" prefWidth="160.0" style="-fx-background-color: #B0E0E6;" />
+      <Label layoutX="287.0" layoutY="330.0" prefHeight="26.0" prefWidth="122.0" text="Operador Logico">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="294.0" layoutY="430.0" prefHeight="26.0" prefWidth="73.0" text="Logico">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="ANDOR2" layoutX="297.0" layoutY="379.0" onMouseClicked="#AndOr2" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <Label layoutX="275.0" layoutY="321.0" prefHeight="26.0" prefWidth="122.0" text="Operador Logico">
-         <font>
-            <Font name="Times New Roman Bold" size="16.0" />
-         </font>
-      </Label>
-      <ChoiceBox fx:id="ANDOR1" layoutX="302.0" layoutY="347.0" onMouseClicked="#AndOr1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
-      <CheckBox fx:id="check_Condicion2" layoutX="544.0" layoutY="285.0" mnemonicParsing="false" text="Condición 2" />
-      <CheckBox fx:id="check_Condicion1" layoutX="81.0" layoutY="285.0" mnemonicParsing="false" text="Condicion 1" />
+      <ChoiceBox fx:id="ANDOR1" disable="true" layoutX="315.0" layoutY="356.0" onMouseClicked="#AndOr1" prefHeight="26.0" prefWidth="66.0" style="-fx-background-color: #B0E0E6;" />
+      <CheckBox fx:id="check_Condicion2" disable="true" layoutX="543.0" layoutY="294.0" mnemonicParsing="false" text="Condición 2" />
+      <CheckBox fx:id="check_Condicion1" layoutX="80.0" layoutY="294.0" mnemonicParsing="false" text="Condicion 1" />
+      <Line endX="415.626220703125" layoutX="349.0" layoutY="287.0" startX="-349.0" />
    </children>
 </AnchorPane>

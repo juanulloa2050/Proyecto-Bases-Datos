@@ -95,6 +95,32 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //hacer que si condicion1 no esta habilitado no se pueda habilitar condicion2
+        check_Condicion1.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (check_Condicion1.isSelected()) {
+            desp_atributo1.setDisable(!newValue);
+            desp_operador1.setDisable(!newValue);
+            valorCondicion1.setDisable(!newValue);
+            check_Condicion2.setDisable(false);
+            }else if (!check_Condicion1.isSelected()) {
+                check_Condicion2.setSelected(false);
+            }
+
+        });
+
+        check_Condicion2.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (check_Condicion1.isSelected()) {
+                desp_atributo2.setDisable(!newValue);
+                desp_operador2.setDisable(!newValue);
+                valorCondicion2.setDisable(!newValue);
+                ANDOR1.setDisable(false);
+            } else {
+                desp_atributo2.setDisable(true);
+                desp_operador2.setDisable(true);
+                valorCondicion2.setDisable(true);
+                ANDOR1.setDisable(true);
+        }});
+        //Hacer que si check_Condicion2 esta seleccionado se habilite atributo2,operador2, y valor2
     }
     //Tabla 1
     @FXML
