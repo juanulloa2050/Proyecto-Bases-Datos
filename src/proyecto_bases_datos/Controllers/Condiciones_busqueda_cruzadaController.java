@@ -17,7 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -35,25 +36,25 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     static String AcronimoTabla1;
     static String tablaSelected2;
     static String AcronimoTabla2;
-    private ArrayList<ChoiceBox<String>> choiceBoxAtributosTabla1 =new ArrayList<>();
-    private ArrayList<ChoiceBox<String>> choiceBoxAtributosTabla2 =new ArrayList<>();
+    private ArrayList<ComboBox<String>> ComboBoxAtributosTabla1 =new ArrayList<>();
+    private ArrayList<ComboBox<String>> ComboBoxAtributosTabla2 =new ArrayList<>();
     @FXML
-    private ChoiceBox<String> desp_atributo_relacionTabla1;
+    private ComboBox<String> desp_atributo_relacionTabla1;
     @FXML
-    private ChoiceBox<String> desp_atributo_relacionTabla2;
+    private ComboBox<String> desp_atributo_relacionTabla2;
     @FXML
-    private ChoiceBox<String> desp_operador_relacion;
-    private ChoiceBox<String> dep_atributo1;
+    private ComboBox<String> desp_operador_relacion;
+    private ComboBox<String> dep_atributo1;
     @FXML
-    private ChoiceBox<String> desp_operador1;
+    private ComboBox<String> desp_operador1;
     @FXML
-    private ChoiceBox<String> desp_atributo2;
+    private ComboBox<String> desp_atributo2;
     @FXML
-    private ChoiceBox<String> desp_operador2;
+    private ComboBox<String> desp_operador2;
     @FXML
-    private ChoiceBox<String> ANDOR2;
+    private ComboBox<String> ANDOR2;
     @FXML
-    private ChoiceBox<String> ANDOR1;
+    private ComboBox<String> ANDOR1;
     @FXML
     private Button btn_continuar;
     @FXML
@@ -82,7 +83,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private Label atributo_Tabla2;
     @FXML
-    private ChoiceBox<?> desp_atributo1;
+    private ComboBox<?> desp_atributo1;
     @FXML
     private Label campos_Tabla1;
     @FXML
@@ -128,13 +129,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         //creo el label y el choice box
         
         Label numeroAtributo = new Label("Atributo #" + contadorAtributosTabla1);
-        ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
+        ComboBox<String> nuevoAtributo = new ComboBox<>();
         nuevoAtributo.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected1+";","Field")){
             nuevoAtributo.getItems().addAll(AcronimoTabla1+"."+campo);
         }
         //Agregarlo a la lista local
-        choiceBoxAtributosTabla1.add(nuevoAtributo);
+        ComboBoxAtributosTabla1.add(nuevoAtributo);
         //Agregarlos al drame
         vBoxAddAtributosTabla1.getChildren().add(numeroAtributo);
         vBoxAddAtributosTabla1.getChildren().add(nuevoAtributo);
@@ -146,13 +147,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private void click_menusTabla1(ActionEvent event) {
         // Verificar si hay elementos para eliminar
         if (!vBoxAddAtributosTabla1.getChildren().isEmpty()) {
-            // Eliminar el último elemento (Label o ChoiceBox)
+            // Eliminar el último elemento (Label o ComboBox)
             vBoxAddAtributosTabla1.getChildren().remove(vBoxAddAtributosTabla1.getChildren().size() - 1);
             //Eliminar el label
             vBoxAddAtributosTabla1.getChildren().remove(vBoxAddAtributosTabla1.getChildren().size() - 1);
             //ELiminarlo del array de choice box
             contadorAtributosTabla1--;
-            choiceBoxAtributosTabla1.remove(contadorAtributosTabla1-1);
+            ComboBoxAtributosTabla1.remove(contadorAtributosTabla1-1);
         } else {
             System.out.println("No hay elementos para eliminar.");
         }
@@ -163,13 +164,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private void click_masTabla2(ActionEvent event) {
         //creo el label y el choice box
         Label numeroAtributo = new Label("Atributo #" + contadorAtributosTabla2);
-        ChoiceBox<String> nuevoAtributo = new ChoiceBox<>();
+        ComboBox<String> nuevoAtributo = new ComboBox<>();
         nuevoAtributo.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected2+";","Field")){
             nuevoAtributo.getItems().addAll(AcronimoTabla2+"."+campo);
         }
         //Agregarlo a la lista local
-        choiceBoxAtributosTabla2.add(nuevoAtributo);
+        ComboBoxAtributosTabla2.add(nuevoAtributo);
         //Agregarlos al drame
         vBoxAddAtributosTabla2.getChildren().add(numeroAtributo);
         vBoxAddAtributosTabla2.getChildren().add(nuevoAtributo);
@@ -181,13 +182,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private void click_menusTabla2(ActionEvent event) {
         // Verificar si hay elementos para eliminar
         if (!vBoxAddAtributosTabla2.getChildren().isEmpty()) {
-            // Eliminar el último elemento (Label o ChoiceBox)
+            // Eliminar el último elemento (Label o ComboBox)
             vBoxAddAtributosTabla2.getChildren().remove(vBoxAddAtributosTabla2.getChildren().size() - 1);
             //Eliminar el label
             vBoxAddAtributosTabla2.getChildren().remove(vBoxAddAtributosTabla2.getChildren().size() - 1);
             //ELiminarlo del array de choice box
             contadorAtributosTabla2--;
-            choiceBoxAtributosTabla2.remove(contadorAtributosTabla2-1);
+            ComboBoxAtributosTabla2.remove(contadorAtributosTabla2-1);
         } else {
             System.out.println("No hay elementos para eliminar.");
         }
@@ -199,25 +200,30 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private void AndOr2(){
         ANDOR2.getItems().clear();
         ANDOR2.getItems().addAll("AND","OR");
+        ANDOR2.setVisibleRowCount(5);
     }
     @FXML
     private void operador_condicion1(){
         desp_operador1.getItems().clear();
         desp_operador1.getItems().addAll(operadores);
+        desp_operador1.setVisibleRowCount(5);
     }
     @FXML
     private void operador_condicion2(){
         desp_operador2.getItems().clear();
         desp_operador2.getItems().addAll(operadores);
+        desp_operador2.setVisibleRowCount(5);
     }
     @FXML
     private void condicion1TablasCruzadas(){
         dep_atributo1.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected1+";","Field")){
             dep_atributo1.getItems().addAll(AcronimoTabla1+"."+campo);
+            dep_atributo1.setVisibleRowCount(5);
         }
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected2+";","Field")){
             dep_atributo1.getItems().addAll(AcronimoTabla2+"."+campo);
+            dep_atributo1.setVisibleRowCount(5);
         }
     }
     @FXML
@@ -225,9 +231,11 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         desp_atributo2.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected1+";","Field")){
             desp_atributo2.getItems().addAll(AcronimoTabla1+"."+campo);
+            desp_atributo2.setVisibleRowCount(5);
         }
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected2+";","Field")){
             desp_atributo2.getItems().addAll(AcronimoTabla2+"."+campo);
+            desp_atributo2.setVisibleRowCount(5);
         }
     }
 
@@ -235,13 +243,15 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private void operadorRelacion(){
         desp_operador_relacion.getItems().clear();
-        // Agregar operadores al ChoiceBox desp_operador1
+        // Agregar operadores al ComboBox desp_operador1
         desp_operador_relacion.getItems().addAll(operadores);
+        desp_operador_relacion.setVisibleRowCount(5);
     }
     @FXML
     private void AndOr1(){
         ANDOR1.getItems().clear();
         ANDOR1.getItems().addAll("AND","OR");
+        ANDOR1.setVisibleRowCount(5);
     }
     
         //Atributos
@@ -250,6 +260,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         desp_atributo_relacionTabla1.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected1+";","Field")){
             desp_atributo_relacionTabla1.getItems().addAll(AcronimoTabla1+"."+campo);
+            desp_atributo_relacionTabla1.setVisibleRowCount(5);
         }
     }
     @FXML
@@ -257,6 +268,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         desp_atributo_relacionTabla2.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected2+";","Field")){
             desp_atributo_relacionTabla2.getItems().addAll(AcronimoTabla2+"."+campo);
+            desp_atributo_relacionTabla2.setVisibleRowCount(5);
         }
     }
     
@@ -264,23 +276,23 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     public String queryUnaTabla(){
         StringBuilder query = new StringBuilder();
         query.append("Select");
-        for (ChoiceBox<String> sel: choiceBoxAtributosTabla1){
+        for (ComboBox<String> sel: ComboBoxAtributosTabla1){
             if (sel.getSelectionModel().getSelectedItem()==null){
                 throw new NullPointerException();
             } else{
                 query.append(" "+sel.getSelectionModel().getSelectedItem());
-                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributosTabla1.get(choiceBoxAtributosTabla1.size()-1).getSelectionModel().getSelectedItem())){
+                if(!sel.getSelectionModel().getSelectedItem().equals(ComboBoxAtributosTabla1.get(ComboBoxAtributosTabla1.size()-1).getSelectionModel().getSelectedItem())){
                     query.append(",");
                 }
             } 
         }
         query.append(",");
-        for (ChoiceBox<String> sel: choiceBoxAtributosTabla2){
+        for (ComboBox<String> sel: ComboBoxAtributosTabla2){
             if (sel.getSelectionModel().getSelectedItem()==null){
                 throw new NullPointerException();
             } else{
                 query.append(" "+sel.getSelectionModel().getSelectedItem());
-                if(!sel.getSelectionModel().getSelectedItem().equals(choiceBoxAtributosTabla2.get(choiceBoxAtributosTabla2.size()-1).getSelectionModel().getSelectedItem())){
+                if(!sel.getSelectionModel().getSelectedItem().equals(ComboBoxAtributosTabla2.get(ComboBoxAtributosTabla2.size()-1).getSelectionModel().getSelectedItem())){
                     query.append(",");
                 }
             } 
