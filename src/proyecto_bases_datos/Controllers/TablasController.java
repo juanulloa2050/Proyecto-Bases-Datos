@@ -188,12 +188,7 @@ public void usarInformacion() {
 
     @FXML
     private void click_volver(ActionEvent event) throws IOException {
-        Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Menu.fxml"));
-        Scene MostrarScene = new Scene(MostrarParent);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(MostrarScene);
-        window.setTitle("Menu");
-        window.show();
+        System.exit(0);
 
     }
 
@@ -216,10 +211,11 @@ public void usarInformacion() {
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Insertar_registro.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Insertar_registroController insertarRegitro=load.getController();
-        insertarRegitro.setConnection(conection);
+        Insertar_registroController insertarRegistro=load.getController();
+        insertarRegistro.setConnection(conection);
         insertarRegitro.setTablaName(TabPane_Tablas.getSelectionModel().getSelectedItem().getText());
-        insertarRegitro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
+        insertarRegistro.setColumnasSeleccionadas(conection.getDatafromOneField(query, "Field"));
+        insertarRegistro.setTiposSeleccionados(conection.getDatafromOneField(query, "Type"));
         window.setScene(MostrarScene);
         window.setTitle("Insertar Registro, en tabla: "+TabPane_Tablas.getSelectionModel().getSelectedItem().getText());
         window.show();
