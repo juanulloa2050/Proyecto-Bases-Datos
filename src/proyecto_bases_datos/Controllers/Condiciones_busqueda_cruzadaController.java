@@ -44,15 +44,12 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     private ComboBox<String> desp_atributo_relacionTabla2;
     @FXML
     private ComboBox<String> desp_operador_relacion;
-    private ComboBox<String> dep_atributo1;
     @FXML
     private ComboBox<String> desp_operador1;
     @FXML
     private ComboBox<String> desp_atributo2;
     @FXML
     private ComboBox<String> desp_operador2;
-    @FXML
-    private ComboBox<String> ANDOR2;
     @FXML
     private ComboBox<String> ANDOR1;
     @FXML
@@ -83,7 +80,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     @FXML
     private Label atributo_Tabla2;
     @FXML
-    private ComboBox<?> desp_atributo1;
+    private ComboBox<String> desp_atributo1;
     @FXML
     private Label campos_Tabla1;
     @FXML
@@ -197,12 +194,6 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
 
     //Condiciones
     @FXML
-    private void AndOr2(){
-        ANDOR2.getItems().clear();
-        ANDOR2.getItems().addAll("AND","OR");
-        ANDOR2.setVisibleRowCount(5);
-    }
-    @FXML
     private void operador_condicion1(){
         desp_operador1.getItems().clear();
         desp_operador1.getItems().addAll(operadores);
@@ -216,14 +207,14 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     }
     @FXML
     private void condicion1TablasCruzadas(){
-        dep_atributo1.getItems().clear();
+        desp_atributo1.getItems().clear();
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected1+";","Field")){
-            dep_atributo1.getItems().addAll(AcronimoTabla1+"."+campo);
-            dep_atributo1.setVisibleRowCount(5);
+            desp_atributo1.getItems().addAll(AcronimoTabla1+"."+campo);
+            desp_atributo1.setVisibleRowCount(5);
         }
         for (String campo : conection.getDatafromOneField("Describe "+tablaSelected2+";","Field")){
-            dep_atributo1.getItems().addAll(AcronimoTabla2+"."+campo);
-            dep_atributo1.setVisibleRowCount(5);
+            desp_atributo1.getItems().addAll(AcronimoTabla2+"."+campo);
+            desp_atributo1.setVisibleRowCount(5);
         }
     }
     @FXML
@@ -273,7 +264,7 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     }
     
     //Busqueda
-    public String queryUnaTabla(){
+    public String queryTablas(){
         StringBuilder query = new StringBuilder();
         query.append("Select");
         for (ComboBox<String> sel: ComboBoxAtributosTabla1){
@@ -301,37 +292,44 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
         query.append(" from "+tablaSelected1 + " " + AcronimoTabla1 +", "
         +tablaSelected2+" "+AcronimoTabla2 +" where ");
         //RElacion
-        query.append(desp_atributo_relacionTabla1.getSelectionModel().getSelectedItem()
-                    +" "+desp_operador_relacion.getSelectionModel().getSelectedItem()
-                    +" "+desp_atributo_relacionTabla2.getSelectionModel().getSelectedItem()
-                    +" "+ANDOR1.getSelectionModel().getSelectedItem()+" ");
+        if (desp_atributo_relacionTabla1.getSelectionModel().getSelectedItem()==null||
+            desp_operador_relacion.getSelectionModel().getSelectedItem()==null||
+            desp_atributo_relacionTabla2.getSelectionModel().getSelectedItem()==null){
+                throw new NullPointerException("s");
+            }else{
+                query.append(desp_atributo_relacionTabla1.getSelectionModel().getSelectedItem()
+                +" "+desp_operador_relacion.getSelectionModel().getSelectedItem()
+                +" "+desp_atributo_relacionTabla2.getSelectionModel().getSelectedItem());
+            }
+        
         //Condiciones
-        if (dep_atributo1.getSelectionModel().getSelectedItem() == null || 
+        if (desp_atributo1.getSelectionModel().getSelectedItem() == null || 
             desp_operador1.getSelectionModel().getSelectedItem()==null ||
             valorCondicion1.getText()==null
             ){
                 if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
                 desp_operador2.getSelectionModel().getSelectedItem()==null ||
                 valorCondicion2.getText()==null
-                ){throw new NullPointerException("");}
-                    
-                query.append(desp_atributo2.getSelectionModel().getSelectedItem()
+                ){query.append(";");
+            } else{
+                query.append(" AND  aca esta"+desp_atributo2.getSelectionModel().getSelectedItem()
                 +" "+desp_operador2.getSelectionModel().getSelectedItem()
                 +" "+valorCondicion2.getText());
+            }                         
         } else{
-            query.append(dep_atributo1.getSelectionModel().getSelectedItem()
+            query.append(" And "+desp_atributo1.getSelectionModel().getSelectedItem()
             +" "+desp_operador1.getSelectionModel().getSelectedItem()
             +" "+valorCondicion1.getText());
             if (desp_atributo2.getSelectionModel().getSelectedItem() == null || 
                 desp_operador2.getSelectionModel().getSelectedItem()==null ||
                 valorCondicion2.getText()==null ||
-                ANDOR2.getSelectionModel().getSelectedItem()==null
-                ){query.append("");}
+                ANDOR1==null
+                ){query.append(";");}
                 else{
-                    query.append(" "+ANDOR2.getSelectionModel().getSelectedItem()
+                    query.append(" "+ANDOR1.getSelectionModel().getSelectedItem()
                     +" "+desp_atributo2.getSelectionModel().getSelectedItem()
                     +" "+desp_operador2.getSelectionModel().getSelectedItem()
-                    +" "+valorCondicion2.getText());
+                    +" "+valorCondicion2.getText()+";");
                 }
         }
        // query.append(" limit 50"); // Limitar lineas de busquedas, valor que puede cambiar
@@ -351,13 +349,13 @@ public class Condiciones_busqueda_cruzadaController implements Initializable {
     }
     @FXML
     private void click_continuar(ActionEvent event) throws IOException {
-        System.out.println(queryUnaTabla());
+        System.out.println(queryTablas());
         Parent MostrarParent = FXMLLoader.load(getClass().getResource("/proyecto_bases_datos/FXML/Resultado_busquedas1.fxml"));
         Scene MostrarScene = new Scene(MostrarParent);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Resultado_busquedas1Controller rBusquedas1Controller = new Resultado_busquedas1Controller();
         rBusquedas1Controller.setConnection(conection);
-        String querie=queryUnaTabla();
+        String querie=queryTablas();
         rBusquedas1Controller.setQuerie(querie);
         window.setScene(MostrarScene);
         window.setTitle("Resultado Busqueda");
