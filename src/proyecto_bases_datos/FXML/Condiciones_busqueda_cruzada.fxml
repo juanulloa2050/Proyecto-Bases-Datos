@@ -91,7 +91,7 @@
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="478.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:" textFill="RED">
+      <Label fx:id="campos_Tabla2" layoutX="478.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
