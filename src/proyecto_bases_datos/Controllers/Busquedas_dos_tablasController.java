@@ -96,8 +96,8 @@ public class Busquedas_dos_tablasController implements Initializable {
             Scene MostrarScene = new Scene(MostrarParent);
             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
             window.setScene(MostrarScene);
-            window.setTitle("Tabla 1::"+ desp_tabla1.getSelectionModel().getSelectedItem()
-                            +" Tabla 2::" +desp_tabla2.getSelectionModel().getSelectedItem());
+            window.setTitle("Tabla 1="+ desp_tabla1.getSelectionModel().getSelectedItem()
+                            +", Tabla 2=" +desp_tabla2.getSelectionModel().getSelectedItem());
             window.show();
         }catch (NullPointerException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

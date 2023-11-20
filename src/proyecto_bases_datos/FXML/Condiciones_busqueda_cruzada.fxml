@@ -86,12 +86,12 @@
             <Font name="Times New Roman Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="campos_Tabla1" layoutX="35.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 1:" textFill="RED">
+      <Label fx:id="campos_Tabla1" layoutX="16.0" layoutY="39.0" prefHeight="26.0" prefWidth="213.0" text="Añadir campos tabla 1:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="campos_Tabla2" layoutX="478.0" layoutY="39.0" prefHeight="26.0" prefWidth="166.0" text="Añadir campos tabla 2:" textFill="RED">
+      <Label fx:id="campos_Tabla2" layoutX="450.0" layoutY="39.0" prefHeight="26.0" prefWidth="236.0" text="Añadir campos tabla 2:" textFill="RED">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
