@@ -35,7 +35,9 @@ Asegúrate de tener instalados los siguientes componentes:
 
 ## Documentación
 
-Consulta el [documento de funcionamiento](enlace_a_tu_documento) para obtener detalles adicionales sobre el funcionamiento del programa.
+Consulta el [documento de funcionamiento](Informe%20Proyecto.docx) para obtener detalles adicionales sobre el funcionamiento del programa.
+
+Diccionario de metodos y clases [documento de funcionamiento](Diccionario%20de%20clases.docx).
 
 ## Contribuir
 
