@@ -113,8 +113,15 @@ public class Modificar_registroController implements Initializable {
                 queryUpdate.append(", ");
             }
         }
-        queryUpdate.append(" where "+ primaryKey.getSelectionModel().getSelectedItem()+" "
-                    +OperadorprimaryKey.getSelectionModel().getSelectedItem()+valorCondicionPrimaria.getText()+";");
+        if (primaryKey.getSelectionModel().getSelectedItem()==null ||
+            OperadorprimaryKey.getSelectionModel().getSelectedItem()==null ||
+            valorCondicionPrimaria.getText()==null){
+                queryUpdate.append(" where "+ primaryKey.getSelectionModel().getSelectedItem()+" "
+                                    +OperadorprimaryKey.getSelectionModel().getSelectedItem()+valorCondicionPrimaria.getText()+";");
+            }else{
+                queryUpdate.append(";");
+            }
+        
         return queryUpdate.toString();
     }
     private boolean isNumeric(String str) {
