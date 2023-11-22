@@ -116,10 +116,10 @@ public class Modificar_registroController implements Initializable {
         if (primaryKey.getSelectionModel().getSelectedItem()==null ||
             OperadorprimaryKey.getSelectionModel().getSelectedItem()==null ||
             valorCondicionPrimaria.getText()==null){
+                queryUpdate.append(";");
+            }else{
                 queryUpdate.append(" where "+ primaryKey.getSelectionModel().getSelectedItem()+" "
                                     +OperadorprimaryKey.getSelectionModel().getSelectedItem()+valorCondicionPrimaria.getText()+";");
-            }else{
-                queryUpdate.append(";");
             }
         
         return queryUpdate.toString();
